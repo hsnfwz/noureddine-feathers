@@ -1,16 +1,48 @@
 ---
+// utils
+import { getProducts } from '@/src/utils/api';
+
 // components
 import Nav from '@/src/components/Nav.svelte';
 import Layout from '@/src/layouts/Layout.astro';
+import Heading from '@/src/components/shared/Heading.svelte';
+import ProductCardGrid from '@/src/components/ProductCardGrid.svelte';
+import Link from '@/src/components/shared/Link.svelte';
 
 // types
 import type NavPropsType from '@/src/types/props/NavPropsType';
+import type ProductType from '@/src/types/ProductType';
+import type HeadingPropsType from '@/src/types/props/HeadingPropsType';
+import type LinkPropsType from '@/src/types/props/LinkPropsType';
 
 const navProps: NavPropsType = {
   pathname: Astro.url.pathname,
+}
+
+const featherDusters: ProductType[] | undefined = await getProducts({ category: 'Feather Dusters' });
+
+const featherDustersHeadingProps: HeadingPropsType = {
+  text: 'Feather Dusters',
+  bold: true,
+  uppercase: true,
+}
+
+const featherDustersLinkProps: LinkPropsType = {
+  href: '/feather-dusters',
+  ariaLabel: 'feather dusters',
+  text: 'View All',
 }
 ---
 
 <Layout title="Noureddine Feathers">
   <Nav {...navProps} client:load />
+  <div class="flex gap-4">
+    <div class="flex flex-grow items-center">
+      <Heading {...featherDustersHeadingProps} />
+    </div>
+    <div class="flex items-center">
+      <Link {...featherDustersLinkProps} />
+    </div>
+  </div>
+  <ProductCardGrid products={featherDusters} />
 </Layout>
