@@ -8,6 +8,7 @@ import Layout from '@/src/layouts/Layout.astro';
 import Heading from '@/src/components/shared/Heading.svelte';
 import ProductCardGrid from '@/src/components/ProductCardGrid.svelte';
 import Link from '@/src/components/shared/Link.svelte';
+import Footer from '@/src/components/Footer.svelte';
 
 // types
 import type NavPropsType from '@/src/types/props/NavPropsType';
@@ -45,4 +46,5 @@ const featherDustersLinkProps: LinkPropsType = {
     </div>
   </div>
   <ProductCardGrid products={featherDusters} />
+  <Footer />
 </Layout>
