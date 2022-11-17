@@ -104,7 +104,7 @@
     </div>
   </div>
   {#if pathname === '/'}
-    <div class="flex flex-col flex-grow justify-center items-center gap-4 bg-cover bg-center bg-[url('/hero.webp')] px-8 py-2">
+    <div class="flex flex-col flex-grow justify-center items-center gap-4 bg-cover bg-center bg-[url('/hero-compressed.webp')] px-8 py-2">
       <p class="text-white text-center text-base xl:text-xl">
         Handmade from 100% natural farm-raised ostrich feathers
       </p>
