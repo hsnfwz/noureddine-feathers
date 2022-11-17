@@ -6,4 +6,4 @@ const supabaseAnonKey: string = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || '';
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-export default supabase;
+export { supabase };

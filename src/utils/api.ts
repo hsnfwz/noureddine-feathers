@@ -3,13 +3,15 @@
 import type ProductType from '@/src/types/ProductType';
 
 // utils
-import supabase from '@/src/config/supabase';
 import { groupBy } from '@/src/utils/helpers';
+
+// config
+import { supabase } from '@/src/config/supabase';
 
 /* TODO: do not fetch every attribute */
 /* TODO: enable RLS in supabase */
 
-/* TODO: ame fetching products better (limits, separating requests within the function into their own functions) */
+/* TODO: fetching products better (limits, separating requests within the function into their own functions) */
 
 const getProductById = async (id: string) => {
   try {
@@ -82,35 +84,7 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
   }
 }
 
-const addProfile = async (email: string) => {
-  try {
-    const { data, error } = await supabase.from('profile').insert({ email });
-
-    if (error) console.log('[addProfile]', error);
-
-    return data;
-  } catch (error) {
-    console.log('[addProfile]', error);
-  }
-}
-
-const getProfileByEmail = async (email: string) => {
-  try {
-    const { data, error } = await supabase.from('profile').select('*').match({ email });
-
-    if (error) console.log('[getProfileByEmail]', error);
-
-    if (!data) return undefined;
-
-    return data[0];
-  } catch (error) {
-    console.log('[getProfileByEmail]', error);
-  }
-}
-
 export {
-  addProfile,
-  getProfileByEmail,
   getProductById,
   getProducts,
 }

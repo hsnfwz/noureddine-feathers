@@ -1,11 +1,30 @@
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+  
+  // props
   export let pathname: string = '/';
 
   // types
   import type LinkPropsType from '@/src/types/props/LinkPropsType';
+  import type ButtonPropsType from '@/src/types/props/ButtonPropsType';
 
   // components
   import Link from '@/src/components/shared/Link.svelte';
+  import Button from '@/src/components/shared/Button.svelte';
+
+  // store
+  import { session } from '@/src/stores/SessionStore';
+
+  // state
+  let subscriptionAuthStateChange: any;
+
+  onMount(async () => {
+    subscriptionAuthStateChange = session.subscribeAuthStateChange();
+
+    await session.getSession();
+  });
+
+  onDestroy(() => session.unsubscribeAuthStateChange(subscriptionAuthStateChange));
 
   const logoLinkProps: LinkPropsType = {
     href: '/',
@@ -14,22 +33,44 @@
 
   const featherDustersLinkProps: LinkPropsType = {
     href: '/feather-dusters',
-    ariaLabel: 'feather dusters',  
+    ariaLabel: 'feather dusters',
+    text: 'Feather Dusters',
   }
 
   const eggshellsLinkProps: LinkPropsType = {
     href: '/eggshells',
-    ariaLabel: 'eggshells',  
+    ariaLabel: 'eggshells',
+    text: 'Eggshells',
   }
 
   const lambskinLinkProps: LinkPropsType = {
     href: '/lambskin',
-    ariaLabel: 'lambskin',  
+    ariaLabel: 'lambskin',
+    text: 'Lambskin',
   }
 
   const cartLinkProps: LinkPropsType = {
     href: '/cart',
-    ariaLabel: 'cart',  
+    ariaLabel: 'cart',
+    // text: `Cart (${cartContext.cartProductsCount})`,
+    text: `Cart (0)`,
+  }
+
+  const signInLinkProps: LinkPropsType = {
+    href: '/sign-in',
+    ariaLabel: 'sign in',
+    text: 'Sign In',
+  }
+
+  const accountLinkProps: LinkPropsType = {
+    href: '/account',
+    ariaLabel: 'account',
+    text: 'Account',
+  }
+
+  const signOutButtonProps: ButtonPropsType = {
+    text: 'Sign Out',
+    onClick: () => session.signOutUser(),
   }
 </script>
 
@@ -53,28 +94,13 @@
       <Link {...lambskinLinkProps} />
     </div>
     <div class="hidden flex-row gap-4 flex-shrink-0 lg:flex">
-      <!-- {!authContext.isLoading && !authContext.email && (
-        <>
-          <LinkButton
-            href="/sign-in"
-            text="Sign In"
-          />
-          <LinkButton
-            href="/sign-up"
-            text="Sign Up"
-          />
-        </>
-      )}
-      {!authContext.isLoading && authContext.email && (
-        <LinkButton
-          href="/account"
-          text="Account"
-        />
-      )} -->
-      <!-- <LinkButton
-        href="/cart"
-        text={`Cart (${cartContext.cartProductsCount})`}
-      /> -->
+      {#if $session}
+        <Link {...accountLinkProps} />
+        <Button {...signOutButtonProps} />
+      {:else}
+        <Link {...signInLinkProps} />
+      {/if}
+      <Link {...cartLinkProps} />
     </div>
   </div>
   {#if pathname === '/'}

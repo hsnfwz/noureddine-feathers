@@ -1,9 +1,10 @@
 ---
-import Nav from '../components/Nav.svelte';
-import Test from '../components/Test.svelte';
-import Layout from '../layouts/Layout.astro';
+// components
+import Nav from '@/src/components/Nav.svelte';
+import Layout from '@/src/layouts/Layout.astro';
 
-import type NavPropsType from "../types/props/NavPropsType";
+// types
+import type NavPropsType from '@/src/types/props/NavPropsType';
 
 const navProps: NavPropsType = {
   pathname: Astro.url.pathname,
@@ -11,9 +12,5 @@ const navProps: NavPropsType = {
 ---
 
 <Layout title="Noureddine Feathers">
-
-  <!-- <Test client:load /> -->
-
   <Nav {...navProps} client:load />
-
 </Layout>

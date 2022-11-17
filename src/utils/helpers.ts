@@ -1,7 +1,6 @@
 
 // types
 import type ProductPriceQuantityType from '@/src/types/ProductPriceQuantityType';
-import type ProfileProductRatingType from '@/src/types/ProfileProductRatingType';
 
 const formatCurrency = (amount: number) => {
   const formatToUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
@@ -13,12 +12,12 @@ const formatCategory = (category: string) => {
   return _category;
 }
 
-const calculateAverageRating = (ratings: ProfileProductRatingType[]) => {
+const calculateAverageRating = (ratings: number[]) => {
   if (!ratings) return 0;
 
   let sum = 0;
 
-  ratings.forEach(r => sum = sum + r.rating);
+  ratings.forEach(r => sum = sum + r);
 
   const average = sum / ratings.length;
   const result = +average.toFixed(1);

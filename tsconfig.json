@@ -5,10 +5,11 @@
     "paths": {
       "@/src/layouts/*": ["src/layouts/*"],
       "@/src/components/*": ["src/components/*"],
+      "@/src/stores/*": ["src/stores/*"],
       "@/src/api/*": ["src/api/*"],
       "@/src/config/*": ["src/config/*"],
       "@/src/types/*": ["src/types/*"],
-      "@/src/utils/*": ["src/utils/*"],
+      "@/src/utils/*": ["src/utils/*"]
     }
   }
 }

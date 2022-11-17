@@ -8,36 +8,40 @@
 
   let _class = '';
 
-  if (disabled) {
-    _class = _class + ' ' + 'opacity-25 pointer-events-none';
-  } else {
-    _class = _class + ' ' + 'hover:brightness-75 transition-all'
-  }
-
-  if (text) {
-    _class = _class + ' ' + 'px-4 py-2 rounded-sm';
-
-    if (textColor) {
-      _class = _class + ' ' + textColor;
+  $: {
+    _class = '';
+    
+    if (disabled) {
+      _class = _class + ' ' + 'opacity-25 pointer-events-none';
     } else {
-      _class = _class + ' ' + 'text-white';
+      _class = _class + ' ' + 'hover:brightness-75 transition-all'
     }
 
-    if (buttonColor) {
-      _class = _class + ' ' + buttonColor;
-    } else {
-      _class = _class + ' ' + 'bg-blue-500';
-    }
+    if (text) {
+      _class = _class + ' ' + 'px-4 py-2 rounded-sm';
 
-    if (uppercase) _class = _class + ' ' + 'uppercase';
+      if (textColor) {
+        _class = _class + ' ' + textColor;
+      } else {
+        _class = _class + ' ' + 'text-white';
+      }
+
+      if (buttonColor) {
+        _class = _class + ' ' + buttonColor;
+      } else {
+        _class = _class + ' ' + 'bg-blue-500';
+      }
+
+      if (uppercase) _class = _class + ' ' + 'uppercase';
+    }
   }
 </script>
 
 <button
+  class={_class}
   type="button"
   disabled={disabled}
   on:click={() => onClick()}
-  class={_class}
 >
   {#if text}
     {text}
