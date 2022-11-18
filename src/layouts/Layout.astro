@@ -4,6 +4,8 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+import '@fontsource/montserrat';
 ---
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ const { title } = Astro.props;
 		<meta name="description" content="Noureddine Feathers" />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="font-montserrat">
 		<slot />
 	</body>
 </html>

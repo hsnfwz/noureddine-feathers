@@ -1,12 +1,12 @@
 
 // types
-import type ProductType from '@/src/types/ProductType';
+import type ProductType from 'types/ProductType';
 
 // utils
-import { groupBy } from '@/src/utils/helpers';
+import { groupBy } from 'utils/helpers';
 
 // config
-import { supabase } from '@/src/config/supabase';
+import { supabase } from 'config/supabase';
 
 /* TODO: do not fetch every attribute */
 /* TODO: enable RLS in supabase */

@@ -1,14 +1,14 @@
 <script lang="ts">
   // utils
-  import { calculateSalePrice, formatCurrency, getMinPrice, getMaxPrice, formatCategory } from '@/src/utils/helpers';
+  import { calculateSalePrice, formatCurrency, getMinPrice, getMaxPrice, formatCategory } from 'utils/helpers';
 
   // types
-  import type ProductType from '@/src/types/ProductType';
-  import type LinkPropsType from '@/src/types/props/LinkPropsType';
+  import type ProductType from 'types/ProductType';
+  import type LinkPropsType from 'types/props/LinkPropsType';
 
   // components
-  import Stars from '@/src/components/shared/Stars.svelte';
-  import Link from '@/src/components/shared/Link.svelte';
+  import Stars from 'components/shared/Stars.svelte';
+  import Link from 'components/shared/Link.svelte';
 
   // props
   export let product: ProductType;

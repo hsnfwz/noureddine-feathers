@@ -1,9 +1,9 @@
 <script lang="ts">
   // utils
-  import { calculateAverageRating } from '@/src/utils/helpers';
+  import { calculateAverageRating } from 'utils/helpers';
 
   // components
-  import StarIcon from '@/src/components/icons/StarIcon.svelte';
+  import StarIcon from 'components/icons/StarIcon.svelte';
 
   // props
   export let ratings: number[] = [];

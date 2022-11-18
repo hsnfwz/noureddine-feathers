@@ -1,19 +1,19 @@
 <script lang="ts">
   // types
-  import type CartProductType from '@/src/types/CartProductType';
-  import type LinkPropsType from '@/src/types/props/LinkPropsType';
-  import type ButtonPropsType from '@/src/types/props/ButtonPropsType';
+  import type CartProductType from 'types/CartProductType';
+  import type LinkPropsType from 'types/props/LinkPropsType';
+  import type ButtonPropsType from 'types/props/ButtonPropsType';
 
   // utils
-  import { formatCurrency, formatCategory } from '@/src/utils/helpers';
+  import { formatCurrency, formatCategory } from 'utils/helpers';
 
   // stores
-  import { cart } from '@/src/stores/CartStore';
+  import { cart } from 'stores/CartStore';
   
   // components
-  import Button from '@/src/components/shared/Button.svelte';
-  import Link from '@/src/components/shared/Link.svelte';
-  import Counter from '@/src/components/shared/Counter.svelte';
+  import Button from 'components/shared/Button.svelte';
+  import Link from 'components/shared/Link.svelte';
+  import Counter from 'components/shared/Counter.svelte';
 
   // props
   export let cartProduct: CartProductType;

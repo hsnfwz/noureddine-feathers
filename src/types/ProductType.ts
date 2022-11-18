@@ -1,6 +1,6 @@
 
 // types
-import type ProductPriceQuantityType from '@/src/types/ProductPriceQuantityType';
+import type ProductPriceQuantityType from 'types/ProductPriceQuantityType';
 
 type ProductType = {
   id: number,

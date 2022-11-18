@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 // config
-import { supabase } from '@/src/config/supabase';
+import { supabase } from 'config/supabase';
 
 function createSession() {
 	const { subscribe, set } = writable();

@@ -5,16 +5,16 @@
   export let pathname: string = '/';
 
   // types
-  import type LinkPropsType from '@/src/types/props/LinkPropsType';
-  import type ButtonPropsType from '@/src/types/props/ButtonPropsType';
+  import type LinkPropsType from 'types/props/LinkPropsType';
+  import type ButtonPropsType from 'types/props/ButtonPropsType';
 
   // components
-  import Link from '@/src/components/shared/Link.svelte';
-  import Button from '@/src/components/shared/Button.svelte';
+  import Link from 'components/shared/Link.svelte';
+  import Button from 'components/shared/Button.svelte';
 
   // store
-  import { session } from '@/src/stores/SessionStore';
-  import { cart } from '@/src/stores/CartStore';
+  import { session } from 'stores/SessionStore';
+  import { cart } from 'stores/CartStore';
 
   // state
   let subscriptionAuthStateChange: any;

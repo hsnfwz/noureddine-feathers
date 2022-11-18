@@ -1,6 +1,6 @@
 
 // types
-import type ProductPriceQuantityType from '@/src/types/ProductPriceQuantityType';
+import type ProductPriceQuantityType from 'types/ProductPriceQuantityType';
 
 const formatCurrency = (amount: number) => {
   const formatToUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });

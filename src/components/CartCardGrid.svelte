@@ -2,21 +2,21 @@
   // import { onMount } from 'svelte';
 
   // components
-  import CartCard from '@/src/components/CartCard.svelte';
-  import Heading from '@/src/components/shared/Heading.svelte';
-  import Link from '@/src/components/shared/Link.svelte';
-  import Button from '@/src/components/shared/Button.svelte';
-  import VisaIcon from '@/src/components/icons/VisaIcon.svelte';
-  import MastercardIcon from '@/src/components/icons/MastercardIcon.svelte';
+  import CartCard from 'components/CartCard.svelte';
+  import Heading from 'components/shared/Heading.svelte';
+  import Link from 'components/shared/Link.svelte';
+  import Button from 'components/shared/Button.svelte';
+  import VisaIcon from 'components/icons/VisaIcon.svelte';
+  import MastercardIcon from 'components/icons/MastercardIcon.svelte';
 
   // types
-  import type CartProductType from '@/src/types/CartProductType';
+  import type CartProductType from 'types/CartProductType';
 
   // utils
-  import { formatCurrency } from '@/src/utils/helpers';
+  import { formatCurrency } from 'utils/helpers';
 
   // store
-  import { cart } from '@/src/stores/CartStore';
+  import { cart } from 'stores/CartStore';
 
   // state
   // let promoCode: string = '';

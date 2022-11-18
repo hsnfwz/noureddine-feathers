@@ -1,9 +1,9 @@
 import { writable } from 'svelte/store';
 
 // types
-import type CartProductType from '@/src/types/CartProductType';
-import type ProductPriceQuantityType from '@/src/types/ProductPriceQuantityType';
-import type ProductType from '@/src/types/ProductType';
+import type CartProductType from 'types/CartProductType';
+import type ProductPriceQuantityType from 'types/ProductPriceQuantityType';
+import type ProductType from 'types/ProductType';
 
 function createCart() {
 	const { subscribe, set, update } = writable<{ cartItems: CartProductType[], cartTotalPrice: number, cartTotalItems: number }>({ cartItems: [], cartTotalPrice: 0, cartTotalItems: 0 });

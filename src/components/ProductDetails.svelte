@@ -1,20 +1,20 @@
 <script lang="ts">
   // stores
-  import { cart } from '@/src/stores/CartStore';
+  import { cart } from 'stores/CartStore';
 
   // utils
-  import { formatCurrency } from '@/src/utils/helpers';
+  import { formatCurrency } from 'utils/helpers';
 
   // types
-  import type ProductType from '@/src/types/ProductType';
-  import type ProductPriceQuantityType from '@/src/types/ProductPriceQuantityType';
+  import type ProductType from 'types/ProductType';
+  import type ProductPriceQuantityType from 'types/ProductPriceQuantityType';
 
   // components
-  import Stars from '@/src/components/shared/Stars.svelte';
-  import Counter from '@/src/components/shared/Counter.svelte';
-  import Button from '@/src/components/shared/Button.svelte';
-  import ChevronLeftIcon from '@/src/components/icons/ChevronLeftIcon.svelte';
-  import ChevronRightIcon from '@/src/components/icons/ChevronRightIcon.svelte';
+  import Stars from 'components/shared/Stars.svelte';
+  import Counter from 'components/shared/Counter.svelte';
+  import Button from 'components/shared/Button.svelte';
+  import ChevronLeftIcon from 'components/icons/ChevronLeftIcon.svelte';
+  import ChevronRightIcon from 'components/icons/ChevronRightIcon.svelte';
 
   // props
   export let product: ProductType | undefined;

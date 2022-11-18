@@ -1,19 +1,19 @@
 ---
 // layouts
-import Layout from '@/src/layouts/Layout.astro';
+import Layout from 'layouts/Layout.astro';
 
 // components
-import Heading from '@/src/components/shared/Heading.svelte';
-import ProductCardGrid from '@/src/components/ProductCardGrid.svelte';
-import Nav from '@/src/components/Nav.svelte';
-import Footer from '@/src/components/Footer.svelte';
+import Heading from 'components/shared/Heading.svelte';
+import ProductCardGrid from 'components/ProductCardGrid.svelte';
+import Nav from 'components/Nav.svelte';
+import Footer from 'components/Footer.svelte';
 
 // types
-import type ProductType from '@/src/types/ProductType';
-import type NavPropsType from '@/src/types/props/NavPropsType';
+import type ProductType from 'types/ProductType';
+import type NavPropsType from 'types/props/NavPropsType';
 
 // utils
-import { getProducts } from '@/src/utils/api';
+import { getProducts } from 'utils/api';
 
 const featherDusters: ProductType[] | undefined = await getProducts({ category: 'Feather Dusters' });
 

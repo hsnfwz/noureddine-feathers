@@ -1,14 +1,14 @@
 ---
 // layoutd
-import Layout from '@/src/layouts/Layout.astro';
+import Layout from 'layouts/Layout.astro';
 
 // components
-import Nav from '@/src/components/Nav.svelte';
-import Footer from '@/src/components/Footer.svelte';
+import Nav from 'components/Nav.svelte';
+import Footer from 'components/Footer.svelte';
 import CartCardGrid from '../components/CartCardGrid.svelte';
 
 // types
-import type NavPropsType from '@/src/types/props/NavPropsType';
+import type NavPropsType from 'types/props/NavPropsType';
 
 const navProps: NavPropsType = {
   pathname: Astro.url.pathname,

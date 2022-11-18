@@ -1,8 +1,8 @@
 <script lang="ts">
   // components
-  import Button from '@/src/components/shared/Button.svelte';
-  import MinusIcon from '@/src/components/icons/MinusIcon.svelte';
-  import PlusIcon from '@/src/components/icons/PlusIcon.svelte';
+  import Button from 'components/shared/Button.svelte';
+  import MinusIcon from 'components/icons/MinusIcon.svelte';
+  import PlusIcon from 'components/icons/PlusIcon.svelte';
 
   // props
   export let label: string = '';

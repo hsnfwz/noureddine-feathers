@@ -2,17 +2,17 @@
   import { onMount, onDestroy } from 'svelte';
 
   // components
-  import Link from '@/src/components/shared/Link.svelte';
-  import Heading from '@/src/components/shared/Heading.svelte';
-  import Button from '@/src/components/shared/Button.svelte';
+  import Link from 'components/shared/Link.svelte';
+  import Heading from 'components/shared/Heading.svelte';
+  import Button from 'components/shared/Button.svelte';
 
   // types
-  import type LinkPropsType from '@/src/types/props/LinkPropsType';
-  import type HeadingPropsType from '@/src/types/props/HeadingPropsType';
-  import type ButtonPropsType from '@/src/types/props/ButtonPropsType';
+  import type LinkPropsType from 'types/props/LinkPropsType';
+  import type HeadingPropsType from 'types/props/HeadingPropsType';
+  import type ButtonPropsType from 'types/props/ButtonPropsType';
 
   // stores
-  import { session } from '@/src/stores/SessionStore';
+  import { session } from 'stores/SessionStore';
 
   // state
   let email: string = '';

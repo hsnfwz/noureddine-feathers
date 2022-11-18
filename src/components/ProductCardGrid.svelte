@@ -1,9 +1,9 @@
 <script lang="ts">
   // types
-  import type ProductType from '@/src/types/ProductType';
+  import type ProductType from 'types/ProductType';
 
   // components
-  import ProductCard from '@/src/components/ProductCard.svelte';
+  import ProductCard from 'components/ProductCard.svelte';
 
   // props
   export let products: ProductType[] = [];

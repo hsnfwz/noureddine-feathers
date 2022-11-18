@@ -1,12 +1,12 @@
 <script lang="ts">
   // types
-  import type LinkPropsType from '@/src/types/props/LinkPropsType';
+  import type LinkPropsType from 'types/props/LinkPropsType';
 
   // components
-  import Link from '@/src/components/shared/Link.svelte';
-  import FacebookIcon from '@/src/components/icons/FacebookIcon.svelte';
-  import InstagramIcon from '@/src/components/icons/InstagramIcon.svelte';
-  import PinterestIcon from '@/src/components/icons/PinterestIcon.svelte';
+  import Link from 'components/shared/Link.svelte';
+  import FacebookIcon from 'components/icons/FacebookIcon.svelte';
+  import InstagramIcon from 'components/icons/InstagramIcon.svelte';
+  import PinterestIcon from 'components/icons/PinterestIcon.svelte';
 
   const logoLinkProps: LinkPropsType = {
     href: '/',
