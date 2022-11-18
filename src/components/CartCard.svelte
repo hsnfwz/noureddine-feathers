@@ -52,7 +52,15 @@
     <div class="flex flex-col gap-2">
       <p>{cartProduct.name}</p>
       <p class="text-gray-500">
-        {cartProduct.color} &#183; {cartProduct.size}&#8243; &#183; {cartProduct.quantity === 12 && '1 dz.'} {cartProduct.quantity === 60 && '5 dz.'}
+        <span>{cartProduct.color} &#183; </span>
+        <span>{cartProduct.size}&#8243; &#183; </span>
+        <span>
+          {#if cartProduct.quantity === 12}
+            1 dz.
+          {:else if cartProduct.quantity === 60}
+            5 dz.
+          {/if}
+        </span>
       </p>
       <div class="flex gap-2">
         <p class="flex flex-grow">Price</p>
