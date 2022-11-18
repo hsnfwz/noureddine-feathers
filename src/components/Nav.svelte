@@ -35,7 +35,7 @@
   const featherDustersLinkProps: LinkPropsType = {
     href: '/feather-dusters',
     ariaLabel: 'feather dusters',
-    text:' Shop Now',
+    text: 'Feather Dusters',
   }
 
   const eggshellsLinkProps: LinkPropsType = {
@@ -66,6 +66,12 @@
     href: '/account',
     ariaLabel: 'account',
     text: 'Account',
+  }
+
+  const shopNowLinkProps: LinkPropsType = {
+    href: '/feather-dusters',
+    ariaLabel: 'feather dusters',
+    text: 'Shop Now',
   }
 
   const signOutButtonProps: ButtonPropsType = {
@@ -111,7 +117,7 @@
         Handmade from 100% natural farm-raised ostrich feathers
       </p>
       <span class="px-4 py-2 bg-white">
-        <Link {...featherDustersLinkProps} />
+        <Link {...shopNowLinkProps} />
       </span>
     </div>
   {/if}
