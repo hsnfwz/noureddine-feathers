@@ -2,9 +2,11 @@
 // utils
 import { getProducts } from '@/src/utils/api';
 
+// layouts
+import Layout from '@/src/layouts/Layout.astro';
+
 // components
 import Nav from '@/src/components/Nav.svelte';
-import Layout from '@/src/layouts/Layout.astro';
 import Heading from '@/src/components/shared/Heading.svelte';
 import ProductCardGrid from '@/src/components/ProductCardGrid.svelte';
 import Link from '@/src/components/shared/Link.svelte';
@@ -37,14 +39,18 @@ const featherDustersLinkProps: LinkPropsType = {
 
 <Layout title="Noureddine Feathers">
   <Nav {...navProps} client:load />
-  <div class="flex gap-4">
-    <div class="flex flex-grow items-center">
-      <Heading {...featherDustersHeadingProps} />
-    </div>
-    <div class="flex items-center">
-      <Link {...featherDustersLinkProps} />
+  <div class="mx-8">
+    <div class="flex flex-col gap-8">
+      <div class="flex gap-4">
+        <div class="flex flex-grow items-center">
+          <Heading {...featherDustersHeadingProps} />
+        </div>
+        <div class="flex items-center">
+          <Link {...featherDustersLinkProps} />
+        </div>
+      </div>
+      <ProductCardGrid products={featherDusters} />
     </div>
   </div>
-  <ProductCardGrid products={featherDusters} />
   <Footer />
 </Layout>

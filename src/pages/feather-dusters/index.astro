@@ -1,0 +1,38 @@
+---
+// layouts
+import Layout from '@/src/layouts/Layout.astro';
+
+// components
+import Heading from '@/src/components/shared/Heading.svelte';
+import ProductCardGrid from '@/src/components/ProductCardGrid.svelte';
+import Nav from '@/src/components/Nav.svelte';
+import Footer from '@/src/components/Footer.svelte';
+
+// types
+import type ProductType from '@/src/types/ProductType';
+import type NavPropsType from '@/src/types/props/NavPropsType';
+
+// utils
+import { getProducts } from '@/src/utils/api';
+
+const featherDusters: ProductType[] | undefined = await getProducts({ category: 'Feather Dusters' });
+
+const navProps: NavPropsType = {
+  pathname: Astro.url.pathname,
+}
+---
+
+<Layout title="Feather Dusters | Noureddine Feathers">
+  <Nav {...navProps} client:load />
+  <div class="mx-8">
+    <div class="flex flex-col gap-8">
+      <Heading
+        text="Feather Dusters"
+        bold
+        uppercase
+      />
+      <ProductCardGrid products={featherDusters} />
+    </div>
+  </div>
+  <Footer />
+</Layout>

@@ -14,6 +14,7 @@
 
   // store
   import { session } from '@/src/stores/SessionStore';
+  import { cart } from '@/src/stores/CartStore';
 
   // state
   let subscriptionAuthStateChange: any;
@@ -28,13 +29,13 @@
 
   const logoLinkProps: LinkPropsType = {
     href: '/',
-    ariaLabel: 'home',  
+    ariaLabel: 'home',
   }
 
   const featherDustersLinkProps: LinkPropsType = {
     href: '/feather-dusters',
     ariaLabel: 'feather dusters',
-    text: 'Feather Dusters',
+    text:' Shop Now',
   }
 
   const eggshellsLinkProps: LinkPropsType = {
@@ -52,8 +53,7 @@
   const cartLinkProps: LinkPropsType = {
     href: '/cart',
     ariaLabel: 'cart',
-    // text: `Cart (${cartContext.cartProductsCount})`,
-    text: `Cart (0)`,
+    text: 'Cart',
   }
 
   const signInLinkProps: LinkPropsType = {
@@ -100,7 +100,9 @@
       {:else}
         <Link {...signInLinkProps} />
       {/if}
-      <Link {...cartLinkProps} />
+      <Link {...cartLinkProps}>
+        ({$cart.cartTotalItems})
+      </Link>
     </div>
   </div>
   {#if pathname === '/'}
@@ -108,11 +110,9 @@
       <p class="text-white text-center text-base xl:text-xl">
         Handmade from 100% natural farm-raised ostrich feathers
       </p>
-      <Link {...featherDustersLinkProps}>
-        <div class="px-4 py-2 bg-white hover:cursor-pointer hover:brightness-75 transition-all">
-          <p class="text-center uppercase">Shop Now</p>
-        </div>
-      </Link>
+      <span class="px-4 py-2 bg-white">
+        <Link {...featherDustersLinkProps} />
+      </span>
     </div>
   {/if}
 </nav>

@@ -1,0 +1,26 @@
+---
+// layoutd
+import Layout from '@/src/layouts/Layout.astro';
+
+// components
+import Nav from '@/src/components/Nav.svelte';
+import Footer from '@/src/components/Footer.svelte';
+import CartCardGrid from '../components/CartCardGrid.svelte';
+
+// types
+import type NavPropsType from '@/src/types/props/NavPropsType';
+
+const navProps: NavPropsType = {
+  pathname: Astro.url.pathname,
+}
+---
+
+<Layout title="Cart | Noureddine Feathers">
+  <Nav {...navProps} client:load />
+  <div class="mx-8">
+    <div class="flex flex-col gap-8">
+      <CartCardGrid client:load />
+    </div>
+  </div>
+  <Footer />
+</Layout>
