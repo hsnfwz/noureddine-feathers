@@ -18,8 +18,8 @@ export const post = async ({ request }) => {
         payment_method_types: ['card'],
         // discounts: discounts,
         // change these two to pages that show success/canceled payment pages
-        success_url: `${request.headers.get('Origin')}/?success=true`,
-        cancel_url: `${request.headers.get('Origin')}/?canceled=true`,
+        success_url: `${request.headers.get('Origin')}/payment-completed`,
+        cancel_url: `${request.headers.get('Origin')}/payment-cancelled`,
       });
 
       return new Response(JSON.stringify({ id: session.id }), { status: 200 });

@@ -4,9 +4,9 @@ import Layout from 'layouts/Layout.astro';
 
 // components
 import Heading from 'components/shared/Heading.svelte';
-import ProductCardGrid from 'components/ProductCardGrid.svelte';
-import Nav from 'components/Nav.svelte';
-import Footer from 'components/Footer.svelte';
+import ProductCardGrid from 'components/ProductCardGrid/ProductCardGrid.svelte';
+import Nav from 'components/Nav/Nav.svelte';
+import Footer from 'components/Footer/Footer.svelte';
 
 // types
 import type ProductType from 'types/ProductType';
@@ -21,7 +21,6 @@ const navProps: NavPropsType = {
   pathname: Astro.url.pathname,
 }
 ---
-
 <Layout title="Feather Dusters | Noureddine Feathers">
   <Nav {...navProps} client:load />
   <div class="mx-8">
@@ -31,8 +30,8 @@ const navProps: NavPropsType = {
         bold
         uppercase
       />
-      <ProductCardGrid products={featherDusters} />
+      <ProductCardGrid products={featherDusters} client:load />
     </div>
   </div>
-  <Footer />
+  <Footer client:load />
 </Layout>

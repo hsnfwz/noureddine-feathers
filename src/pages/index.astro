@@ -6,11 +6,11 @@ import { getProducts } from 'utils/api';
 import Layout from 'layouts/Layout.astro';
 
 // components
-import Nav from 'components/Nav.svelte';
+import Nav from 'components/Nav/Nav.svelte';
 import Heading from 'components/shared/Heading.svelte';
-import ProductCardGrid from 'components/ProductCardGrid.svelte';
+import ProductCardGrid from 'components/ProductCardGrid/ProductCardGrid.svelte';
 import Link from 'components/shared/Link.svelte';
-import Footer from 'components/Footer.svelte';
+import Footer from 'components/Footer/Footer.svelte';
 
 // types
 import type NavPropsType from 'types/props/NavPropsType';
@@ -49,8 +49,8 @@ const featherDustersLinkProps: LinkPropsType = {
           <Link {...featherDustersLinkProps} />
         </div>
       </div>
-      <ProductCardGrid products={featherDusters} />
+      <ProductCardGrid products={featherDusters} client:load />
     </div>
   </div>
-  <Footer />
+  <Footer client:load />
 </Layout>

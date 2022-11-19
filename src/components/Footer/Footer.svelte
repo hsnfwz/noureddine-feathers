@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   // types
   import type LinkPropsType from 'types/props/LinkPropsType';
 

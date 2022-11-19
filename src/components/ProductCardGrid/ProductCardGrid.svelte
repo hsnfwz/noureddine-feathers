@@ -3,7 +3,7 @@
   import type ProductType from 'types/ProductType';
 
   // components
-  import ProductCard from 'components/ProductCard.svelte';
+  import ProductCard from 'components/ProductCard/ProductCard.svelte';
 
   // props
   export let products: ProductType[] = [];

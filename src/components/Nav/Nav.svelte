@@ -17,12 +17,15 @@
   import { cart } from 'stores/CartStore';
 
   // state
+  let loading: boolean = true;
   let subscriptionAuthStateChange: any;
 
   onMount(async () => {
     subscriptionAuthStateChange = session.subscribeAuthStateChange();
 
     await session.getSession();
+
+    loading = false;
   });
 
   onDestroy(() => session.unsubscribeAuthStateChange(subscriptionAuthStateChange));
@@ -94,21 +97,25 @@
         </div>
       </Link>
     </div>
-    <div class="hidden flex-row gap-4 flex-grow justify-center lg:flex">
+    <div class="flex-row gap-4 flex-grow justify-center lg:flex">
       <Link {...featherDustersLinkProps} />
       <Link {...eggshellsLinkProps} />
       <Link {...lambskinLinkProps} />
     </div>
-    <div class="hidden flex-row gap-4 flex-shrink-0 lg:flex">
+    <div class="flex-row gap-4 flex-shrink-0 lg:flex">
       {#if $session}
         <Link {...accountLinkProps} />
         <Button {...signOutButtonProps} />
       {:else}
         <Link {...signInLinkProps} />
       {/if}
-      <Link {...cartLinkProps}>
-        ({$cart.cartTotalItems})
-      </Link>
+      {#if loading}
+        <span class="animate-spin h-6 w-6 border-2 border-black border-t-white rounded-full"></span>
+      {:else}
+        <Link {...cartLinkProps}>
+          ({$cart.cartTotalItems})
+        </Link>
+      {/if}
     </div>
   </div>
   {#if pathname === '/'}

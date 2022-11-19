@@ -6,9 +6,9 @@ import { getProductById } from 'utils/api';
 import Layout from 'layouts/Layout.astro';
 
 // components
-import Nav from 'components/Nav.svelte';
-import Footer from 'components/Footer.svelte';
-import ProductDetails from 'components/ProductDetails.svelte';
+import Nav from 'components/Nav/Nav.svelte';
+import Footer from 'components/Footer/Footer.svelte';
+import ProductDetails from 'components/ProductDetails/ProductDetails.svelte';
 
 // types
 import type ProductType from 'types/ProductType';
@@ -29,5 +29,5 @@ const featherDuster: ProductType | undefined = await getProductById(id);
       <ProductDetails product={featherDuster} client:load />
     </div>
   </div>
-  <Footer />
+  <Footer client:load />
 </Layout>

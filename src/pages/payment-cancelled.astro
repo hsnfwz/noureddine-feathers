@@ -5,9 +5,8 @@ import Layout from 'layouts/Layout.astro';
 // components
 import Nav from 'components/Nav/Nav.svelte';
 import Footer from 'components/Footer/Footer.svelte';
-import CartCardGrid from 'components/CartCardGrid/CartCardGrid.svelte';
 import Heading from 'components/shared/Heading.svelte';
-import CheckoutForm from 'components/CheckoutForm.svelte/CheckoutForm.svelte';
+import Link from 'components/shared/Link.svelte';
 
 // types
 import type NavPropsType from 'types/props/NavPropsType';
@@ -17,16 +16,13 @@ const navProps: NavPropsType = {
 }
 ---
 
-<Layout title="Cart | Noureddine Feathers">
+<Layout title="Noureddine Feathers">
   <Nav {...navProps} client:load />
   <div class="mx-8">
     <div class="flex flex-col gap-8">
-      <div class="flex justify-center items-center">
-        <div class="flex flex-col lg:flex-row gap-8">
-          <CartCardGrid client:load />
-          <CheckoutForm client:load />
-        </div>
-      </div>
+      <Heading text="Payment Cancelled" bold={true} uppercase={true} center={true} />
+      <p class="text-center">Payment cancelled! Continue shopping and checkout when you are ready.</p>
+      <Link text="Return Home" href="/" ariaLabel="home" />
     </div>
   </div>
   <Footer client:load />
