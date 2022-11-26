@@ -9,7 +9,7 @@
   export let products: ProductType[] = [];
 </script>
 
-<div class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+<div class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
   {#each products as product}
     <ProductCard {product} />
   {/each}

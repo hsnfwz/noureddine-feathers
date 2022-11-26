@@ -21,8 +21,8 @@
   }
 </script>
 
-<div class="flex gap-2">
-  <p class="flex flex-grow items-center">{label}</p>
+<!-- <div class="flex gap-2">
+  <p class="flex flex-grow items-center">{label}</p> -->
   <div class="flex rounded-sm">
     <div class="flex justify-center items-center">
       <Button
@@ -52,4 +52,4 @@
       </Button>
     </div>
   </div>
-</div>
+<!-- </div> -->

@@ -24,8 +24,18 @@ const navProps: NavPropsType = {
 
 const featherDusters: ProductType[] | undefined = await getProducts({ category: 'Feather Dusters' });
 
-const featherDustersHeadingProps: HeadingPropsType = {
-  text: 'Feather Dusters',
+const blackFeatherDusters = featherDusters && featherDusters.filter((featherDuster: ProductType) => featherDuster.color === 'Premium Black');
+
+const grayFeatherDusters = featherDusters && featherDusters.filter((featherDuster: ProductType) => featherDuster.color === 'Premium Gray');
+
+const blackFeatherDustersHeadingProps: HeadingPropsType = {
+  text: 'Feather Dusters - Premium Black',
+  bold: true,
+  uppercase: true,
+}
+
+const grayFeatherDustersHeadingProps: HeadingPropsType = {
+  text: 'Feather Dusters - Premium Gray',
   bold: true,
   uppercase: true,
 }
@@ -41,15 +51,24 @@ const featherDustersLinkProps: LinkPropsType = {
   <Nav {...navProps} client:load />
   <div class="mx-8">
     <div class="flex flex-col gap-8">
-      <div class="flex gap-4">
+      <div class="flex flex-col md:flex-row gap-4">
         <div class="flex flex-grow items-center">
-          <Heading {...featherDustersHeadingProps} />
+          <Heading {...blackFeatherDustersHeadingProps} />
+        </div>
+        <div class="flex items-center ">
+          <Link {...featherDustersLinkProps} />
+        </div>
+      </div>
+      <ProductCardGrid products={blackFeatherDusters} client:load />
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex flex-grow items-center">
+          <Heading {...grayFeatherDustersHeadingProps} />
         </div>
         <div class="flex items-center">
           <Link {...featherDustersLinkProps} />
         </div>
       </div>
-      <ProductCardGrid products={featherDusters} client:load />
+      <ProductCardGrid products={grayFeatherDusters} client:load />
     </div>
   </div>
   <Footer client:load />

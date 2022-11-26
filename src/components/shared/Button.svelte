@@ -4,6 +4,7 @@
   export let buttonColor: string = '';
   export let textColor: string = '';
   export let uppercase: boolean = false;
+  export let borderClass: string = '';
   export let onClick: () => void;
 
   let _class = '';
@@ -26,13 +27,19 @@
         _class = _class + ' ' + 'text-white';
       }
 
-      if (buttonColor) {
-        _class = _class + ' ' + buttonColor;
-      } else {
-        _class = _class + ' ' + 'bg-blue-500';
-      }
-
       if (uppercase) _class = _class + ' ' + 'uppercase';
+    }
+
+    if (buttonColor) {
+      _class = _class + ' ' + buttonColor;
+    } else {
+      _class = _class + ' ' + 'bg-blue-500';
+    }
+
+    if (borderClass) {
+      _class = _class + ' ' + borderClass;
+    } else {
+      _class = _class + ' ' + 'border-2 border-white';
     }
   }
 </script>

@@ -5,7 +5,7 @@
   export let uppercase: boolean = false;
   export let bold: boolean = false;
 
-  let _class = 'text-x1';
+  let _class = 'text-xl';
 
   if (textColor) _class = _class + ' ' + textColor;
   if (center) _class = _class + ' ' + 'text-center';

@@ -79,12 +79,13 @@
 
   const signOutButtonProps: ButtonPropsType = {
     text: 'Sign Out',
+    uppercase: true,
     onClick: () => session.signOutUser(),
   }
 </script>
 
 <nav class={`flex flex-col w-full border-b-2 mb-8 border-b-gray-100 bg-gray-50 ${pathname === '/' && 'h-screen'}`}>
-  <div class="flex flex-col items-center justify-between gap-4 px-8 py-2 lg:flex-row">
+  <div class="flex flex-col items-center justify-between gap-2 px-8 py-2 lg:flex-row">
     <div class="flex flex-row flex-shrink-0">
       <Link {...logoLinkProps}>
         <div class="hover:opacity-25 transition-all w-[150px] h-[84px]">
@@ -97,24 +98,29 @@
         </div>
       </Link>
     </div>
-    <div class="flex-row gap-4 flex-grow justify-center lg:flex">
+    <div class="flex flex-col gap-2 flex-grow justify-center lg:flex-row">
       <Link {...featherDustersLinkProps} />
       <Link {...eggshellsLinkProps} />
       <Link {...lambskinLinkProps} />
     </div>
-    <div class="flex-row gap-4 flex-shrink-0 lg:flex">
-      {#if $session}
+    <div class="flex flex-col gap-2 flex-shrink-0 lg:flex-row items-center">
+      <!-- {#if $session}
         <Link {...accountLinkProps} />
         <Button {...signOutButtonProps} />
       {:else}
         <Link {...signInLinkProps} />
-      {/if}
+      {/if} -->
       {#if loading}
         <span class="animate-spin h-6 w-6 border-2 border-black border-t-white rounded-full"></span>
       {:else}
         <Link {...cartLinkProps}>
           ({$cart.cartTotalItems})
         </Link>
+      {/if}
+      {#if $session}
+        <Button {...signOutButtonProps} />
+      {:else}
+        <Link {...signInLinkProps} />
       {/if}
     </div>
   </div>

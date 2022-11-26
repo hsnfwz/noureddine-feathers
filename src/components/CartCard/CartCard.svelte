@@ -46,9 +46,9 @@
 <!-- {#if loading}
   <CartCardSkeleton />
 {:else} -->
-  <div class="flex flex-col border-2 border-gray-100 rounded-sm">
+  <div class="flex flex-col lg:flex-row gap-4">
     <Link {...productLinkProps}>
-      <div class="text-center p-2 bg-gray-100 hover:opacity-25 transition-all">
+      <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
         <img
           src={cartProduct.thumbnail}
           alt={cartProduct.name}
@@ -57,8 +57,8 @@
         />
       </div>
     </Link>
-    <div class="flex flex-col gap-4 p-4">
-      <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2 flex-1">
         <p>{cartProduct.name}</p>
         <p class="text-gray-500">
           <span>{cartProduct.color} &#183; </span>
@@ -75,7 +75,10 @@
           <p class="flex flex-grow">Price</p>
           <p>{formatCurrency(cartProduct.price)}</p>
         </div>
-        <Counter label="Quantity" bind:value={quantity} />
+        <div class="flex gap-2">
+          <p class="flex flex-grow items-center">Quantity</p>
+          <Counter bind:value={quantity} />
+        </div>
         <div class="flex gap-2">
           <p class="font-bold flex-grow">
             ITEM SUBTOTAL

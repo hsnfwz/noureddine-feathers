@@ -86,8 +86,8 @@
           <img
             src="/rectangle-transparent-logo.webp"
             alt="Noureddine Feathers"
-            width="264"
-            height="149"
+            width="150"
+            height="84"
           />
         </div>
       </Link>
@@ -103,9 +103,9 @@
         You have been signed in. Return <Link {...redirectLinkProps} />
       </p>
     {:else}
-      <Heading {...signInHeadingProps} />
+      <!-- <Heading {...signInHeadingProps} /> -->
       <form class="flex flex-col gap-4">
-        <label for="user-email">Please enter your email*</label>
+        <label for="user-email">Please enter your email to sign in*</label>
         <input
           id="user-email"
           type="text"
@@ -115,6 +115,7 @@
           class="p-2 border-2 border-gray-100 box-border w-full"
         />
         <Button {...buttonProps} />
+        <p>By signing in, you agree to our <span class="text-neutral-500 font-bold"><Link href="/terms-and-conditions" ariaLabel="terms and conditions">Terms and Conditions.</Link></span></p>
       </form>
     {/if}
   </div>
