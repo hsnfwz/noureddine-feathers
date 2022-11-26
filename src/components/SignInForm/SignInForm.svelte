@@ -75,7 +75,7 @@
     text: 'Home',
   }
 
-  $: buttonProps.disabled = email === '';
+  $: buttonProps.disabled = email.length < 3;
 </script>
 
 {#if visible}
@@ -105,10 +105,10 @@
     {:else}
       <!-- <Heading {...signInHeadingProps} /> -->
       <form class="flex flex-col gap-4">
-        <label for="user-email">Please enter your email to sign in*</label>
+        <label for="user-email">Please enter your email to sign in (min. 3 characters)*</label>
         <input
           id="user-email"
-          type="text"
+          type="email"
           autoComplete="off"
           placeholder="Email"
           bind:value={email}
