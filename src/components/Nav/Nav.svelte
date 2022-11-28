@@ -147,7 +147,7 @@
 </nav>
 
 {#if showMenu}
-  <div class="fixed top-0 bg-gray-50 w-screen h-screen">
+  <div class="fixed top-0 bg-gray-50 w-full h-full">
     <div class="flex flex-col gap-4 px-8 py-2">
       <div class="flex gap-4">
         <div class="flex flex-row flex-shrink-0">
