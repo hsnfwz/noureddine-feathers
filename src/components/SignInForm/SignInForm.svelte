@@ -86,8 +86,8 @@
           <img
             src="/rectangle-transparent-logo.webp"
             alt="Noureddine Feathers"
-            width="150"
-            height="84"
+            width="128"
+            height="72"
           />
         </div>
       </Link>
