@@ -5,7 +5,7 @@
   // interfaces
   import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
 
-  export let data: { product: I_ProductTableRecord | undefined };
+  export let data: { product: I_ProductTableRecord };
 </script>
 
 <svelte:head>
