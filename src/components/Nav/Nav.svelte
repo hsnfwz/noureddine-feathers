@@ -20,6 +20,7 @@
   // state
   let loading: boolean = true;
   let subscriptionAuthStateChange: any;
+  let bodyElement: any;
 
   onMount(async () => {
     subscriptionAuthStateChange = session.subscribeAuthStateChange();
@@ -27,17 +28,17 @@
     await session.getSession();
 
     loading = false;
+
+    bodyElement = document.querySelector('body');
   });
 
   onDestroy(() => session.unsubscribeAuthStateChange(subscriptionAuthStateChange));
 
   $: {
     if (showNavMobile) {
-      const body = document.querySelector('body');
-      if (body) body.style.overflow = 'hidden';
+      if (bodyElement) bodyElement.style.overflow = 'hidden';
     } else {
-      const body = document.querySelector('body');
-      if (body) body.style.overflow = 'auto';
+      if (bodyElement) bodyElement.style.overflow = 'auto';
     }
   }
 </script>
