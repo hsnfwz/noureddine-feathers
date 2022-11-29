@@ -14,7 +14,6 @@
   import Button from '$components/Button/Button.svelte';
   import Link from '$components/Link/Link.svelte';
   import Counter from '$components/Counter/Counter.svelte';
-  import CartCardSkeleton from '$components/CartCard/CartCardSkeleton.svelte';
 
   // props
   export let cartProduct: I_CartItem;
