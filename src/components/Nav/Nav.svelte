@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy, afterUpdate } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
 
   // components
   import Link from '$components/Link/Link.svelte';
@@ -30,12 +30,6 @@
   });
 
   onDestroy(() => session.unsubscribeAuthStateChange(subscriptionAuthStateChange));
-
-  // const signOutButtonProps: ButtonPropsType = {
-  //   text: 'Sign Out',
-  //   uppercase: true,
-  //   handleClick: () => session.signOutUser(),
-  // }
 </script>
 
 <nav>
@@ -76,7 +70,6 @@
           <div class="flex flex-col gap-4">
             {#if $session}
               <Link href="/account" ariaLabel="account" handleClick={() => showNavMobile = false}>Account</Link>
-              <!-- <Button {...signOutButtonProps} /> -->
             {:else}
               <Link href="/sign-in" ariaLabel="sign in" handleClick={() => showNavMobile = false}>Sign In</Link>
             {/if}
@@ -128,7 +121,6 @@
           <div class="flex flex-col gap-4 flex-shrink-0 lg:flex-row items-center">
             {#if $session}
               <Link href="/account" ariaLabel="account">Account</Link>
-              <!-- <Button {...signOutButtonProps} /> -->
             {:else}
               <Link href="/sign-in" ariaLabel="sign in">Sign In</Link>
             {/if}

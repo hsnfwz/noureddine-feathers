@@ -92,12 +92,19 @@ function createCart() {
 		getCartProducts();
   }
 
+  const clearCart = () => {
+    localStorage.setItem('cart', JSON.stringify([]));
+
+    set({ cartItems: [], cartTotalPrice: 0, cartTotalItems: 0 });
+  }
+
 	return {
 		subscribe,
     getCartProducts,
 		addCartProduct,
 		removeCartProduct,
 		updateCartProduct,
+    clearCart,
 	};
 }
 

@@ -10,15 +10,17 @@
 </svelte:head>
 
 <div class="mx-8">
-  <div class="flex flex-col gap-8">
-    <Heading customClass="text-center">
+  <div class="flex flex-col gap-8 items-center">
+    <Heading>
       <span>Payment Cancelled</span>
     </Heading>
-    <p class="text-center">
+    <p>
       Your payment was cancelled. Continue shopping and checkout when you are ready.
     </p>
-    <Link href="/" ariaLabel="home">
-      <span>Return Home</span>
-    </Link>
+    <div>
+      <Link href="/" ariaLabel="home">
+        <span>Return Home</span>
+      </Link>
+    </div>
   </div>
 </div>

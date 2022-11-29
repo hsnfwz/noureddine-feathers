@@ -1,7 +1,14 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  
   // components
   import Heading from '$components/Heading/Heading.svelte';
   import Link from '$components/Link/Link.svelte';
+
+  // stores
+  import { cart } from '$stores/CartStore';
+
+  onMount(() => cart.clearCart()); // TODO: on success, create the required records, but only if we actually ordered, users can currently access this page anytime, which will lead to creating records we dont want
 </script>
 
 <svelte:head>
@@ -10,15 +17,17 @@
 </svelte:head>
 
 <div class="mx-8">
-  <div class="flex flex-col gap-8">
-    <Heading customClass="text-center">
+  <div class="flex flex-col gap-8 items-center">
+    <Heading>
       <span>Payment Successful</span>
     </Heading>
-    <p class="text-center">
+    <p>
       Your payment was successful!
     </p>
-    <Link href="/" ariaLabel="home">
-      <span>Return Home</span>
-    </Link>
+    <div>
+      <Link href="/" ariaLabel="home">
+        <span>Return Home</span>
+      </Link>
+    </div>
   </div>
 </div>

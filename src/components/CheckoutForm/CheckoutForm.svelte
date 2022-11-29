@@ -16,9 +16,13 @@
 
   // state
   // let promoCode: string = '';
+  let isLoadingCheckout: boolean = false;
+  let checkoutErrorMessage: string = '';
 
   const checkout = async () => {
-    try {    
+    try {
+      isLoadingCheckout = true;
+
       const lineItems = $cart.cartItems.map((cartProduct: I_CartItem) => {
         return {
           price: cartProduct.stripe_price_id,
@@ -45,19 +49,13 @@
 
       const data = await response.json();
 
-      // TODO: show loading here (as well as other places)
       // Redirect to Checkout.
       const stripe = await getStripe();
-      const { error } = await stripe!.redirectToCheckout({
-        // Make the id field from the Checkout Session creation API response
-        // available to this file, so you can provide it as parameter here
-        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-        sessionId: data.id,
-      });
-      // If `redirectToCheckout` fails due to a browser or network
-      // error, display the localized error message to your customer
-      // using `error.message`.
-      console.warn(error.message);
+      const { error } = await stripe!.redirectToCheckout({ sessionId: data.id });
+
+      if (error && error.message) checkoutErrorMessage = error.message;
+
+      isLoadingCheckout = false;
     } catch (error) {
       console.log(error);
     }
@@ -91,8 +89,16 @@
   <Button
     customClass="uppercase bg-green-500 text-white p-2"
     handleClick={async () => await checkout()}
-    disabled={$cart.cartTotalItems === 0}
+    disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
   >
     <span>Checkout</span>
   </Button>
+  {#if isLoadingCheckout}
+    <div class="flex justify-center uppercase p-2">
+      <p>Redirecting to Checkout...</p>
+    </div>
+  {/if}
+  {#if checkoutErrorMessage !== ''}
+    <p class="text-rose-500">*{checkoutErrorMessage}</p>
+  {/if}
 </div>

@@ -16,6 +16,7 @@
   import Stars from '$components/Stars/Stars.svelte';
   import Counter from '$components/Counter/Counter.svelte';
   import Button from '$components/Button/Button.svelte';
+  import Heading from '$components/Heading/Heading.svelte';
 
   // props
   export let product: I_ProductTableRecord;
@@ -23,9 +24,13 @@
   // state
   let productPriceQuantity: I_ProductPriceQuantityTableRecord = product?.prices_quantities[0];
   let quantity: number = 1;
+  let isLoadingCheckout: boolean = false;
+  let checkoutErrorMessage: string = '';
 
   const checkout = async () => {
     try {
+      isLoadingCheckout = true;
+
       const lineItems = [{
         price: productPriceQuantity.stripe_price_id,
         quantity,
@@ -50,19 +55,13 @@
 
       const data = await response.json();
 
-      // TODO: show loading here (as well as other places)
-      // Redirect to Checkout.
       const stripe = await getStripe();
-      const { error } = await stripe!.redirectToCheckout({
-        // Make the id field from the Checkout Session creation API response
-        // available to this file, so you can provide it as parameter here
-        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-        sessionId: data.id,
-      });
-      // If `redirectToCheckout` fails due to a browser or network
-      // error, display the localized error message to your customer
-      // using `error.message`.
-      console.warn(error.message);
+
+      const { error } = await stripe!.redirectToCheckout({ sessionId: data.id });
+  
+      if (error && error.message) checkoutErrorMessage = error.message;
+
+      isLoadingCheckout = false;
     } catch (error) {
       console.log(error);
     }
@@ -162,9 +161,18 @@
         <Button
           handleClick={async () => await checkout()}
           customClass="uppercase text-white bg-orange-300 p-2"
+          disabled={isLoadingCheckout}
         >
           <span>Buy Now</span>
         </Button>
+        {#if isLoadingCheckout}
+          <div class="flex justify-center uppercase p-2">
+            <p>Redirecting to Checkout...</p>
+          </div>
+        {/if}
+        {#if checkoutErrorMessage !== ''}
+          <p class="text-rose-500">*{checkoutErrorMessage}</p>
+        {/if}
       </div>
     </div>
   </div>

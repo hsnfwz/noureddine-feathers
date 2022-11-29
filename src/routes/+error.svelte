@@ -14,5 +14,7 @@
     <span>404 Not Found</span>
   </Heading>
   <p class="text-center">Woops! We could not find what you were looking for.</p>
-  <Link href="/" ariaLabel="home">Return Home</Link>
+  <div class="text-center">
+    <Link href="/" ariaLabel="home">Return Home</Link>
+  </div>
 </div>
