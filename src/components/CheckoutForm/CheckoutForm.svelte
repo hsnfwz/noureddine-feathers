@@ -65,10 +65,10 @@
 <div class="flex flex-col gap-4 flex-grow">
   <p>{$cart.cartTotalItems} ITEMS</p>
   <div class="flex gap-2">
-    <p class="font-bold flex-grow">
+    <p class="nf-font-bold flex-grow">
       ORDER SUBTOTAL
     </p>
-    <p class="font-bold">
+    <p class="nf-font-bold">
       {formatCurrency($cart.cartTotalPrice)}
     </p>
   </div>

@@ -71,10 +71,10 @@
           <Counter bind:value={quantity} />
         </div>
         <div class="flex gap-2">
-          <p class="font-bold flex-grow">
+          <p class="nf-font-bold flex-grow">
             ITEM SUBTOTAL
           </p>
-          <p class="font-bold">
+          <p class="nf-font-bold">
             {formatCurrency(cartProduct.price * cartProduct.cart_product_quantity)}
           </p>
         </div>

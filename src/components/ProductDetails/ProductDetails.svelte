@@ -70,7 +70,7 @@
 
 <div class="flex flex-col md:flex-row gap-8 m-auto">
   <div class="flex flex-col gap-2 md:hidden">
-    <h1 class="font-bold text-xl">{product.name}</h1>
+    <h1 class="nf-font-bold text-xl">{product.name}</h1>
     <h2 class="text-gray-500">{product.color} &#183; {product.size}&#8243;</h2>
     <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
     <p>
@@ -106,7 +106,7 @@
   <div class="max-w-[600px]">
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
       <div class="hidden md:flex md:flex-col md:gap-2">
-        <h1 class="font-bold text-xl">{product.name}</h1>
+        <h1 class="nf-font-bold text-xl">{product.name}</h1>
         <h2 class="text-gray-500">{product.color} &#183; {product.size}&#8243;</h2>
         <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
         <p>

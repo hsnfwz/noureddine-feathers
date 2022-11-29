@@ -41,7 +41,7 @@
     {#if showSuccessMessage}
       <p>Check your email</p>
       <p class="text-center">
-        We sent an email to you at <span class="font-bold">{email}</span>. It has a magic link that will sign you in.
+        We sent an email to you at <span class="nf-font-bold">{email}</span>. It has a magic link that will sign you in.
       </p>
     {:else}
       <form class="flex flex-col gap-4">
@@ -61,7 +61,7 @@
         >
           <span>Sign In</span>
         </Button>
-        <p>By signing in, you agree to our <span class="text-neutral-500 font-bold"><Link href="/terms-and-conditions" ariaLabel="terms and conditions">Terms and Conditions.</Link></span></p>
+        <p>By signing in, you agree to our <span class="text-neutral-500 nf-font-bold"><Link href="/terms-and-conditions" ariaLabel="terms and conditions">Terms and Conditions.</Link></span></p>
       </form>
     {/if}
   </div>

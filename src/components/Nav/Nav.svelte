@@ -30,11 +30,21 @@
   });
 
   onDestroy(() => session.unsubscribeAuthStateChange(subscriptionAuthStateChange));
+
+  $: {
+    if (showNavMobile) {
+      const body = document.querySelector('body');
+      if (body) body.style.overflow = 'hidden';
+    } else {
+      const body = document.querySelector('body');
+      if (body) body.style.overflow = 'auto';
+    }
+  }
 </script>
 
 <nav>
   {#if showNavMobile}
-    <div class="absolute top-0 bg-gray-50 w-full h-full overflow-hidden z-50">
+    <div class="fixed top-0 bg-gray-50 w-full h-full z-50">
       <div class="flex flex-col gap-4 px-8 py-2">
         <div class="flex gap-4">
           <div class="flex flex-row flex-shrink-0">

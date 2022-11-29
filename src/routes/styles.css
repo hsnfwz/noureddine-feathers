@@ -10,6 +10,18 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('/src/lib/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 body {
 	font-family: 'Montserrat';
+}
+
+.nf-font-bold {
+  font-family: 'Montserrat Bold';
 }
