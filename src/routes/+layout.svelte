@@ -5,7 +5,6 @@
   import { cart } from '$stores/CartStore';
 
   // components
-  import Container from '$components/Container/Container.svelte';
   import Nav from '$components/Nav/Nav.svelte';
   import Footer from '$components/Footer/Footer.svelte';
 
@@ -17,8 +16,6 @@
 
 <main>
   <Nav />
-  <!-- <Container> -->
-    <slot />
-  <!-- </Container> -->
+  <slot />
   <Footer />
 </main>

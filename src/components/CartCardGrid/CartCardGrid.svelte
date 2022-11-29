@@ -1,8 +1,6 @@
 <script lang="ts">
   // components
   import CartCard from '$components/CartCard/CartCard.svelte';
-  import Heading from '$components/Heading/Heading.svelte';
-  import Link from '$components/Link/Link.svelte';
 
   // store
   import { cart } from '$stores/CartStore';

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, afterUpdate } from 'svelte';
 
   // interfaces
   import type I_CartItem from '$interfaces/I_CartItem';
@@ -18,7 +18,7 @@
 
   // props
   export let cartProduct: I_CartItem;
-  export let cartProductIndex: number;
+  export let cartProductIndex: number = 1;
 
   // state
   let loading: boolean = true;
@@ -27,6 +27,8 @@
   onMount(() => loading = false);
   
   $: cart.updateCartProduct(cartProductIndex, quantity);
+
+  afterUpdate(() => quantity = cartProduct.cart_product_quantity);
 </script>
 
 <!-- {#if loading}

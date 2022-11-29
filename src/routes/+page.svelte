@@ -21,7 +21,8 @@
   <meta name="description" content="Noureddine Feathers - Shop feather dusters, eggshells, lambskins, and feathers" />
 </svelte:head>
 
-<Hero />
+<!-- <Hero /> -->
+
 <div class="mx-8">
   <div class="flex flex-col gap-8">
     <div class="flex flex-col md:flex-row gap-4">
