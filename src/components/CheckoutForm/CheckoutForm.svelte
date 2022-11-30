@@ -23,10 +23,10 @@
     try {
       isLoadingCheckout = true;
 
-      const lineItems = $cart.cartItems.map((cartProduct: I_CartItem) => {
+      const lineItems = $cart.cartItems.map((cartItem: I_CartItem) => {
         return {
-          price: cartProduct.stripe_price_id,
-          quantity: cartProduct.cart_product_quantity,
+          price: cartItem.stripe_price_id,
+          quantity: cartItem.cart_item_quantity,
         }
       });
 

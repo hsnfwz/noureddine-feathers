@@ -22,8 +22,6 @@
   export let product: I_Product;
   export let productImagePublicUrls: string[];
 
-  console.log(productImagePublicUrls)
-
   // state
   let productPrice: I_ProductPriceTableRecord = product?.prices[0];
   let quantity: number = 1;
@@ -124,13 +122,13 @@
           >
             <span>Single</span>
           </Button> -->
-          {#each product.prices as productPrice}
-          <div class={`${productPrice === productPrice ? 'pointer-events-none outline outline-2 outline-black' : 'outline-none'}`}>
+          {#each product.prices as price}
+            <div class={`${productPrice === price ? 'pointer-events-none outline outline-2 outline-black' : 'outline-none'}`}>
               <Button
-                handleClick={() => productPrice = productPrice}
+                handleClick={() => productPrice = price}
                 customClass={`text-black bg-gray-100 p-2 lowercase`}
               >
-                <span>{(productPrice.quantity === 12 && '1 dz.') || (productPrice.quantity === 60 && '5 dz.')}</span>
+                <span>{(price.quantity === 12 && '1 dz.') || (price.quantity === 60 && '5 dz.')}</span>
               </Button>
             </div>
           {/each}

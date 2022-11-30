@@ -4,12 +4,14 @@ import Stripe from 'stripe';
 // env
 import { STRIPE_SECRET_KEY } from '$env/static/private';
 
-export async function POST({ request }) {
+export async function POST({ request }: any) {
   try {
     // LOOK INTO PRODUCTS, PRICES, and INVOICES on Stripe
     // what we can do is use the stripe API to update/add/remove products/prices. so, anytime we want to make modifications on our website, we will call the database AND stripe so that both get updated with the same data at once!
     
     const { lineItems, discounts } = await request.json();
+
+    console.log('lineItems', lineItems);
 
     const stripe = new Stripe(STRIPE_SECRET_KEY);
 

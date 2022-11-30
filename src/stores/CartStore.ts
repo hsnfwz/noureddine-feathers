@@ -12,9 +12,9 @@ function createCart() {
     let _cartTotalPrice: number = 0;
     let _cartTotalItems: number = 0;
 
-    cart.forEach((cartProduct: I_CartItem) => {
-      _cartTotalPrice = _cartTotalPrice + (cartProduct.price * cartProduct.cart_item_quantity);
-      _cartTotalItems = _cartTotalItems + (cartProduct.cart_item_quantity);
+    cart.forEach((cartItem: I_CartItem) => {
+      _cartTotalPrice = _cartTotalPrice + (cartItem.price * cartItem.cart_item_quantity);
+      _cartTotalItems = _cartTotalItems + (cartItem.cart_item_quantity);
     })
 
     return { cartTotalPrice: _cartTotalPrice, cartTotalItems: _cartTotalItems };
@@ -38,19 +38,19 @@ function createCart() {
     return _cart;
   }
 
-  const addCartItem = (product: I_ProductTableRecord, productPrice: I_ProductPriceTableRecord, cartProductQuantity: number) => {
-    const _cartProducts: I_CartItem[] = getCartItems();
+  const addCartItem = (product: I_ProductTableRecord, productPrice: I_ProductPriceTableRecord, cartItemQuantity: number) => {
+    const _cartItems: I_CartItem[] = getCartItems();
 
-    const _cartProductIndex: number = _cartProducts.findIndex((_cartProduct: I_CartItem) => _cartProduct.product_price_id === productPrice.id);
+    const _cartItemIndex: number = _cartItems.findIndex((_cartItem: I_CartItem) => _cartItem.product_price_id === productPrice.id);
 
-    if (_cartProductIndex !== -1) {
-      let _cardProductQuantity = _cartProducts[_cartProductIndex].cart_item_quantity + cartProductQuantity;
+    if (_cartItemIndex !== -1) {
+      let _cardItemQuantity = _cartItems[_cartItemIndex].cart_item_quantity + cartItemQuantity;
 
-      if (_cardProductQuantity > 100) _cardProductQuantity = 100;
+      if (_cardItemQuantity > 100) _cardItemQuantity = 100;
 
-      _cartProducts[_cartProductIndex].cart_item_quantity = _cardProductQuantity;
+      _cartItems[_cartItemIndex].cart_item_quantity = _cardItemQuantity;
     } else {
-      const _cartProduct = {
+      const _cartItem = {
         product_id: product.id,
         product_price_id: productPrice.id,
         stripe_price_id: productPrice.stripe_price_id,
@@ -61,33 +61,33 @@ function createCart() {
         size: product.size,
         price: productPrice.price,
         quantity: productPrice.quantity,
-        cart_item_quantity: cartProductQuantity,
+        cart_item_quantity: cartItemQuantity,
       };
 
-      _cartProducts.push(_cartProduct);
+      _cartItems.push(_cartItem);
     }
 
-    localStorage.setItem('cart', JSON.stringify(_cartProducts));
+    localStorage.setItem('cart', JSON.stringify(_cartItems));
 
 		getCartItems();
   }
 
-  const removeCartItem = (cartProductIndex: number) => {
-    const _cartProducts = getCartItems();
+  const removeCartItem = (cartItemIndex: number) => {
+    const _cartItems = getCartItems();
 
-    _cartProducts.splice(cartProductIndex, 1);
+    _cartItems.splice(cartItemIndex, 1);
 
-    localStorage.setItem('cart', JSON.stringify(_cartProducts));
+    localStorage.setItem('cart', JSON.stringify(_cartItems));
 		
 		getCartItems();
   }
 
-  const updateCartItem = (cartProductIndex: number, cartProductQuantity: number) => {
-    const _cartProducts = getCartItems();
+  const updateCartItem = (cartItemIndex: number, cartItemQuantity: number) => {
+    const _cartItems = getCartItems();
 
-    _cartProducts[cartProductIndex].cart_item_quantity = cartProductQuantity;
+    _cartItems[cartItemIndex].cart_item_quantity = cartItemQuantity;
 
-    localStorage.setItem('cart', JSON.stringify(_cartProducts));
+    localStorage.setItem('cart', JSON.stringify(_cartItems));
 
 		getCartItems();
   }
