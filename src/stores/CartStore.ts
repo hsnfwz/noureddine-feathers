@@ -59,6 +59,7 @@ function createCart() {
         color: product.color,
         category: product.category,
         size: product.size,
+        size_unit: product.size_unit,
         price: productPrice.price,
         quantity: productPrice.quantity,
         cart_item_quantity: cartItemQuantity,

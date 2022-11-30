@@ -37,7 +37,7 @@
     </Link>
     <div class="flex flex-col gap-2 pt-4">
       <p>{product.name}</p>
-      <p class="text-gray-500">{product.color} &#183; {product.size}&#8243;</p>
+      <p class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}` : ''}</p>
       <div class="flex gap-2">
         <p>
           {formatCurrency(getMinPrice(product.prices))} - {formatCurrency(getMaxPrice(product.prices))}

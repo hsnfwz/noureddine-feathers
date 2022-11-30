@@ -72,7 +72,7 @@
 <div class="flex flex-col md:flex-row gap-8 m-auto">
   <div class="flex flex-col gap-2 md:hidden">
     <h1 class="nf-font-bold text-xl">{product.name}</h1>
-    <h2 class="text-gray-500">{product.color} &#183; {product.size}&#8243;</h2>
+    <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
     <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
     <p>
       {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
@@ -94,7 +94,7 @@
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
       <div class="hidden md:flex md:flex-col md:gap-2">
         <h1 class="nf-font-bold text-xl">{product.name}</h1>
-        <h2 class="text-gray-500">{product.color} &#183; {product.size}&#8243;</h2>
+        <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
         <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
         <p>
           {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
@@ -109,8 +109,11 @@
         <ul class="list-disc list-inside">
           <li>Category: {product.category}</li>
           <li>Color: {product.color}</li>
-          <li>Size: {product.size}&#8243;</li>
+          {#if product.size}
+            <li>Size: {product.size} {product.size_unit}</li>
+          {/if}
         </ul>
+        <p>*Because our products are handmade, sizes and/or colors may vary slightly</p>
       </div>
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Package</p>
@@ -128,7 +131,17 @@
                 handleClick={() => productPrice = price}
                 customClass={`text-black bg-gray-100 p-2 lowercase`}
               >
-                <span>{(price.quantity === 12 && '1 dz.') || (price.quantity === 60 && '5 dz.')}</span>
+                <span>
+                  {#if price.quantity === 12}
+                    1 dz.
+                  {:else if price.quantity === 36}
+                    3 dz.
+                  {:else if price.quantity === 60}
+                    5 dz.
+                  {:else}
+                    {price.quantity}
+                  {/if}
+                </span>
               </Button>
             </div>
           {/each}

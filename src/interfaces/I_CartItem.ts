@@ -7,6 +7,7 @@ interface I_CartItem {
   color: string,
   category: string,
   size: number,
+  size_unit: string,
   price: number,
   quantity: number,
   cart_item_quantity: number,
