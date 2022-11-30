@@ -22,6 +22,8 @@
   export let product: I_Product;
   export let productImagePublicUrls: string[];
 
+  console.log(productImagePublicUrls)
+
   // state
   let productPrice: I_ProductPriceTableRecord = product?.prices[0];
   let quantity: number = 1;

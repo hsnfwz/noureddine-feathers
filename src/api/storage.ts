@@ -24,12 +24,14 @@ const getProductImagePublicUrls = async (folderName: string): Promise<string[] |
   }
 
   data.forEach((obj: any) => {
-    const { data } = supabase
-    .storage
-    .from('noureddine-feathers')
-    .getPublicUrl(`${folderName}/${obj.name}`);
-
-    productImagePublicUrls.push(data.publicUrl);
+    if (obj.name !== '.emptyFolderPlaceholder') {
+      const { data } = supabase
+      .storage
+      .from('noureddine-feathers')
+      .getPublicUrl(`${folderName}/${obj.name}`);
+      
+      productImagePublicUrls.push(data.publicUrl);
+    }
   });
 
   return productImagePublicUrls;
