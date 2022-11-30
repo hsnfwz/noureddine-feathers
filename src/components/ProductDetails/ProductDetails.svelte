@@ -73,7 +73,7 @@
   <div class="flex flex-col gap-2 md:hidden">
     <h1 class="nf-font-bold text-xl">{product.name}</h1>
     <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
-    <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
+    <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
     <p>
       {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
     </p>
@@ -95,7 +95,7 @@
       <div class="hidden md:flex md:flex-col md:gap-2">
         <h1 class="nf-font-bold text-xl">{product.name}</h1>
         <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
-        <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
+        <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
         <p>
           {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
         </p>

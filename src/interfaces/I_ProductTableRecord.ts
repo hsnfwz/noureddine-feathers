@@ -10,6 +10,8 @@ interface I_ProductTableRecord {
   color: string,
   category: string,
   is_hidden: boolean,
+  rating_average: number,
+  rating_count: number,
 }
 
 export default I_ProductTableRecord;

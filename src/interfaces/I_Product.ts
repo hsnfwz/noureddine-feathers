@@ -5,7 +5,7 @@ import type I_ProductRatingTableRecord from '$interfaces/I_ProductRatingTableRec
 
 interface I_Product extends I_ProductTableRecord {
   prices: I_ProductPriceTableRecord[],
-  ratings: I_ProductRatingTableRecord[],
+  ratings?: I_ProductRatingTableRecord[],
 }
 
 export default I_Product;

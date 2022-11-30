@@ -43,7 +43,7 @@
           {formatCurrency(getMinPrice(product.prices))} - {formatCurrency(getMaxPrice(product.prices))}
         </p>
       </div>
-      <Stars ratings={product.ratings.map((productRating) => productRating.rating)} id={product.id} />
+      <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
     </div>
   </div>
 {/if}

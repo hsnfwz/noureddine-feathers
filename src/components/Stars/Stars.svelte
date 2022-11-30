@@ -1,19 +1,17 @@
 <script lang="ts">
-  // helpers
-  import { calculateAverageRating } from '$helpers/helpers';
-
   // components
   import IconStar from '$components/icons/IconStar.svelte';
 
   // props
-  export let ratings: number[] = [];
+  export let ratingAverage: number = 0;
+  export let ratingCount: number = 0;
   export let id: string | number = '';
 
   // state
   let iconStarIcon: {}[] = [];
 
   const ratingMax = 5;
-  const productRating = calculateAverageRating(ratings);
+  const productRating = ratingAverage;
   const productRatingRoundPortion = +(productRating + '').split('.')[0] || 0;
   const productRatingDecimalPortion = +(productRating + '').split('.')[1]*10 || 0;
 
@@ -41,6 +39,6 @@
     {/each}
   </div>
   <p>
-    ({ratings.length})
+    ({ratingCount})
   </p>
 </div>

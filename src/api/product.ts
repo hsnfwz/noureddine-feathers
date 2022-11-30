@@ -12,7 +12,7 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
 
   const productQuery = supabase
   .from('product')
-  .select('id, thumbnail_url, name, description, color, size, size_unit, category')
+  .select('id, thumbnail_url, name, description, color, size, size_unit, category, rating_average, rating_count')
   .match({ id });
 
   const productPriceQuery = supabase
@@ -61,12 +61,12 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
   return product;
 }
 
-const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'size', value: { ascending: false } }, limit: number = 10): Promise<I_Product[] | undefined> => {
+const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'rating_average', value: { ascending: false } }, limit: number = 10): Promise<I_Product[] | undefined> => {
   let products: I_Product[] = [];
 
   const productQuery = supabase
   .from('product')
-  .select('id, thumbnail_url, name, color, size, size_unit, category')
+  .select('id, thumbnail_url, name, color, size, size_unit, category, rating_average, rating_count')
   .match({ ...filters, is_hidden: false })
   .order(sort.key, sort.value)
   .limit(limit);
@@ -75,38 +75,30 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
   .from('product_price')
   .select('id, price, quantity, product_id, stripe_price_id');
 
-  const productRatingQuery = supabase
-  .from('product_rating')
-  .select('id, rating, product_id');
-
   const [
     { data: productData, error: productError },
     { data: productPriceData, error: productPriceError },
-    { data: productRatingData, error: productRatingError },
   ] = await Promise.all([
     productQuery,
     productPriceQuery,
-    productRatingQuery
   ]);
 
-  if (productError || productPriceError || productRatingError) {
-    console.log('[getProducts]:[error]', productError, productPriceError, productRatingError);
+  if (productError || productPriceError) {
+    console.log('[getProducts]:[error]', productError, productPriceError);
     return products;
   }
 
-  if (!productData || !productPriceData || !productRatingData) {
-    console.log('[getProducts]:[null]', productData, productPriceData, productRatingData);
+  if (!productData || !productPriceData) {
+    console.log('[getProducts]:[null]', productData, productPriceData);
     return products;
   }
 
   const groupedProductPriceData = groupBy(productPriceData, 'product_id');
-  const groupedProductRatingData = groupBy(productRatingData, 'product_id');
 
   products = productData.map((productRecord: any) => {
     const product: I_Product = {
       ...productRecord,
       prices: groupedProductPriceData[productRecord.id] || [],
-      ratings: groupedProductRatingData[productRecord.id] || [],
     };
 
     return product;
