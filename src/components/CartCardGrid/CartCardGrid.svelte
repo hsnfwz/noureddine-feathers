@@ -9,7 +9,7 @@
 {#if $cart.cartItems.length !== 0}
   <div class="flex flex-col gap-4 border-2 border-gray-100 p-4">
     {#each $cart.cartItems as item, index}
-      <CartCard cartProduct={item} cartProductIndex={index} />
+      <CartCard cartItem={item} cartItemIndex={index} />
     {/each}
   </div>
 {/if}

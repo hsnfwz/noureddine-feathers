@@ -1,85 +1,117 @@
+// interfaces
+import type I_Product from '$interfaces/I_Product';
 
-// types
-import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
-
-// utils
+// helpers
 import { groupBy } from '$helpers/helpers';
 
 // config
 import supabase from '$config/supabase';
 
-/* TODO: do not fetch every attribute */
-/* TODO: fetching products better (limits, separating requests within the function into their own functions) */
+const getProductById = async (id: string): Promise<I_Product | undefined> => {
+  let product: I_Product | undefined = undefined;
 
-const getProductById = async (id: string) => {
-  try {
-    const [
-      { data: productData, error: productError },
-      { data: productPriceQuantityData, error: productPriceQuantityError },
-      { data: productRatingData, error: productRatingError },
-      { data: productImageData, error: productImageError },
-    ] = await Promise.all([
-      supabase.from('product').select('*').match({ id }),
-      supabase.from('product_price_quantity').select('*').match({ product_id: id }),
-      supabase.from('profile_product_rating').select('*').match({ product_id: id }),
-      supabase.from('product_image').select('*').match({ product_id: id }),
-    ]);
+  const productQuery = supabase
+  .from('product')
+  .select('id, thumbnail_url, name, description, color, size, size_unit, category')
+  .match({ id });
 
-    if (productError) console.log('[getProductById] productError', productError);
-    if (productPriceQuantityError) console.log('[getProductById] productPriceQuantityError', productPriceQuantityError);
-    if (productRatingError) console.log('[getProductById] productRatingError', productRatingError);
-    if (productImageError) console.log('[getProductById] productImageError', productImageError);
+  const productPriceQuery = supabase
+  .from('product_price')
+  .select('id, price, quantity, product_id')
+  .match({ product_id: id });
 
-    if (!productData || !productPriceQuantityData || !productRatingData || !productImageData) return undefined;
+  const productRatingQuery = supabase
+  .from('product_rating')
+  .select('id, rating, product_id')
+  .match({ product_id: id });
 
-    const groupedProductPriceQuantityData = groupBy(productPriceQuantityData, 'product_id');
-    const groupedProductRatingData = groupBy(productRatingData, 'product_id');
-    const groupedProductImageData = groupBy(productImageData, 'product_id');
+  const [
+    { data: productData, error: productError },
+    { data: productPriceData, error: productPriceError },
+    { data: productRatingData, error: productRatingError },
+  ] = await Promise.all([
+    productQuery,
+    productPriceQuery,
+    productRatingQuery
+  ]);
 
-    const result: I_ProductTableRecord[] = productData.map(product => {
-      product['prices_quantities'] = groupedProductPriceQuantityData[product.id] || [];
-      product['ratings'] = groupedProductRatingData[product.id] || [];
-      product['images'] = groupedProductImageData[product.id] || [];
-      return product;
-    });
-  
-    return result[0];
-  } catch (error) {
-    console.log('[getProductById]', error);
+  if (productError || productPriceError || productRatingError) {
+    console.log('[getProductById]:[error]', productError, productPriceError, productRatingError);
+    return product;
   }
+
+  if (!productData || !productPriceData || !productRatingData) {
+    console.log('[getProductById]:[null]', productData, productPriceData, productRatingData);
+    return product;
+  }
+
+  const groupedProductPriceData = groupBy(productPriceData, 'product_id');
+  const groupedProductRatingData = groupBy(productRatingData, 'product_id');
+
+  product = productData.map((productRecord: any) => {
+    const product: I_Product = {
+      ...productRecord,
+      prices: groupedProductPriceData[productRecord.id] || [],
+      ratings: groupedProductRatingData[productRecord.id] || [],
+    };
+
+    return product;
+  })[0];
+
+  return product;
 }
 
-const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'size', value: { ascending: false } }, limit: number = 10) => {
-  try {
-    const [
-      { data: productData, error: productError },
-      { data: productPriceQuantityData, error: productPriceQuantityError },
-      { data: productRatingData, error: productRatingError },
-    ] = await Promise.all([
-      supabase.from('product').select('*').match({ ...filters, is_hidden: false}).order(sort.key, sort.value),
-      supabase.from('product_price_quantity').select('*'),
-      supabase.from('profile_product_rating').select('*'),
-    ]);
+const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'size', value: { ascending: false } }, limit: number = 10): Promise<I_Product[] | undefined> => {
+  let products: I_Product[] = [];
 
-    if (productError) console.log('[getProducts] productError', productError);
-    if (productPriceQuantityError) console.log('[getProducts] productPriceQuantityError', productPriceQuantityError);
-    if (productRatingError) console.log('[getProducts] productRatingError', productRatingError);
+  const productQuery = supabase
+  .from('product')
+  .select('id, thumbnail_url, name, color, size, size_unit, category')
+  .match({ ...filters, is_hidden: false })
+  .order(sort.key, sort.value);
 
-    if (!productData || !productPriceQuantityData || !productRatingData) return undefined;
+  const productPriceQuery = supabase
+  .from('product_price')
+  .select('id, price, quantity, product_id');
 
-    const groupedProductPriceQuantityData = groupBy(productPriceQuantityData, 'product_id');
-    const groupedProductRatingData = groupBy(productRatingData, 'product_id');
+  const productRatingQuery = supabase
+  .from('product_rating')
+  .select('id, rating, product_id');
 
-    const result: I_ProductTableRecord[] = productData.map(product => {
-      product['prices_quantities'] = groupedProductPriceQuantityData[product.id] || [];
-      product['ratings'] = groupedProductRatingData[product.id] || [];
-      return product;
-    });
-  
-    return result;
-  } catch (error) {
-    console.log('[getProducts]', error);
+  const [
+    { data: productData, error: productError },
+    { data: productPriceData, error: productPriceError },
+    { data: productRatingData, error: productRatingError },
+  ] = await Promise.all([
+    productQuery,
+    productPriceQuery,
+    productRatingQuery
+  ]);
+
+  if (productError || productPriceError || productRatingError) {
+    console.log('[getProducts]:[error]', productError, productPriceError, productRatingError);
+    return products;
   }
+
+  if (!productData || !productPriceData || !productRatingData) {
+    console.log('[getProducts]:[null]', productData, productPriceData, productRatingData);
+    return products;
+  }
+
+  const groupedProductPriceData = groupBy(productPriceData, 'product_id');
+  const groupedProductRatingData = groupBy(productRatingData, 'product_id');
+
+  products = productData.map((productRecord: any) => {
+    const product: I_Product = {
+      ...productRecord,
+      prices: groupedProductPriceData[productRecord.id] || [],
+      ratings: groupedProductRatingData[productRecord.id] || [],
+    };
+
+    return product;
+  });
+
+  return products;
 }
 
 export {

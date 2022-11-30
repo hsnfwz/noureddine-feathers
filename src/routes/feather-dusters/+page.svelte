@@ -4,9 +4,9 @@
   import ProductCardGrid from '$components/ProductCardGrid/ProductCardGrid.svelte';
 
   // interfaces
-  import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
+  import type I_Product from '$interfaces/I_Product';
 
-  export let data: { products: I_ProductTableRecord[] | undefined } = { products: [] };
+  export let data: { products: I_Product[] };
 </script>
 
 <svelte:head>

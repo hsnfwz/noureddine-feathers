@@ -6,14 +6,14 @@
   import ProductCardGrid from '$components/ProductCardGrid/ProductCardGrid.svelte';
 
   // interfaces
-  import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
+  import type I_Product from '$interfaces/I_Product';
 
   // data
-  export let data: { products: I_ProductTableRecord[] } = { products: [] };
+  export let data: { products: I_Product[] };
 
-  const blackFeatherDusters = data.products.filter((featherDuster: I_ProductTableRecord) => featherDuster.color === 'Premium Black');
+  const blackFeatherDusters = data.products.filter((featherDuster: I_Product) => featherDuster.color === 'Premium Black');
 
-  const grayFeatherDusters = data.products.filter((featherDuster: I_ProductTableRecord) => featherDuster.color === 'Premium Gray');
+  const grayFeatherDusters = data.products.filter((featherDuster: I_Product) => featherDuster.color === 'Premium Gray');
 </script>
 
 <svelte:head>

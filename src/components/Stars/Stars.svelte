@@ -1,5 +1,5 @@
 <script lang="ts">
-  // utils
+  // helpers
   import { calculateAverageRating } from '$helpers/helpers';
 
   // components

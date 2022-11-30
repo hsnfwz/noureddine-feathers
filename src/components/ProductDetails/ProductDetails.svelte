@@ -9,8 +9,8 @@
   import getStripe from '$config/stripe';
 
   // interfaces
-  import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
-  import type I_ProductPriceQuantityTableRecord from '$interfaces/I_ProductPriceQuantityTableRecord';
+  import type I_Product from '$interfaces/I_Product';
+  import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecord';
 
   // components
   import Stars from '$components/Stars/Stars.svelte';
@@ -19,10 +19,11 @@
   import Heading from '$components/Heading/Heading.svelte';
 
   // props
-  export let product: I_ProductTableRecord;
+  export let product: I_Product;
+  export let productImagePublicUrls: string[];
 
   // state
-  let productPriceQuantity: I_ProductPriceQuantityTableRecord = product?.prices_quantities[0];
+  let productPrice: I_ProductPriceTableRecord = product?.prices[0];
   let quantity: number = 1;
   let isLoadingCheckout: boolean = false;
   let checkoutErrorMessage: string = '';
@@ -32,7 +33,7 @@
       isLoadingCheckout = true;
 
       const lineItems = [{
-        price: productPriceQuantity.stripe_price_id,
+        price: productPrice.stripe_price_id,
         quantity,
       }];
 
@@ -74,34 +75,20 @@
     <h2 class="text-gray-500">{product.color} &#183; {product.size}&#8243;</h2>
     <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
     <p>
-      {formatCurrency(productPriceQuantity.price)} ({formatCurrency(productPriceQuantity.price / productPriceQuantity.quantity)} per unit)
+      {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
     </p>
   </div>
   <div class="flex flex-col gap-4">
-    <div class="bg-gray-100 p-2 flex justify-center">
-      <img
-        src={product.images[0].url}
-        alt={product.name}
-        width="1000"
-        height="1000"
-      />
-    </div>
-    <div class="bg-gray-100 p-2 flex justify-center">
-      <img
-        src={product.images[0].url}
-        alt={product.name}
-        width="1000"
-        height="1000"
-      />
-    </div>
-    <div class="bg-gray-100 p-2 flex justify-center">
-      <img
-        src={product.images[0].url}
-        alt={product.name}
-        width="1000"
-        height="1000"
-      />
-    </div>
+    {#each productImagePublicUrls as publicUrl}
+      <div class="bg-gray-100 p-2 flex justify-center">
+        <img
+          src={publicUrl}
+          alt={product.name}
+          width="1000"
+          height="1000"
+        />
+      </div>
+    {/each}
   </div>
   <div class="max-w-[600px]">
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
@@ -110,7 +97,7 @@
         <h2 class="text-gray-500">{product.color} &#183; {product.size}&#8243;</h2>
         <Stars ratings={product.ratings.map(rating => rating.rating)} id={product.id} />
         <p>
-          {formatCurrency(productPriceQuantity.price)} ({formatCurrency(productPriceQuantity.price / productPriceQuantity.quantity)} per unit)
+          {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
         </p>
       </div>
       <div class="flex flex-col gap-2">
@@ -135,13 +122,13 @@
           >
             <span>Single</span>
           </Button> -->
-          {#each product.prices_quantities as priceQuantity}
-          <div class={`${productPriceQuantity === priceQuantity ? 'pointer-events-none outline outline-2 outline-black' : 'outline-none'}`}>
+          {#each product.prices as productPrice}
+          <div class={`${productPrice === productPrice ? 'pointer-events-none outline outline-2 outline-black' : 'outline-none'}`}>
               <Button
-                handleClick={() => productPriceQuantity = priceQuantity}
+                handleClick={() => productPrice = productPrice}
                 customClass={`text-black bg-gray-100 p-2 lowercase`}
               >
-                <span>{(priceQuantity.quantity === 12 && '1 dz.') || (priceQuantity.quantity === 60 && '5 dz.')}</span>
+                <span>{(productPrice.quantity === 12 && '1 dz.') || (productPrice.quantity === 60 && '5 dz.')}</span>
               </Button>
             </div>
           {/each}
@@ -153,7 +140,7 @@
       </div>
       <div class="flex flex-col gap-2">
         <Button
-          handleClick={() => cart.addCartProduct(product, productPriceQuantity, quantity)}
+          handleClick={() => cart.addCartItem(product, productPrice, quantity)}
           customClass="uppercase text-white bg-orange-500 p-2"
         >
           <span>Add to Cart</span>

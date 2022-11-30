@@ -2,10 +2,10 @@
   import { onMount } from 'svelte';
 
   // helpers
-  import { calculateSalePrice, formatCurrency, getMinPrice, getMaxPrice, formatCategory } from '$helpers/helpers';
+  import { formatCurrency, getMinPrice, getMaxPrice, formatCategory } from '$helpers/helpers';
 
   // interfaces
-  import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
+  import type I_Product from '$interfaces/I_Product';
 
   // components
   import Stars from '$components/Stars/Stars.svelte';
@@ -13,7 +13,7 @@
   import ProductCardSkeleton from '$components/ProductCard/ProductCardSkeleton.svelte';
 
   // props
-  export let product: I_ProductTableRecord;
+  export let product: I_Product;
 
   // state
   let loading: boolean = true;
@@ -28,7 +28,7 @@
     <Link href={`/${formatCategory(product.category)}/${product.id}`} ariaLabel={product.name}>
       <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
         <img
-          src={product.thumbnail}
+          src={product.thumbnail_url}
           alt={product.name}
           width="500"
           height="500"
@@ -40,10 +40,10 @@
       <p class="text-gray-500">{product.color} &#183; {product.size}&#8243;</p>
       <div class="flex gap-2">
         <p>
-          {formatCurrency(calculateSalePrice(getMinPrice(product.prices_quantities), product.sale_percent))} - {formatCurrency(calculateSalePrice(getMaxPrice(product.prices_quantities), product.sale_percent))}
+          {formatCurrency(getMinPrice(product.prices))} - {formatCurrency(getMaxPrice(product.prices))}
         </p>
       </div>
-      <Stars ratings={product.ratings.map((rating) => rating.rating)} id={product.id} />
+      <Stars ratings={product.ratings.map((productRating) => productRating.rating)} id={product.id} />
     </div>
   </div>
 {/if}

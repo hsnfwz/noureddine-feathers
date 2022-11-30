@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 // interfaces
 import type I_CartItem from '$interfaces/I_CartItem';
-import type I_ProductPriceQuantityTableRecord from '$interfaces/I_ProductPriceQuantityTableRecord';
+import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecord';
 import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
 
 function createCart() {
@@ -13,14 +13,14 @@ function createCart() {
     let _cartTotalItems: number = 0;
 
     cart.forEach((cartProduct: I_CartItem) => {
-      _cartTotalPrice = _cartTotalPrice + (cartProduct.price * cartProduct.cart_product_quantity);
-      _cartTotalItems = _cartTotalItems + (cartProduct.cart_product_quantity);
+      _cartTotalPrice = _cartTotalPrice + (cartProduct.price * cartProduct.cart_item_quantity);
+      _cartTotalItems = _cartTotalItems + (cartProduct.cart_item_quantity);
     })
 
     return { cartTotalPrice: _cartTotalPrice, cartTotalItems: _cartTotalItems };
   }
 
-  const getCartProducts = () => {
+  const getCartItems = () => {
     let _cart: I_CartItem[] = [];
 
     const cart: string | null = localStorage.getItem('cart');
@@ -38,30 +38,30 @@ function createCart() {
     return _cart;
   }
 
-  const addCartProduct = (product: I_ProductTableRecord, productPriceQuantity: I_ProductPriceQuantityTableRecord, cartProductQuantity: number) => {
-    const _cartProducts: I_CartItem[] = getCartProducts();
+  const addCartItem = (product: I_ProductTableRecord, productPrice: I_ProductPriceTableRecord, cartProductQuantity: number) => {
+    const _cartProducts: I_CartItem[] = getCartItems();
 
-    const _cartProductIndex: number = _cartProducts.findIndex((_cartProduct: I_CartItem) => _cartProduct.product_price_quantity_id === productPriceQuantity.id);
+    const _cartProductIndex: number = _cartProducts.findIndex((_cartProduct: I_CartItem) => _cartProduct.product_price_id === productPrice.id);
 
     if (_cartProductIndex !== -1) {
-      let _cardProductQuantity = _cartProducts[_cartProductIndex].cart_product_quantity + cartProductQuantity;
+      let _cardProductQuantity = _cartProducts[_cartProductIndex].cart_item_quantity + cartProductQuantity;
 
       if (_cardProductQuantity > 100) _cardProductQuantity = 100;
 
-      _cartProducts[_cartProductIndex].cart_product_quantity = _cardProductQuantity;
+      _cartProducts[_cartProductIndex].cart_item_quantity = _cardProductQuantity;
     } else {
       const _cartProduct = {
         product_id: product.id,
-        product_price_quantity_id: productPriceQuantity.id,
-        stripe_price_id: productPriceQuantity.stripe_price_id,
-        thumbnail: product.thumbnail,
+        product_price_id: productPrice.id,
+        stripe_price_id: productPrice.stripe_price_id,
+        thumbnail_url: product.thumbnail_url,
         name: product.name,
         color: product.color,
         category: product.category,
         size: product.size,
-        price: productPriceQuantity.price,
-        quantity: productPriceQuantity.quantity,
-        cart_product_quantity: cartProductQuantity,
+        price: productPrice.price,
+        quantity: productPrice.quantity,
+        cart_item_quantity: cartProductQuantity,
       };
 
       _cartProducts.push(_cartProduct);
@@ -69,27 +69,27 @@ function createCart() {
 
     localStorage.setItem('cart', JSON.stringify(_cartProducts));
 
-		getCartProducts();
+		getCartItems();
   }
 
-  const removeCartProduct = (cartProductIndex: number) => {
-    const _cartProducts = getCartProducts();
+  const removeCartItem = (cartProductIndex: number) => {
+    const _cartProducts = getCartItems();
 
     _cartProducts.splice(cartProductIndex, 1);
 
     localStorage.setItem('cart', JSON.stringify(_cartProducts));
 		
-		getCartProducts();
+		getCartItems();
   }
 
-  const updateCartProduct = (cartProductIndex: number, cartProductQuantity: number) => {
-    const _cartProducts = getCartProducts();
+  const updateCartItem = (cartProductIndex: number, cartProductQuantity: number) => {
+    const _cartProducts = getCartItems();
 
-    _cartProducts[cartProductIndex].cart_product_quantity = cartProductQuantity;
+    _cartProducts[cartProductIndex].cart_item_quantity = cartProductQuantity;
 
     localStorage.setItem('cart', JSON.stringify(_cartProducts));
 
-		getCartProducts();
+		getCartItems();
   }
 
   const clearCart = () => {
@@ -100,10 +100,10 @@ function createCart() {
 
 	return {
 		subscribe,
-    getCartProducts,
-		addCartProduct,
-		removeCartProduct,
-		updateCartProduct,
+    getCartItems,
+		addCartItem,
+		removeCartItem,
+		updateCartItem,
     clearCart,
 	};
 }

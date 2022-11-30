@@ -1,5 +1,5 @@
 // interfaces
-import type I_ProductPriceQuantityTableRecord from '$interfaces/I_ProductPriceQuantityTableRecord';
+import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecord';
 
 const formatCurrency = (amount: number) => {
   const formatToUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
@@ -29,13 +29,13 @@ const calculateSalePrice = (price: number, percent: number) => {
   return salePrice;
 }
 
-const getMinPrice = (priceQuantityArr: I_ProductPriceQuantityTableRecord[]) => {
-  const prices: number[] = priceQuantityArr.map((priceQuantityObj: I_ProductPriceQuantityTableRecord) => priceQuantityObj.price);
+const getMinPrice = (productPriceArr: I_ProductPriceTableRecord[]) => {
+  const prices: number[] = productPriceArr.map((productPriceObj: I_ProductPriceTableRecord) => productPriceObj.price);
   return Math.min(...prices);
 }
 
-const getMaxPrice = (priceQuantityArr: I_ProductPriceQuantityTableRecord[]) => {
-  const prices: number[] = priceQuantityArr.map((priceQuantityObj: I_ProductPriceQuantityTableRecord) => priceQuantityObj.price);
+const getMaxPrice = (productPriceArr: I_ProductPriceTableRecord[]) => {
+  const prices: number[] = productPriceArr.map((productPriceObj: I_ProductPriceTableRecord) => productPriceObj.price);
   return Math.max(...prices);
 }
 

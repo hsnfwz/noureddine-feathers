@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, afterUpdate } from 'svelte';
+  import { afterUpdate } from 'svelte';
 
   // interfaces
   import type I_CartItem from '$interfaces/I_CartItem';
@@ -16,26 +16,26 @@
   import Counter from '$components/Counter/Counter.svelte';
 
   // props
-  export let cartProduct: I_CartItem;
-  export let cartProductIndex: number = 1;
+  export let cartItem: I_CartItem;
+  export let cartItemIndex: number = 1;
 
   // state
-  let quantity: number = cartProduct.cart_product_quantity;
+  let quantity: number = cartItem.cart_item_quantity;
   
-  $: cart.updateCartProduct(cartProductIndex, quantity);
+  $: cart.updateCartItem(cartItemIndex, quantity);
 
-  afterUpdate(() => quantity = cartProduct.cart_product_quantity);
+  afterUpdate(() => quantity = cartItem.cart_item_quantity);
 </script>
 
 <div class="flex flex-col lg:flex-row gap-4">
   <Link
-    href={`/${formatCategory(cartProduct.category)}/${cartProduct.product_id}`},
-    ariaLabel={cartProduct.name}
+    href={`/${formatCategory(cartItem.category)}/${cartItem.product_id}`},
+    ariaLabel={cartItem.name}
   >
     <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
       <img
-        src={cartProduct.thumbnail}
-        alt={cartProduct.name}
+        src={cartItem.thumbnail_url}
+        alt={cartItem.name}
         width="250"
         height="250"
       />
@@ -43,21 +43,21 @@
   </Link>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-2 flex-1">
-      <p>{cartProduct.name}</p>
+      <p>{cartItem.name}</p>
       <p class="text-gray-500">
-        <span>{cartProduct.color} &#183; </span>
-        <span>{cartProduct.size}&#8243; &#183; </span>
+        <span>{cartItem.color} &#183; </span>
+        <span>{cartItem.size}&#8243; &#183; </span>
         <span>
-          {#if cartProduct.quantity === 12}
+          {#if cartItem.quantity === 12}
             1 dz.
-          {:else if cartProduct.quantity === 60}
+          {:else if cartItem.quantity === 60}
             5 dz.
           {/if}
         </span>
       </p>
       <div class="flex gap-2">
         <p class="flex flex-grow">Price</p>
-        <p>{formatCurrency(cartProduct.price)}</p>
+        <p>{formatCurrency(cartItem.price)}</p>
       </div>
       <div class="flex gap-2">
         <p class="flex flex-grow items-center">Quantity</p>
@@ -68,12 +68,12 @@
           ITEM SUBTOTAL
         </p>
         <p class="nf-font-bold">
-          {formatCurrency(cartProduct.price * cartProduct.cart_product_quantity)}
+          {formatCurrency(cartItem.price * cartItem.cart_item_quantity)}
         </p>
       </div>
     </div>
     <Button
-      handleClick={() => cart.removeCartProduct(cartProductIndex)}
+      handleClick={() => cart.removeCartItem(cartItemIndex)}
       customClass="bg-red-500 text-white uppercase p-2"
     >
       <span>Remove</span>

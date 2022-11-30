@@ -11,7 +11,7 @@
   // styles
   import './styles.css';
 
-  onMount(() => cart.getCartProducts());
+  onMount(() => cart.getCartItems());
 </script>
 
 <main>

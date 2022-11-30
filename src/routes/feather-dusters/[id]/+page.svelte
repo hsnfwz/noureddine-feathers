@@ -3,9 +3,9 @@
   import ProductDetails from '$components/ProductDetails/ProductDetails.svelte';
 
   // interfaces
-  import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
+  import type I_Product from '$interfaces/I_Product';
 
-  export let data: { product: I_ProductTableRecord };
+  export let data: { product: I_Product, productImagePublicUrls: string[] };
 </script>
 
 <svelte:head>
@@ -15,6 +15,6 @@
 
 <div class="mx-8">
   <div class="flex flex-col gap-8">
-    <ProductDetails product={data.product} />
+    <ProductDetails product={data.product} productImagePublicUrls={data.productImagePublicUrls} />
   </div>
 </div>

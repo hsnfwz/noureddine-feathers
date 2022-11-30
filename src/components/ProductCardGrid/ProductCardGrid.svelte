@@ -1,12 +1,12 @@
 <script lang="ts">
   // interfaces
-  import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
+  import type I_Product from '$interfaces/I_Product';
 
   // components
   import ProductCard from '$components/ProductCard/ProductCard.svelte';
 
   // props
-  export let products: I_ProductTableRecord[] = [];
+  export let products: I_Product[] = [];
 </script>
 
 <div class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
