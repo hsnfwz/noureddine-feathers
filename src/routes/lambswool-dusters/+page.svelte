@@ -10,14 +10,14 @@
 </script>
 
 <svelte:head>
-  <title>Feather Dusters | Noureddine Feathers</title>
-  <meta name="description" content="Feather Dusters | Noureddine Feathers - Shop feather dusters, eggshells, lambskins, and feathers" />
+  <title>Lambswool Dusters | Noureddine Feathers</title>
+  <meta name="description" content="Lambswool Dusters | Noureddine Feathers - Shop ostrich feather dusters, lambswool dusters, extendable lambswool dusters, ostrich eggshells, and ostrich feathers - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
 <div class="mx-8">
   <div class="flex flex-col gap-8">
     <Heading>
-      <span>Feather Dusters</span>
+      <span>Lambswool Dusters</span>
     </Heading>
     <ProductCardGrid products={data.products} />
   </div>

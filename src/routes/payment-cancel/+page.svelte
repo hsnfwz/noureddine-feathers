@@ -6,7 +6,7 @@
 
 <svelte:head>
   <title>Payment Cancelled | Noureddine Feathers</title>
-  <meta name="description" content="Payment Cancelled | Noureddine Feathers - Shop feather dusters, eggshells, lambskins, and feathers" />
+  <meta name="description" content="Payment Cancelled | Noureddine Feathers - Shop ostrich feather dusters, lambswool dusters, extendable lambswool dusters, ostrich eggshells, and ostrich feathers - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
 <div class="mx-8">

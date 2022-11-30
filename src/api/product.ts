@@ -68,7 +68,8 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
   .from('product')
   .select('id, thumbnail_url, name, color, size, size_unit, category')
   .match({ ...filters, is_hidden: false })
-  .order(sort.key, sort.value);
+  .order(sort.key, sort.value)
+  .limit(limit);
 
   const productPriceQuery = supabase
   .from('product_price')

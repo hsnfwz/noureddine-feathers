@@ -13,7 +13,7 @@
 
 <svelte:head>
   <title>Payment Successful | Noureddine Feathers</title>
-  <meta name="description" content="Payment Successful | Noureddine Feathers - Shop feather dusters, eggshells, lambskins, and feathers" />
+  <meta name="description" content="Payment Successful | Noureddine Feathers - Shop ostrich feather dusters, lambswool dusters, extendable lambswool dusters, ostrich eggshells, and ostrich feathers - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
 <div class="mx-8">

@@ -68,14 +68,20 @@
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-col gap-4">
-            <Link href="/feather-dusters" ariaLabel="feather dusters" handleClick={() => showNavMobile = false}>
-              <span>Feather Dusters</span>
+            <Link href="/ostrich-feather-dusters" ariaLabel="ostrich feather dusters" handleClick={() => showNavMobile = false}>
+              <span>Ostrich Feather Dusters</span>
             </Link>
-            <Link href="/eggshells" ariaLabel="eggshells" handleClick={() => showNavMobile = false}>
-              <span>Eggshells</span>
+            <Link href="/lambswool-dusters" ariaLabel="lambswool dusters" handleClick={() => showNavMobile = false}>
+              <span>Lambswool Dusters</span>
             </Link>
-            <Link href="/lambskin" ariaLabel="lambskin" handleClick={() => showNavMobile = false}>
-              <span>Lambskin</span>
+            <Link href="/extendable-lambswool-dusters" ariaLabel="extendable lambswool dusters" handleClick={() => showNavMobile = false}>
+              <span>Extendable Lambswool Dusters</span>
+            </Link>
+            <Link href="/ostrich-feathers" ariaLabel="ostrich feathers" handleClick={() => showNavMobile = false}>
+              <span>Ostrich Feathers</span>
+            </Link>
+            <Link href="/ostrich-eggshells" ariaLabel="ostrich eggshells" handleClick={() => showNavMobile = false}>
+              <span>Ostrich Eggshells</span>
             </Link>
           </div>
           <div class="flex flex-col gap-4">
@@ -117,14 +123,20 @@
         </div>
         <div class="hidden lg:flex">
           <div class="flex flex-col gap-4 flex-grow justify-center lg:flex-row">
-            <Link href="/feather-dusters" ariaLabel="feather dusters">
-              <span>Feather Dusters</span>
+            <Link href="/ostrich-feather-dusters" ariaLabel="ostrich feather dusters">
+              <span>Ostrich Feather Dusters</span>
             </Link>
-            <Link href="/eggshells" ariaLabel="eggshells">
-              <span>Eggshells</span>
+            <Link href="/lambswool-dusters" ariaLabel="lambswool dusters">
+              <span>Lambswool Dusters</span>
             </Link>
-            <Link href="/lambskin" ariaLabel="lambskin">
-              <span>Lambskin</span>
+            <Link href="/extendable-lambswool-dusters" ariaLabel="extendable lambswool dusters">
+              <span>Extendable Lambswool Dusters</span>
+            </Link>
+            <Link href="/ostrich-feathers" ariaLabel="ostrich feathers">
+              <span>Ostrich Feathers</span>
+            </Link>
+            <Link href="/ostrich-eggshells" ariaLabel="ostrich-eggshells">
+              <span>Ostrich Eggshells</span>
             </Link>
           </div>
         </div>
