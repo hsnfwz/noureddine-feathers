@@ -6,11 +6,11 @@ import type I_Product from '$interfaces/I_Product';
 
 export async function load({ params }: any) {
   const products = await Promise.all([
-    getProducts({ category: 'Ostrich Feather Dusters' }, undefined, 3),
-    getProducts({ category: 'Extendable Lambswool Dusters' }, undefined, 3),
-    getProducts({ category: 'Lambswool Dusters' }, undefined, 3),
-    getProducts({ category: 'Ostrich Feathers' }, undefined, 3),
-    getProducts({ category: 'Ostrich Eggshells' }, undefined, 3),
+    getProducts({ category: 'Ostrich Feather Dusters' }, undefined, 4),
+    getProducts({ category: 'Extendable Lambswool Dusters' }, undefined, 4),
+    getProducts({ category: 'Lambswool Dusters' }, undefined, 4),
+    getProducts({ category: 'Ostrich Feathers' }, undefined, 4),
+    getProducts({ category: 'Ostrich Eggshells' }, undefined, 4),
   ]);
 
   return {
