@@ -8,7 +8,6 @@ interface I_ProductTableRecord {
   size: number,
   size_unit: string,
   color: string,
-  category: string,
   is_hidden: boolean,
   rating_average: number,
   rating_count: number,

@@ -68,19 +68,19 @@
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-col gap-4">
-            <Link href="/ostrich-feather-dusters" ariaLabel="ostrich feather dusters" handleClick={() => showNavMobile = false}>
-              <span>Ostrich Feather Dusters</span>
+            <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters" handleClick={() => showNavMobile = false}>
+              <span>Premium Ostrich Feather Dusters</span>
             </Link>
-            <Link href="/lambswool-dusters" ariaLabel="lambswool dusters" handleClick={() => showNavMobile = false}>
-              <span>Lambswool Dusters</span>
+            <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters" handleClick={() => showNavMobile = false}>
+              <span>Premium Extendable Lambswool Dusters</span>
             </Link>
-            <Link href="/extendable-lambswool-dusters" ariaLabel="extendable lambswool dusters" handleClick={() => showNavMobile = false}>
-              <span>Extendable Lambswool Dusters</span>
+            <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters" handleClick={() => showNavMobile = false}>
+              <span>Premium Lambswool Dusters</span>
             </Link>
-            <Link href="/ostrich-feathers" ariaLabel="ostrich feathers" handleClick={() => showNavMobile = false}>
+            <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers" handleClick={() => showNavMobile = false}>
               <span>Ostrich Feathers</span>
             </Link>
-            <Link href="/ostrich-eggshells" ariaLabel="ostrich eggshells" handleClick={() => showNavMobile = false}>
+            <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells" handleClick={() => showNavMobile = false}>
               <span>Ostrich Eggshells</span>
             </Link>
           </div>
@@ -123,16 +123,16 @@
         </div>
         <div class="hidden lg:flex">
           <div class="flex flex-col gap-4 flex-grow justify-center lg:flex-row">
-            <Link href="/ostrich-feather-dusters" ariaLabel="ostrich feather dusters">
-              <span>Ostrich Feather Dusters</span>
+            <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
+              <span>Premium Ostrich Feather Dusters</span>
             </Link>
-            <Link href="/lambswool-dusters" ariaLabel="lambswool dusters">
-              <span>Lambswool Dusters</span>
+            <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters">
+              <span>Premium Extendable Lambswool Dusters</span>
             </Link>
-            <Link href="/extendable-lambswool-dusters" ariaLabel="extendable lambswool dusters">
-              <span>Extendable Lambswool Dusters</span>
+            <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters">
+              <span>Premium Lambswool Dusters</span>
             </Link>
-            <Link href="/ostrich-feathers" ariaLabel="ostrich feathers">
+            <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers">
               <span>Ostrich Feathers</span>
             </Link>
             <Link href="/ostrich-eggshells" ariaLabel="ostrich-eggshells">

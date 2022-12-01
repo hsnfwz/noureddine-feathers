@@ -12,12 +12,13 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
 
   const productQuery = supabase
   .from('product')
-  .select('id, thumbnail_url, name, description, color, size, size_unit, category, rating_average, rating_count')
+  .select('id, thumbnail_url, name, description, color, size, size_unit, rating_average, rating_count')
   .match({ id });
 
   const productPriceQuery = supabase
   .from('product_price')
   .select('id, price, quantity, product_id, stripe_price_id')
+  .order('price', { ascending: true })
   .match({ product_id: id });
 
   const productRatingQuery = supabase
@@ -66,14 +67,15 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
 
   const productQuery = supabase
   .from('product')
-  .select('id, thumbnail_url, name, color, size, size_unit, category, rating_average, rating_count')
+  .select('id, thumbnail_url, name, color, size, size_unit, rating_average, rating_count')
   .match({ ...filters, is_hidden: false })
   .order(sort.key, sort.value)
   .limit(limit);
 
   const productPriceQuery = supabase
   .from('product_price')
-  .select('id, price, quantity, product_id, stripe_price_id');
+  .select('id, price, quantity, product_id, stripe_price_id')
+  .order('price', { ascending: true });
 
   const [
     { data: productData, error: productError },

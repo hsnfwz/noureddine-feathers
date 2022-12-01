@@ -10,13 +10,13 @@
 </script>
 
 <svelte:head>
-  <title>Ostrich Feathers | Noureddine Feathers</title>
-  <meta name="description" content="Ostrich Feathers | Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+  <title>Premium Lambswool Duster | Noureddine Feathers</title>
+  <meta name="description" content="Premium Lambswool Duster | Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
 <div class="flex flex-col gap-8">
   <Heading>
-    <span>Ostrich Feathers</span>
+    <span>Premium Lambswool Duster</span>
   </Heading>
   <ProductCardGrid products={data.products} />
 </div>

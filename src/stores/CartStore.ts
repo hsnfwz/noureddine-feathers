@@ -6,7 +6,7 @@ import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecor
 import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
 
 function createCart() {
-	const { subscribe, set, update } = writable<{ cartItems: I_CartItem[], cartTotalPrice: number, cartTotalItems: number }>({ cartItems: [], cartTotalPrice: 0, cartTotalItems: 0 });
+	const { subscribe, set, update } = writable<{ cartItems: I_CartItem[], cartTotalPrice: number, cartTotalItems: number, isLoadingCartItems: boolean }>({ cartItems: [], cartTotalPrice: 0, cartTotalItems: 0, isLoadingCartItems: true });
 
   const calculateTotals = (cart: I_CartItem[]) => {
     let _cartTotalPrice: number = 0;
@@ -33,7 +33,7 @@ function createCart() {
 
     const { cartTotalPrice, cartTotalItems } = calculateTotals(_cart);
 
-    set({ cartItems: _cart, cartTotalPrice, cartTotalItems });
+    set({ cartItems: _cart, cartTotalPrice, cartTotalItems, isLoadingCartItems: false });
 
     return _cart;
   }
@@ -57,7 +57,6 @@ function createCart() {
         thumbnail_url: product.thumbnail_url,
         name: product.name,
         color: product.color,
-        category: product.category,
         size: product.size,
         size_unit: product.size_unit,
         price: productPrice.price,
@@ -96,7 +95,7 @@ function createCart() {
   const clearCart = () => {
     localStorage.setItem('cart', JSON.stringify([]));
 
-    set({ cartItems: [], cartTotalPrice: 0, cartTotalItems: 0 });
+    set({ cartItems: [], cartTotalPrice: 0, cartTotalItems: 0, isLoadingCartItems: false });
   }
 
 	return {

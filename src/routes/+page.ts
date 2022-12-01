@@ -6,18 +6,18 @@ import type I_Product from '$interfaces/I_Product';
 
 export async function load({ params }: any) {
   const products = await Promise.all([
-    getProducts({ category: 'Ostrich Feather Dusters' }, undefined, 4),
-    getProducts({ category: 'Extendable Lambswool Dusters' }, undefined, 4),
-    getProducts({ category: 'Lambswool Dusters' }, undefined, 4),
-    getProducts({ category: 'Ostrich Feathers' }, undefined, 4),
-    getProducts({ category: 'Ostrich Eggshells' }, undefined, 4),
+    getProducts({ name: 'Premium Ostrich Feather Duster' }, undefined, 4),
+    getProducts({ name: 'Premium Extendable Lambswool Duster' }, undefined, 4),
+    getProducts({ name: 'Premium Lambswool Duster' }, undefined, 4),
+    getProducts({ name: 'Ostrich Feather' }, undefined, 4),
+    getProducts({ name: 'Ostrich Eggshell' }, undefined, 4),
   ]);
 
   return {
-    featherDusters: products[0] || [],
-    extendableLambswoolDusters: products[1] || [],
-    lambswoolDusters: products[2] || [],
+    premiumOstrichfeatherDusters: products[0] || [],
+    premiumExtendableLambswoolDusters: products[1] || [],
+    premiumLambswoolDusters: products[2] || [],
     ostrichFeathers: products[3] || [],
-    eggshells: products[4] || [],
+    ostrichEggshells: products[4] || [],
   };
 }

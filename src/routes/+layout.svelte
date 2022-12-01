@@ -16,6 +16,8 @@
 
 <main>
   <Nav />
-  <slot />
+  <div class="m-8">
+    <slot />
+  </div>
   <Footer />
 </main>

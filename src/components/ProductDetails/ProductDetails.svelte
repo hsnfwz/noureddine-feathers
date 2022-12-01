@@ -3,7 +3,7 @@
   import { cart } from '$stores/CartStore';
 
   // helpers
-  import { formatCurrency } from '$helpers/helpers';
+  import { formatCurrency, formatPackage } from '$helpers/helpers';
 
   // config
   import getStripe from '$config/stripe';
@@ -16,7 +16,6 @@
   import Stars from '$components/Stars/Stars.svelte';
   import Counter from '$components/Counter/Counter.svelte';
   import Button from '$components/Button/Button.svelte';
-  import Heading from '$components/Heading/Heading.svelte';
 
   // props
   export let product: I_Product;
@@ -107,7 +106,7 @@
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Details</p>
         <ul class="list-disc list-inside">
-          <li>Category: {product.category}</li>
+          <li>Category: {product.name}s</li>
           <li>Color: {product.color}</li>
           {#if product.size}
             <li>Size: {product.size} {product.size_unit}</li>
@@ -132,15 +131,7 @@
                 customClass={`text-black bg-gray-100 p-2 lowercase`}
               >
                 <span>
-                  {#if price.quantity === 12}
-                    1 dz.
-                  {:else if price.quantity === 36}
-                    3 dz.
-                  {:else if price.quantity === 60}
-                    5 dz.
-                  {:else}
-                    {price.quantity}
-                  {/if}
+                  {formatPackage(price.quantity)}
                 </span>
               </Button>
             </div>

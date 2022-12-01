@@ -10,98 +10,95 @@
 
   // data
   export let data: {
-    featherDusters: I_Product[],
-    extendableLambswoolDusters: I_Product[],
-    lambswoolDusters: I_Product[],
+    premiumOstrichfeatherDusters: I_Product[],
+    premiumExtendableLambswoolDusters: I_Product[],
+    premiumLambswoolDusters: I_Product[],
     ostrichFeathers: I_Product[],
-    eggshells: I_Product[],
+    ostrichEggshells: I_Product[],
   };
 </script>
 
 <svelte:head>
   <title>Noureddine Feathers</title>
-  <meta name="description" content="Noureddine Feathers - Shop ostrich feather dusters, lambswool dusters, extendable lambswool dusters, ostrich eggshells, and ostrich feathers - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
 <!-- <Hero /> -->
 
-<div class="mx-8">
+<div class="flex flex-col gap-8">
   <div class="flex flex-col gap-8">
-    
-    <div class="flex flex-col md:flex-row gap-4">
+    <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
-          <span>Ostrich Feather Dusters</span>
-        </Heading>
-      </div>
-      <div class="flex items-center ">
-        <Link href="/ostrich-feather-dusters" ariaLabel="ostrich feather dusters">
-          <span>View All</span>
-        </Link>
-      </div>
-    </div>
-
-    <ProductCardGrid products={data.featherDusters} />
-
-    <div class="flex flex-col md:flex-row gap-4">
-      <div class="flex flex-grow items-center">
-        <Heading>
-          <span>Lambswool Dusters</span>
+          <span>Premium Ostrich Feather Dusters</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/lambswool-dusters" ariaLabel="lambswool dusters">
+        <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
           <span>View All</span>
         </Link>
       </div>
     </div>
-
-    <ProductCardGrid products={data.lambswoolDusters} />
-
-    <div class="flex flex-col md:flex-row gap-4">
+    <ProductCardGrid products={data.premiumOstrichfeatherDusters} />
+  </div>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
-          <span>Extendable Lambswool Dusters</span>
+          <span>Premium Extendable Lambswool Dusters</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/extendable-lambswool-dusters" ariaLabel="extendable lambswool dusters">
+        <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters">
           <span>View All</span>
         </Link>
       </div>
     </div>
-    
-    <ProductCardGrid products={data.extendableLambswoolDusters} />
-
-    <div class="flex flex-col md:flex-row gap-4">
+    <ProductCardGrid products={data.premiumExtendableLambswoolDusters} />
+  </div>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4 lg:flex-row">
+      <div class="flex flex-grow items-center">
+        <Heading>
+          <span>Premium Lambswool Dusters</span>
+        </Heading>
+      </div>
+      <div class="flex items-center">
+        <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters">
+          <span>View All</span>
+        </Link>
+      </div>
+    </div>
+    <ProductCardGrid products={data.premiumLambswoolDusters} />
+  </div>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
           <span>Ostrich Feathers</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/ostrich-feathers" ariaLabel="ostrich feathers">
+        <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers">
           <span>View All</span>
         </Link>
       </div>
     </div>
-    
     <ProductCardGrid products={data.ostrichFeathers} />
-
-    <div class="flex flex-col md:flex-row gap-4">
+  </div>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
           <span>Ostrich Eggshells</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/ostrich-eggshells" ariaLabel="ostrich eggshells">
+        <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells">
           <span>View All</span>
         </Link>
       </div>
     </div>
-    
-    <ProductCardGrid products={data.eggshells} />
-
+    <ProductCardGrid products={data.ostrichEggshells} />
   </div>
 </div>

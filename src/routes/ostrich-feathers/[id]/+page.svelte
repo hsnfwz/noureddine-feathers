@@ -10,11 +10,9 @@
 
 <svelte:head>
   <title>{data.product.name} | Noureddine Feathers</title>
-  <meta name="description" content={`${data.product.name} | Noureddine Feathers - Shop ostrich feather dusters, lambswool dusters, extendable lambswool dusters, ostrich eggshells, and ostrich feathers - handmade from 100% natural farm-raised ostrich feathers and eggshells`} />
+  <meta name="description" content={`${data.product.name} | Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells`} />
 </svelte:head>
 
-<div class="mx-8">
-  <div class="flex flex-col gap-8">
-    <ProductDetails product={data.product} productImagePublicUrls={data.productImagePublicUrls} />
-  </div>
+<div class="flex flex-col gap-8">
+  <ProductDetails product={data.product} productImagePublicUrls={data.productImagePublicUrls} />
 </div>

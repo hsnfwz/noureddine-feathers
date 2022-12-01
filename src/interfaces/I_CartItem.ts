@@ -5,7 +5,6 @@ interface I_CartItem {
   thumbnail_url: string,
   name: string,
   color: string,
-  category: string,
   size: number,
   size_unit: string,
   price: number,

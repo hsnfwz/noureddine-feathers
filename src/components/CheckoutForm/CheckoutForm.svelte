@@ -13,6 +13,7 @@
 
   // store
   import { cart } from '$stores/CartStore';
+    import Heading from '$components/Heading/Heading.svelte';
 
   // state
   // let promoCode: string = '';
@@ -63,6 +64,7 @@
 </script>
 
 <div class="flex flex-col gap-4 flex-grow">
+  <Heading>Cart</Heading>
   <p>{$cart.cartTotalItems} ITEMS</p>
   <div class="flex gap-2">
     <p class="nf-font-bold flex-grow">

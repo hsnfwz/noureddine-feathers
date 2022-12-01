@@ -6,21 +6,19 @@
 
 <svelte:head>
   <title>Payment Cancelled | Noureddine Feathers</title>
-  <meta name="description" content="Payment Cancelled | Noureddine Feathers - Shop ostrich feather dusters, lambswool dusters, extendable lambswool dusters, ostrich eggshells, and ostrich feathers - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+  <meta name="description" content="Payment Cancelled | Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
-<div class="mx-8">
-  <div class="flex flex-col gap-8 items-center">
-    <Heading>
-      <span>Payment Cancelled</span>
-    </Heading>
-    <p>
-      Your payment was cancelled. Continue shopping and checkout when you are ready.
-    </p>
-    <div>
-      <Link href="/" ariaLabel="home">
-        <span>Return Home</span>
-      </Link>
-    </div>
+<div class="flex flex-col gap-8 items-center">
+  <Heading>
+    <span>Payment Cancelled</span>
+  </Heading>
+  <p>
+    Your payment was cancelled. Continue shopping and checkout when you are ready.
+  </p>
+  <div>
+    <Link href="/" ariaLabel="home">
+      <span>Return Home</span>
+    </Link>
   </div>
 </div>

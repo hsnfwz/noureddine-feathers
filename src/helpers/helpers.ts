@@ -62,6 +62,24 @@ const generateClass = (unconditionalClasses: string[] = [], conditionalClasses: 
   return generatedClass;
 }
 
+const formatPackage = (quantity: number, showBrackets: boolean = false) => {
+  let _quantity: string = '';
+
+  if (quantity === 1) {
+    _quantity = showBrackets ? '(when you buy 1 unit)' : '1 unit';
+  } else if (quantity === 10) {
+    _quantity = showBrackets ? '(when you buy 10 units)' : '10 units';
+  } else if (quantity === 12) {
+    _quantity = showBrackets ? '(when you buy 1 dz.)': '1 dz.';
+  } else if (quantity === 36) {
+    _quantity = showBrackets ? '(when you buy 3 dz.)': '3 dz.';
+  } else if (quantity === 60) {
+    _quantity = showBrackets ? '(when you buy 5 dz.)': '5 dz.';
+  }
+
+  return _quantity;
+}
+
 export {
   calculateAverageRating,
   calculateSalePrice,
@@ -71,4 +89,5 @@ export {
   getMinPrice,
   getMaxPrice,
   generateClass,
+  formatPackage,
 }

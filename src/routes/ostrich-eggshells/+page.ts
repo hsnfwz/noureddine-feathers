@@ -5,7 +5,7 @@ import { getProducts } from '$api/product';
 import type I_Product from '$interfaces/I_Product';
 
 export async function load({ params }: any) {
-  const products: I_Product[] | undefined = await getProducts({ category: 'Ostrich Eggshells' });
+  const products: I_Product[] | undefined = await getProducts({ name: 'Ostrich Eggshell' });
 
   return { products: products || [] };
 }
