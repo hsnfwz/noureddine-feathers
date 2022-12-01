@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
 
   // helpers
-  import { formatCurrency, formatCategory, formatPackage } from '$helpers/helpers';
+  import { formatCurrency, formatText, formatPackage } from '$helpers/helpers';
 
   // interfaces
   import type I_Product from '$interfaces/I_Product';
@@ -25,7 +25,7 @@
   <ProductCardSkeleton />
 {:else}
   <div class="flex flex-col gap-4">
-    <Link href={`/${formatCategory(product.name)}s/${product.id}`} ariaLabel={product.name}>
+    <Link href={`/${formatText(product.name)}s/${product.id}-${formatText(product.name)}-${formatText(product.color)}-${product.size || ''}-${formatText(product.size_unit) || ''}`} ariaLabel={product.name}>
       <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
         <img
           src={product.thumbnail_url}

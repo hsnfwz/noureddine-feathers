@@ -1,3 +1,5 @@
+import { error } from '@sveltejs/kit';
+
 // api
 import { getProducts } from '$api/product';
 
@@ -7,5 +9,9 @@ import type I_Product from '$interfaces/I_Product';
 export async function load({ params }: any) {
   const products: I_Product[] | undefined = await getProducts({ name: 'Premium Lambswool Duster' });
 
-  return { products: products || [] };
+  if (!products) {
+    throw error(404, 'Not Found');
+  }
+
+  return { products };
 }

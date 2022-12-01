@@ -6,9 +6,14 @@ const formatCurrency = (amount: number) => {
   return formatToUSD.format(amount);
 }
 
-const formatCategory = (category: string) => {
-  const _category = category.split(' ').join('-').toLowerCase();
-  return _category;
+const formatText = (text: string) => {
+  let _text: string = '';
+  
+  if (text) {
+    _text = text.split(' ').join('-').toLowerCase();
+  }
+  
+  return _text;
 }
 
 const calculateAverageRating = (ratings: number[]) => {
@@ -84,7 +89,7 @@ export {
   calculateAverageRating,
   calculateSalePrice,
   formatCurrency,
-  formatCategory,
+  formatText,
   groupBy,
   getMinPrice,
   getMaxPrice,

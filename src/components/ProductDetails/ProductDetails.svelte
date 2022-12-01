@@ -68,30 +68,33 @@
   }
 </script>
 
-<div class="flex flex-col md:flex-row gap-8 m-auto">
-  <div class="flex flex-col gap-2 md:hidden">
-    <h1 class="nf-font-bold text-xl">{product.name}</h1>
-    <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
-    <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
-    <p>
-      {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
-    </p>
+<div class="flex flex-col lg:flex-row gap-8 m-auto">
+  <div class="max-w-[500px] flex flex-col gap-8">
+    <div class="flex flex-col gap-2 lg:hidden">
+      <h1 class="nf-font-bold text-xl">{product.name}</h1>
+      <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
+      <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
+      <p>
+        {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
+      </p>
+    </div>
+    <div class="flex flex-col gap-4">
+      {#each productImagePublicUrls as publicUrl}
+        <div class="bg-gray-100 p-2 flex justify-center">
+          <img
+            src={publicUrl}
+            alt={product.name}
+            width=""
+            height=""
+            class="object-cover"
+          />
+        </div>
+      {/each}
+    </div>
   </div>
-  <div class="flex flex-col gap-4">
-    {#each productImagePublicUrls as publicUrl}
-      <div class="bg-gray-100 p-2 flex justify-center">
-        <img
-          src={publicUrl}
-          alt={product.name}
-          width="1000"
-          height="1000"
-        />
-      </div>
-    {/each}
-  </div>
-  <div class="max-w-[600px]">
+  <div class="max-w-[500px] sticky top-4">
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
-      <div class="hidden md:flex md:flex-col md:gap-2">
+      <div class="hidden lg:flex lg:flex-col lg:gap-2">
         <h1 class="nf-font-bold text-xl">{product.name}</h1>
         <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
         <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
@@ -106,10 +109,10 @@
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Details</p>
         <ul class="list-disc list-inside">
-          <li>Category: {product.name}s</li>
-          <li>Color: {product.color}</li>
+          <li><span class="nf-font-bold">Category:</span> {product.name}s</li>
+          <li><span class="nf-font-bold">Color:</span> {product.color}</li>
           {#if product.size}
-            <li>Size: {product.size} {product.size_unit}</li>
+            <li><span class="nf-font-bold">Size:</span> {product.size} {product.size_unit}</li>
           {/if}
         </ul>
         <p>*Because our products are handmade, sizes and/or colors may vary slightly</p>

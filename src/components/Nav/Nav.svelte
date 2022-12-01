@@ -45,7 +45,7 @@
 
 <nav>
   {#if showNavMobile}
-    <div class="fixed top-0 bg-gray-50 w-full h-full z-50">
+    <div class="fixed top-0 bg-gray-50 w-full h-full z-50 overflow-auto">
       <div class="flex flex-col gap-4 px-8 py-2">
         <div class="flex gap-4">
           <div class="flex flex-row flex-shrink-0">
@@ -60,7 +60,7 @@
               </div>
             </Link>
           </div>
-          <div class="flex items-center flex-1 justify-end lg:hidden">
+          <div class="flex items-center flex-1 justify-end 2xl:hidden">
             <Button handleClick={() => showNavMobile = false}>
               <IconX />
             </Button>
@@ -116,13 +116,13 @@
             </div>
           </Link>
         </div>
-        <div class="flex items-center lg:hidden">
+        <div class="flex items-center 2xl:hidden">
           <Button handleClick={() => showNavMobile = true}>
             <IconStack />
           </Button>
         </div>
-        <div class="hidden lg:flex">
-          <div class="flex flex-col gap-4 flex-grow justify-center lg:flex-row">
+        <div class="hidden 2xl:flex">
+          <div class="flex flex-col gap-4 flex-grow justify-center 2xl:flex-row">
             <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
               <span>Premium Ostrich Feather Dusters</span>
             </Link>
@@ -140,8 +140,8 @@
             </Link>
           </div>
         </div>
-        <div class="hidden lg:flex">
-          <div class="flex flex-col gap-4 flex-shrink-0 lg:flex-row items-center">
+        <div class="hidden 2xl:flex">
+          <div class="flex flex-col gap-4 flex-shrink-0 2xl:flex-row items-center">
             {#if $session}
               <Link href="/account" ariaLabel="account">Account</Link>
             {:else}

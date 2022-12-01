@@ -5,7 +5,7 @@
   import type I_CartItem from '$interfaces/I_CartItem';
 
   // helpers
-  import { formatCurrency, formatCategory, formatPackage } from '$helpers/helpers';
+  import { formatCurrency, formatText, formatPackage } from '$helpers/helpers';
 
   // stores
   import { cart } from '$stores/CartStore';
@@ -28,7 +28,7 @@
 </script>
 
 <div class="flex flex-col gap-4">
-  <Link href={`/${formatCategory(cartItem.name)}s/${cartItem.product_id}`} ariaLabel={cartItem.name}>
+  <Link href={`/${formatText(cartItem.name)}s/${cartItem.product_id}-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${cartItem.size || ''}-${formatText(cartItem.size_unit) || ''}`} ariaLabel={cartItem.name}>
     <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
       <img
         src={cartItem.thumbnail_url}

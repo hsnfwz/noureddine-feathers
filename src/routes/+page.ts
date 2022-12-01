@@ -1,8 +1,7 @@
+import { error } from '@sveltejs/kit';
+
 // api
 import { getProducts } from '$api/product';
-
-// interfaces
-import type I_Product from '$interfaces/I_Product';
 
 export async function load({ params }: any) {
   const products = await Promise.all([
@@ -12,6 +11,10 @@ export async function load({ params }: any) {
     getProducts({ name: 'Ostrich Feather' }, undefined, 4),
     getProducts({ name: 'Ostrich Eggshell' }, undefined, 4),
   ]);
+
+  if (!products) {
+    throw error(404, 'Not Found');
+  }
 
   return {
     premiumOstrichfeatherDusters: products[0] || [],

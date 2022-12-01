@@ -14,9 +14,7 @@
   <meta name="description" content="Premium Lambswool Duster | Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
-<div class="flex flex-col gap-8">
-  <Heading>
-    <span>Premium Lambswool Duster</span>
-  </Heading>
-  <ProductCardGrid products={data.products} />
-</div>
+<Heading>
+  <span>Premium Lambswool Duster</span>
+</Heading>
+<ProductCardGrid products={data.products} />

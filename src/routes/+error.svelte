@@ -9,12 +9,10 @@
   <meta name="description" content="404 Not Found | Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
-<div class="flex flex-col gap-8">
-  <Heading customClass="text-center">
-    <span>404 Not Found</span>
-  </Heading>
-  <p class="text-center">Woops! We could not find what you were looking for.</p>
-  <div class="text-center">
-    <Link href="/" ariaLabel="home">Return Home</Link>
-  </div>
+<Heading customClass="text-center">
+  <span>404 Not Found</span>
+</Heading>
+<p class="text-center">Woops! We could not find what you were looking for.</p>
+<div class="text-center">
+  <Link href="/" ariaLabel="home">Return Home</Link>
 </div>

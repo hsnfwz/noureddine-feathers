@@ -37,7 +37,7 @@
 </script>
 
 {#if visible}
-  <div class="flex flex-col justify-center items-center gap-8 my-8">
+  <div class="flex flex-col justify-center items-center gap-8">
     {#if showSuccessMessage}
       <p>Check your email</p>
       <p class="text-center">
