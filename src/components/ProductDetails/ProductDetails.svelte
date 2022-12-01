@@ -92,7 +92,7 @@
       {/each}
     </div>
   </div>
-  <div class="max-w-[500px] sticky top-4">
+  <div class="max-w-[500px]">
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
       <div class="hidden lg:flex lg:flex-col lg:gap-2">
         <h1 class="nf-font-bold text-xl">{product.name}</h1>
