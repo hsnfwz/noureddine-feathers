@@ -12,7 +12,7 @@
   <Heading>
     <span>About</span>
   </Heading>
-  <div class="flex flex-col gap-4 max-w-[400px]">
+  <div class="flex flex-col gap-4 max-w-[500px]">
     <p>
       Noureddine Feathers is a family business that started manufacturing feather dusters in the Mediterranean in 1976.
     </p>
@@ -27,6 +27,11 @@
     </p>
     <p>
       In addition to feather dusters, we sell lambswool dusters, ostrich feathers, and ostrich eggshells.
+    </p>
+  </div>
+  <div class="max-w-[500px]">
+    <p>
+      *If you have any further questions, please contact us by email at info@nprofiles.com.
     </p>
   </div>
 </div>

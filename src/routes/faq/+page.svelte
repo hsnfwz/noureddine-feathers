@@ -12,7 +12,7 @@
   <Heading>
     <span>FAQ</span>
   </Heading>
-  <div class="flex flex-col gap-4 max-w-[400px]">
+  <div class="flex flex-col gap-4 max-w-[500px]">
     <div class="flex flex-col gap-2">
       <p class="text-gray-500">
         Where do your ostrich feathers come from?
@@ -45,11 +45,11 @@
         What if I am not satisifed with my order?
       </p>
       <p>
-        Your satisfaction is our top priority. If you have any questions or are unsatisfied with your order, please contact us by email at info@nprofiles.com for a replacement, no questions asked. We are always looking forward to your suggestions and feedback to help improve our service.
+        Your satisfaction is our top priority. If you have any questions or are unsatisfied with your order, please contact us by email at info@nprofiles.com or by phone at 604-889-4117 (CALL) / 604-986-0231 (FAX) for a replacement, no questions asked. We are always looking forward to your suggestions and feedback to help improve our service.
       </p>
     </div>
   </div>
-  <div class="max-w-[400px]">
+  <div class="max-w-[500px]">
     <p>
       *If you have any further questions, please contact us by email at info@nprofiles.com.
     </p>

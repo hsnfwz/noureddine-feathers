@@ -23,7 +23,7 @@
       />
     </div>
   </Link>
-  <div class="flex flex-col gap-4 justify-center items-center">
+  <!-- <div class="flex flex-col gap-4 justify-center items-center">
     <p class="text-center">Follow Us</p>
     <div class="flex gap-4">
       <Link
@@ -51,7 +51,7 @@
         </div>
       </Link>
     </div>
-  </div>
+  </div> -->
   <div class="grid grid-flow-row lg:grid-flow-col gap-4">
     <Link
       href="/contact"
