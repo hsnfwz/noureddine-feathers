@@ -26,9 +26,9 @@
   afterUpdate(() => quantity = cartItem.cart_item_quantity);
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 rounded-lg">
   <Link href={`/${formatText(cartItem.name)}s/${cartItem.product_id}-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${cartItem.size || ''}-${formatText(cartItem.size_unit) || ''}`} ariaLabel={cartItem.name}>
-    <div class="flex justify-center p-2 bg-neutral-100">
+    <div class="flex justify-center p-2 bg-neutral-100 rounded-lg">
       <img
         src={cartItem.thumbnail_url}
         alt={cartItem.name}

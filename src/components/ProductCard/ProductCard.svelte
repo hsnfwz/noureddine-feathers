@@ -24,9 +24,9 @@
 {#if isLoading}
   <ProductCardSkeleton />
 {:else}
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4 rounded-lg">
     <Link href={`/${formatText(product.name)}s/${product.id}-${formatText(product.name)}-${formatText(product.color)}-${product.size || ''}-${formatText(product.size_unit) || ''}`} ariaLabel={product.name}>
-      <div class="flex justify-center p-2 bg-neutral-100">
+      <div class="flex justify-center p-2 bg-neutral-100 rounded-lg">
         <img
           src={product.thumbnail_url}
           alt={product.name}

@@ -80,7 +80,7 @@
     </div>
     <div class="flex flex-col gap-4">
       {#each productImagePublicUrls as publicUrl}
-        <div class="bg-neutral-100 p-2 flex justify-center">
+        <div class="bg-neutral-100 p-2 flex justify-center rounded-lg">
           <img
             src={publicUrl}
             alt={product.name}
