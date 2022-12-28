@@ -61,7 +61,7 @@
 {#if !isLoading}
   <main class="bg-white min-h-screen">
     <Nav />
-    <div class="flex flex-col gap-8 m-8">
+    <div class="flex flex-col gap-4 m-4">
       <slot />
     </div>
     <Footer />

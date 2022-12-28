@@ -69,11 +69,11 @@ const checkout = async () => {
 </svelte:head>
 
 {#if $cart.isLoadingCartItems}
-  <div class="flex flex-col gap-8 items-center">
+  <div class="flex flex-col gap-4 items-center">
     <span class="animate-spin h-6 w-6 border-2 border-black border-t-white rounded-full"></span>
   </div>
 {:else}
-  <div class="flex flex-col gap-8 items-center lg:flex-row lg:items-start lg:justify-center">
+  <div class="flex flex-col gap-4 items-center lg:flex-row lg:items-start lg:justify-center">
     <div class="flex lg:hidden">
       <Heading>Cart</Heading>
     </div>

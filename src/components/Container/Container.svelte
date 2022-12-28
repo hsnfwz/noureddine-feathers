@@ -29,13 +29,13 @@
       { 'items-center': isFlowYCenter },
       { 'items-end': isFlowYEnd },
       { 'gap-2': isGapSmall },
-      { 'gap-8': isGapLarge },
+      { 'gap-4': isGapLarge },
       { 'gap-2': isPaddingSmall },
       { 'gap-4': isPaddingMedium },
-      { 'gap-8': isPaddingLarge },
+      { 'gap-4': isPaddingLarge },
       { 'gap-2': isMarginSmall },
       { 'gap-4': isMarginMedium },
-      { 'gap-8': isMarginLarge },
+      { 'gap-4': isMarginLarge },
     ]
   );
 </script>

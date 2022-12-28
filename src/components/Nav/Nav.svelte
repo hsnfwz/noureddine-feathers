@@ -95,7 +95,7 @@
       </div>
     </div>
   {:else}
-    <div class={`flex flex-col w-full border-b-2 mb-8 border-b-gray-100 bg-neutral-50`}>
+    <div class={`flex flex-col w-full mb-4 bg-neutral-50`}>
       <div class="flex items-center justify-between gap-4 px-8 py-2">
         <div class="flex flex-row flex-shrink-0">
           <Link href="/" ariaLabel="home">

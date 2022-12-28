@@ -25,7 +25,7 @@
 
 <!-- <Hero /> -->
 
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
   <div class="flex flex-col gap-4 lg:flex-row">
     <div class="flex flex-grow items-center">
       <Heading>
@@ -40,7 +40,7 @@
   </div>
   <ProductCardGrid products={data.premiumOstrichfeatherDusters} />
 </div>
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
   <div class="flex flex-col gap-4 lg:flex-row">
     <div class="flex flex-grow items-center">
       <Heading>
@@ -55,7 +55,7 @@
   </div>
   <ProductCardGrid products={data.premiumExtendableLambswoolDusters} />
 </div>
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
   <div class="flex flex-col gap-4 lg:flex-row">
     <div class="flex flex-grow items-center">
       <Heading>
@@ -70,7 +70,7 @@
   </div>
   <ProductCardGrid products={data.premiumLambswoolDusters} />
 </div>
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
   <div class="flex flex-col gap-4 lg:flex-row">
     <div class="flex flex-grow items-center">
       <Heading>
@@ -85,7 +85,7 @@
   </div>
   <ProductCardGrid products={data.ostrichFeathers} />
 </div>
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
   <div class="flex flex-col gap-4 lg:flex-row">
     <div class="flex flex-grow items-center">
       <Heading>

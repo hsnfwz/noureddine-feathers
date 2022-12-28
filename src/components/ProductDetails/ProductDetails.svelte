@@ -68,8 +68,8 @@
   }
 </script>
 
-<div class="flex flex-col lg:flex-row gap-8 m-auto">
-  <div class="max-w-[500px] flex flex-col gap-8">
+<div class="flex flex-col lg:flex-row gap-4 m-auto">
+  <div class="max-w-[500px] flex flex-col gap-4">
     <div class="flex flex-col gap-2 lg:hidden">
       <h1 class="nf-font-bold text-xl">{product.name}</h1>
       <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>

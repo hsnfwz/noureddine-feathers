@@ -39,7 +39,7 @@
   }
 </script>
 
-<div class="flex flex-col items-center gap-8">
+<div class="flex flex-col items-center gap-4">
   <Heading>
     <span>Sign In</span>
   </Heading>
