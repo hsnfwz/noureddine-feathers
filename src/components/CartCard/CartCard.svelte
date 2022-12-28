@@ -11,7 +11,6 @@
   import { cart } from '$stores/CartStore';
   
   // components
-  import Button from '$components/Button/Button.svelte';
   import Link from '$components/Link/Link.svelte';
   import Counter from '$components/Counter/Counter.svelte';
 
@@ -29,7 +28,7 @@
 
 <div class="flex flex-col gap-4">
   <Link href={`/${formatText(cartItem.name)}s/${cartItem.product_id}-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${cartItem.size || ''}-${formatText(cartItem.size_unit) || ''}`} ariaLabel={cartItem.name}>
-    <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
+    <div class="flex justify-center p-2 bg-neutral-100">
       <img
         src={cartItem.thumbnail_url}
         alt={cartItem.name}
@@ -63,10 +62,11 @@
       </p>
     </div>
   </div>
-  <Button
-    handleClick={() => cart.removeCartItem(cartItemIndex)}
-    customClass="bg-red-500 text-white uppercase p-2"
+  <button
+    class="rounded px-4 py-2 bg-red-500 text-white nf-font-bold disabled:opacity-50"  
+    type="button"
+    on:click={() => cart.removeCartItem(cartItemIndex)}
   >
-    <span>Remove</span>
-  </Button>
+    Remove
+  </button>
 </div>

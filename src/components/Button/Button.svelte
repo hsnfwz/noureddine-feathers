@@ -8,9 +8,9 @@
   import { generateClass } from '$helpers/helpers';
 
   const _class = generateClass(
-    ['flex justify-center items-center uppercase hover:brightness-75 transition-all cursor-pointer disabled:opacity-25 disabled:pointer-events-none', customClass],
+    ['flex justify-center items-center uppercase disabled:opacity-25 disabled:pointer-events-none', customClass],
     [
-      { 'bg-gray-50': customClass === '' },
+      { 'bg-neutral-50': customClass === '' },
     ]
   );
 </script>

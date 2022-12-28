@@ -80,7 +80,7 @@
     </div>
     <div class="flex flex-col gap-4">
       {#each productImagePublicUrls as publicUrl}
-        <div class="bg-gray-100 p-2 flex justify-center">
+        <div class="bg-neutral-100 p-2 flex justify-center">
           <img
             src={publicUrl}
             alt={product.name}
@@ -120,23 +120,14 @@
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Package</p>
         <div class="flex gap-2">
-          <!-- <Button
-            handleClick={() => console.log('single package')}
-            disabled={true}
-            customClass="text-black bg-gray-100"
-          >
-            <span>Single</span>
-          </Button> -->
           {#each product.prices as price}
             <div class={`${productPrice === price ? 'pointer-events-none outline outline-2 outline-black' : 'outline-none'}`}>
-              <Button
-                handleClick={() => productPrice = price}
-                customClass={`text-black bg-gray-100 p-2 lowercase`}
+              <button
+                class="rounded px-4 py-2 bg-neutral-100 text-black nf-font-bold disabled:opacity-50"
+                on:click={() => productPrice = price}
               >
-                <span>
-                  {formatPackage(price.quantity)}
-                </span>
-              </Button>
+                {formatPackage(price.quantity)}
+              </button>
             </div>
           {/each}
         </div>
@@ -146,19 +137,19 @@
         <Counter bind:value={quantity} />
       </div>
       <div class="flex flex-col gap-2">
-        <Button
-          handleClick={() => cart.addCartItem(product, productPrice, quantity)}
-          customClass="uppercase text-white bg-orange-500 p-2"
+        <button
+          class="rounded px-4 py-2 bg-orange-500 text-white nf-font-bold disabled:opacity-50"
+          on:click={() => cart.addCartItem(product, productPrice, quantity)}
         >
-          <span>Add to Cart</span>
-        </Button>
-        <Button
-          handleClick={async () => await checkout()}
-          customClass="uppercase text-white bg-orange-300 p-2"
+          Add to Cart
+        </button>
+        <button
+          class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
+          on:click={async () => await checkout()}
           disabled={isLoadingCheckout}
         >
-          <span>Buy Now</span>
-        </Button>
+          Buy Now
+        </button>
         {#if isLoadingCheckout}
           <div class="flex justify-center uppercase p-2">
             <p>Redirecting to Checkout...</p>

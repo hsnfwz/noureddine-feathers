@@ -26,7 +26,7 @@
 {:else}
   <div class="flex flex-col gap-4">
     <Link href={`/${formatText(product.name)}s/${product.id}-${formatText(product.name)}-${formatText(product.color)}-${product.size || ''}-${formatText(product.size_unit) || ''}`} ariaLabel={product.name}>
-      <div class="flex justify-center p-2 bg-gray-100 hover:opacity-25 transition-all">
+      <div class="flex justify-center p-2 bg-neutral-100">
         <img
           src={product.thumbnail_url}
           alt={product.name}

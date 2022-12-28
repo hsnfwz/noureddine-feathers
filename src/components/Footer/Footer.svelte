@@ -9,12 +9,12 @@
   import ImageLogo from '$lib/images/logo.webp';
 </script>
 
-<footer class="flex flex-col bg-gray-50 p-8 mt-8 gap-8 justify-center items-center">    
+<footer class="flex flex-col bg-neutral-50 p-8 mt-8 gap-8 justify-center items-center">    
   <Link
     href="/"
     ariaLabel="home"
   >
-    <div class="hover:opacity-25 transition-all">
+    <div>
       <img
         src={ImageLogo}
         alt="Noureddine Feathers"

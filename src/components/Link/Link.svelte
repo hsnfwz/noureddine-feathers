@@ -7,7 +7,7 @@
 </script>
 
 <a
-  class={`text-center hover:underline ${customClass}`}
+  class={`text-center ${customClass}`}
   href={href}
   aria-label={ariaLabel}
   on:click={() => {

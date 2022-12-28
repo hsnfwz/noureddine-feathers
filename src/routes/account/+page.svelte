@@ -4,32 +4,31 @@
   import Heading from '$components/Heading/Heading.svelte';
   import Link from '$components/Link/Link.svelte';
 
+  // supabase
+  import supabase from '$config/supabase';
+
   // stores
   import { session } from '$stores/SessionStore';
+
+  // state
+  let currentSession: any = undefined;
+
+  session.subscribe((value) => currentSession = value);
 </script>
 
-{#if $session}
-  <div class="flex flex-col gap-8 items-center">
-    <Heading>
-      <span>Account</span>
-    </Heading>
-    <div>
-      <Button
-        handleClick={async () => {
-          await session.signOutUser();
-          if (window) window.location.replace('/');
-        }}
-        customClass="bg-gray-100 p-2"
-      >
-        <span>Sign Out</span>
-      </Button>
-    </div>
-  </div>
-{:else}
-  <div class="flex flex-col gap-8 items-center">
-    <Heading>
-      <span>Account</span>
-    </Heading>
+<div class="flex flex-col items-center gap-8">
+  <Heading>
+    <span>Account</span>
+  </Heading>
+  {#if currentSession}
+    <button
+      class="px-4 py-2 bg-neutral-100 rounded nf-font-bold"
+      type="button"
+      on:click={async () => await supabase.auth.signOut()}
+    >
+      Sign Out
+    </button>
+  {:else}
     <p><Link href="/sign-in" ariaLabel="Sign In">Sign in</Link> to view your account</p>
-  </div>
-{/if}
+  {/if}
+</div>

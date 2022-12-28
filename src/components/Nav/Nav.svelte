@@ -7,9 +7,18 @@
   import IconStack from '$components/icons/IconStack.svelte';
   import IconX from '$components/icons/IconX.svelte';
 
-  // store
+  // stores
   import { session } from '$stores/SessionStore';
+  import { profile } from '$stores/ProfileStore';
+  import { page } from '$app/stores';
   import { cart } from '$stores/CartStore';
+
+  // state
+  let currentSession: any = undefined;
+  let currentProfile: any = undefined;
+
+  session.subscribe((value) => currentSession = value);
+  profile.subscribe((value) => currentProfile = value);
 
   // lib
   import ImageLogo from '$lib/images/logo.webp';
@@ -18,21 +27,9 @@
   let showNavMobile: boolean = false;
 
   // state
-  let loading: boolean = true;
-  let subscriptionAuthStateChange: any;
   let bodyElement: any;
 
-  onMount(async () => {
-    subscriptionAuthStateChange = session.subscribeAuthStateChange();
-
-    await session.getSession();
-
-    loading = false;
-
-    bodyElement = document.querySelector('body');
-  });
-
-  onDestroy(() => session.unsubscribeAuthStateChange(subscriptionAuthStateChange));
+  onMount(() => bodyElement = document.querySelector('body'));
 
   $: {
     if (showNavMobile) {
@@ -45,12 +42,12 @@
 
 <nav>
   {#if showNavMobile}
-    <div class="fixed top-0 bg-gray-50 w-full h-full z-50 overflow-auto">
+    <div class="fixed top-0 bg-neutral-50 w-full h-full z-50 overflow-auto">
       <div class="flex flex-col gap-4 px-8 py-2">
         <div class="flex gap-4">
           <div class="flex flex-row flex-shrink-0">
             <Link href="/" ariaLabel="home" handleClick={() => showNavMobile = false}>
-              <div class="hover:opacity-25 transition-all">
+              <div>
                 <img
                   src={ImageLogo}
                   alt="Noureddine Feathers"
@@ -90,23 +87,19 @@
             {:else}
               <Link href="/sign-in" ariaLabel="sign in" handleClick={() => showNavMobile = false}>Sign In</Link>
             {/if}
-            {#if loading}
-              <span class="animate-spin h-6 w-6 border-2 border-black border-t-white rounded-full"></span>
-            {:else}
-              <Link href="/cart" ariaLabel="cart" handleClick={() => showNavMobile = false}>
-                <span>Cart ({$cart.cartTotalItems})</span>
-              </Link>
-            {/if}
+            <Link href="/cart" ariaLabel="cart" handleClick={() => showNavMobile = false}>
+              <span>Cart ({$cart.cartTotalItems})</span>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   {:else}
-    <div class={`flex flex-col w-full border-b-2 mb-8 border-b-gray-100 bg-gray-50`}>
+    <div class={`flex flex-col w-full border-b-2 mb-8 border-b-gray-100 bg-neutral-50`}>
       <div class="flex items-center justify-between gap-4 px-8 py-2">
         <div class="flex flex-row flex-shrink-0">
           <Link href="/" ariaLabel="home">
-            <div class="hover:opacity-25 transition-all">
+            <div>
               <img
                 src={ImageLogo}
                 alt="Noureddine Feathers"
@@ -147,13 +140,9 @@
             {:else}
               <Link href="/sign-in" ariaLabel="sign in">Sign In</Link>
             {/if}
-            {#if loading}
-              <span class="animate-spin h-6 w-6 border-2 border-black border-t-white rounded-full"></span>
-            {:else}
-              <Link href="/cart" ariaLabel="cart">
-                <span>Cart ({$cart.cartTotalItems})</span>
-              </Link>
-            {/if}
+            <Link href="/cart" ariaLabel="cart">
+              <span>Cart ({$cart.cartTotalItems})</span>
+            </Link>
           </div>
         </div>
       </div>
