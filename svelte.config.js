@@ -1,8 +1,10 @@
 import adapter from '@sveltejs/adapter-auto';
-import preprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/kit/vite';
 import { resolve } from 'path';
 
 const config = {
+  preprocess: vitePreprocess(),
+
 	kit: {
 		adapter: adapter(),
 		alias: {
@@ -14,11 +16,6 @@ const config = {
 			'$helpers': resolve('./src/helpers/'),
     }
 	},
-  preprocess: [
-    preprocess({
-      postcss: true,
-    }),
-  ],
 };
 
 export default config;
