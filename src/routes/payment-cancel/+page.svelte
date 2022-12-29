@@ -16,9 +16,4 @@
   <p>
     Your payment was cancelled. Continue shopping and checkout when you are ready.
   </p>
-  <div>
-    <Link href="/" ariaLabel="home">
-      <span>Return Home</span>
-    </Link>
-  </div>
 </div>

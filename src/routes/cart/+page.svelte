@@ -31,13 +31,13 @@ const checkout = async () => {
       }
     });
 
-    let discounts = undefined;
+    // let discounts = undefined;
     
     // if (promoCode) discounts = [{ coupon: promoCode }];
 
     const body = {
       lineItems,
-      discounts,
+      // discounts,
     };
 
     const response = await fetch('/api/checkout', {
@@ -111,7 +111,8 @@ const checkout = async () => {
             class="p-2 border-2 border-gray-100 rounded-sm box-border"
           />
         </div> -->
-        <p class="text-gray-500">Shipping, taxes, and discounts calculated at checkout</p>
+        <!-- <p class="text-gray-500">Shipping, taxes, and discounts calculated at checkout</p> -->
+        <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
         <button
           class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
           type="button"

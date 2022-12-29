@@ -8,9 +8,9 @@
   import IconX from '$components/icons/IconX.svelte';
 
   // stores
+  import { page } from '$app/stores';
   import { session } from '$stores/SessionStore';
   import { profile } from '$stores/ProfileStore';
-  import { page } from '$app/stores';
   import { cart } from '$stores/CartStore';
 
   // state
@@ -82,7 +82,7 @@
             </Link>
           </div>
           <div class="flex flex-col gap-4">
-            {#if $session}
+            {#if currentSession}
               <Link href="/account" ariaLabel="account" handleClick={() => showNavMobile = false}>Account</Link>
             {:else}
               <Link href="/sign-in" ariaLabel="sign in" handleClick={() => showNavMobile = false}>Sign In</Link>
@@ -135,7 +135,7 @@
         </div>
         <div class="hidden 2xl:flex">
           <div class="flex flex-col gap-4 flex-shrink-0 2xl:flex-row items-center">
-            {#if $session}
+            {#if currentSession}
               <Link href="/account" ariaLabel="account">Account</Link>
             {:else}
               <Link href="/sign-in" ariaLabel="sign in">Sign In</Link>

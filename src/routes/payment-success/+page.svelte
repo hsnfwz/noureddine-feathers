@@ -23,9 +23,4 @@
   <p>
     Your payment was successful!
   </p>
-  <div>
-    <Link href="/" ariaLabel="home">
-      <span>Return Home</span>
-    </Link>
-  </div>
 </div>
