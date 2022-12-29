@@ -9,7 +9,7 @@
   import ImageLogo from '$lib/images/logo.webp';
 </script>
 
-<footer class="flex flex-col bg-neutral-50 p-4 mt-4 gap-4 justify-center items-center">    
+<footer class="flex flex-col bg-neutral-100 p-4 mt-4 gap-4 justify-center items-center">    
   <Link
     href="/"
     ariaLabel="home"

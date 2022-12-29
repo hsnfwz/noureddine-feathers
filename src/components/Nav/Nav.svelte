@@ -42,7 +42,7 @@
 
 <nav>
   {#if showNavMobile}
-    <div class="fixed top-0 bg-neutral-50 w-full h-full z-50 overflow-auto">
+    <div class="fixed top-0 bg-neutral-100 w-full h-full z-50 overflow-auto">
       <div class="flex flex-col gap-4 px-8 py-2">
         <div class="flex gap-4">
           <div class="flex flex-row flex-shrink-0">
@@ -95,7 +95,7 @@
       </div>
     </div>
   {:else}
-    <div class={`flex flex-col w-full mb-4 bg-neutral-50`}>
+    <div class={`flex flex-col w-full mb-4 bg-neutral-100`}>
       <div class="flex items-center justify-between gap-4 px-8 py-2">
         <div class="flex flex-row flex-shrink-0">
           <Link href="/" ariaLabel="home">

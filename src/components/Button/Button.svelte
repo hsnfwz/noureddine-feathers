@@ -10,7 +10,7 @@
   const _class = generateClass(
     ['flex justify-center items-center uppercase disabled:opacity-25 disabled:pointer-events-none', customClass],
     [
-      { 'bg-neutral-50': customClass === '' },
+      { 'bg-neutral-100': customClass === '' },
     ]
   );
 </script>
