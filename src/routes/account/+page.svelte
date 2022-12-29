@@ -29,6 +29,6 @@
       Sign Out
     </button>
   {:else}
-    <p><Link href="/sign-in" ariaLabel="Sign In">Sign in</Link> to view your account</p>
+    <p><Link href="/sign-in" ariaLabel="Sign In" customClass="text-blue-500">Sign in</Link> to view your account</p>
   {/if}
 </div>

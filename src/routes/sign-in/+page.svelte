@@ -44,7 +44,7 @@
     <span>Sign In</span>
   </Heading>
   {#if currentSession}
-    <a href="/" class="text-blue-500">Home</a>
+    <p class="text-center">You are already signed in!</p>
   {:else}
     {#if showSuccessMessage}
       <div class="flex flex-col gap-4 w-60">
@@ -75,7 +75,7 @@
         >
           Sign In
         </button>
-        <p>By signing in, you agree to our <a class="text-blue-500" href="/terms-and-conditions">Terms and Conditions.</a></p>
+        <p>By signing in, you agree to our <a class="text-blue-500" href="/terms-and-conditions">Terms and Conditions</a></p>
       </form>
     {/if}
   {/if}

@@ -13,7 +13,7 @@
   <Heading>
     <span>Payment Cancelled</span>
   </Heading>
-  <p>
+  <p class="text-center">
     Your payment was cancelled. Continue shopping and checkout when you are ready.
   </p>
 </div>

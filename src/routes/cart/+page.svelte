@@ -8,17 +8,22 @@ import { formatCurrency } from '$helpers/helpers';
 
 // interfaces
 import type I_CartItem from '$interfaces/I_CartItem';
+import type I_Profile from '$interfaces/I_Profile';
 
 // config
 import getStripe from '$config/stripe';
 
 // store
+import { profile } from '$stores/ProfileStore';
 import { cart } from '$stores/CartStore';
 
 // state
 // let promoCode: string = '';
+let currentProfile: I_Profile | undefined;
 let isLoadingCheckout: boolean = false;
 let checkoutErrorMessage: string = '';
+
+profile.subscribe((value) => currentProfile = value);
 
 const checkout = async () => {
   try {
@@ -36,6 +41,7 @@ const checkout = async () => {
     // if (promoCode) discounts = [{ coupon: promoCode }];
 
     const body = {
+      profileId: currentProfile?.id,
       lineItems,
       // discounts,
     };

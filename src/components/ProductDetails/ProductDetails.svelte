@@ -1,5 +1,6 @@
 <script lang="ts">
   // stores
+  import { profile } from '$stores/ProfileStore';
   import { cart } from '$stores/CartStore';
 
   // helpers
@@ -11,6 +12,7 @@
   // interfaces
   import type I_Product from '$interfaces/I_Product';
   import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecord';
+  import type I_Profile from '$interfaces/I_Profile';
 
   // components
   import Stars from '$components/Stars/Stars.svelte';
@@ -22,10 +24,13 @@
   export let productImagePublicUrls: string[];
 
   // state
+  let currentProfile: I_Profile | undefined;
   let productPrice: I_ProductPriceTableRecord = product?.prices[0];
   let quantity: number = 1;
   let isLoadingCheckout: boolean = false;
   let checkoutErrorMessage: string = '';
+
+  profile.subscribe((value) => currentProfile = value);
 
   const checkout = async () => {
     try {
@@ -36,13 +41,14 @@
         quantity,
       }];
 
-      let discounts = undefined;
+      // let discounts = undefined;
       
       // if (promoCode) discounts = [{ coupon: promoCode }];
 
       const body = {
+        profileId: currentProfile?.id,
         lineItems,
-        discounts,
+        // discounts,
       };
 
       const response = await fetch('/api/checkout', {

@@ -3,12 +3,13 @@
   
   // components
   import Heading from '$components/Heading/Heading.svelte';
-  import Link from '$components/Link/Link.svelte';
 
   // stores
   import { cart } from '$stores/CartStore';
 
-  onMount(() => cart.clearCart()); // TODO: on success, create the required records, but only if we actually ordered, users can currently access this page anytime, which will lead to creating records we dont want
+  onMount(() => {
+    cart.clearCart();
+  }); // todo: on success, create the required records, but only if we actually ordered, users can currently access this page anytime, which will lead to creating records we dont want
 </script>
 
 <svelte:head>
@@ -20,7 +21,7 @@
   <Heading>
     <span>Payment Successful</span>
   </Heading>
-  <p>
+  <p class="text-center">
     Your payment was successful!
   </p>
 </div>
