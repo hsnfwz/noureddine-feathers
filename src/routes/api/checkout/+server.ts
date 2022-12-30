@@ -14,12 +14,14 @@ export async function POST({ request }: any) {
       line_items: lineItems,
       mode: 'payment',
       payment_method_types: ['card'],
-      // payment_intent_data: {
-      //   metadata: { greeting: 'hello from checkout!' }
-      // },
-      // payment_intent_data: {
-        metadata: { profileId },
-      // },
+      shipping_address_collection: {allowed_countries: ['CA']},
+      custom_text: {
+        shipping_address: {
+          message: 'Estimated shipping time is 3 days.',
+        },
+      },
+      // billing_address_collection: {allowed_countries: ['CA']}, // todo: look into this in relation to collecting taxes
+      metadata: { profileId },
       success_url: `${request.headers.get('Origin')}/payment-success`,
       cancel_url: `${request.headers.get('Origin')}/payment-cancel`,
     });

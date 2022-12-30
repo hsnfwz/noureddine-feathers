@@ -3,7 +3,10 @@ import Stripe from 'stripe';
 
 // env
 import { STRIPE_WEBHOOK_SECRET, STRIPE_SECRET_KEY } from '$env/static/private';
-import supabase from '$config/supabase';
+
+// api
+import { insertOrder } from '$api/order';
+import { insertOrderProducts } from '$api/order-product';
 
 export async function POST({ request }: any) {
   try {
@@ -13,31 +16,44 @@ export async function POST({ request }: any) {
     const webhookSecret: string = STRIPE_WEBHOOK_SECRET;
     const event = stripe.webhooks.constructEvent(buf.toString(), sig, webhookSecret);
 
-    if (event.type === 'checkout.session.completed') {
-      const session: any = event.data.object;
-      const sessionWithLineItems: any = await stripe.checkout.sessions.retrieve(session.id, { expand: ['line_items'] });
+    switch (event.type) {
+      case 'checkout.session.completed':
+        const session: any = event.data.object;
+        const sessionExpanded: any = await stripe.checkout.sessions.retrieve(session.id, { expand: ['line_items', 'payment_intent.latest_charge'] });
 
-      console.log('profile id', sessionWithLineItems.metadata?.profileId);
-      console.log('payment intent', sessionWithLineItems.payment_intent);
-      console.log('lineItems', sessionWithLineItems.line_items);
+        const newOrder: any = {
+          profile_id: sessionExpanded.metadata?.profileId,
+          stripe_payment_intent_id: sessionExpanded.payment_intent.id,
+          stripe_receipt_url: sessionExpanded.payment_intent.latest_charge.receipt_url,
+          shipping_address_city: sessionExpanded.customer_details.address.city,
+          shipping_address_state: sessionExpanded.customer_details.address.state,
+          shipping_address_country: sessionExpanded.customer_details.address.country,
+          shipping_address_postal_code: sessionExpanded.customer_details.address.postal_code,
+          shipping_address_line1: sessionExpanded.customer_details.address.line1,
+          shipping_address_line2: sessionExpanded.customer_details.address.line2,
+        }
 
-      // todo: TABLES
+        const insertedOrder = await insertOrder(newOrder);
 
-      // order
-      /* 
-        stripe_payment_intent_id
-        profile_id (ref to profile)
-      */
+        const newOrderProducts: any = [];
 
-      // order_product:
-      /* 
-        order_id (ref key to order)
-        product_stripe_product_id (ref key to product)
-        product_price_stripe_price_id (ref key to product_price)
-        profile_id (ref to profile)
-      */
+        sessionExpanded.line_items.data.forEach((line_item: any) => {
+          const newOrderProduct = {
+            order_id: insertedOrder.id,
+            profile_id: insertedOrder.profile_id,
+            quantity: line_item.quantity,
+            stripe_product_id: line_item.price.product,
+            stripe_price_id: line_item.price.id,
+          };
 
-      return json({ id: sessionWithLineItems.id });
+          newOrderProducts.push(newOrderProduct);
+        });
+
+        const insertedOrderProducts = await insertOrderProducts(newOrderProducts);
+
+        break;
+      default:
+        return json({});
     }
 
     return json({});

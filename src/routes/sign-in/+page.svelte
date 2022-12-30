@@ -75,7 +75,7 @@
         >
           Sign In
         </button>
-        <p>By signing in, you agree to our <a class="text-blue-500" href="/terms-and-conditions">Terms and Conditions</a></p>
+        <p>By signing in, you agree to our <a class="text-blue-500" href="/terms-of-service">Terms of Service</a></p>
       </form>
     {/if}
   {/if}

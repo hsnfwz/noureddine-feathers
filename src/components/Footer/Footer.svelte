@@ -90,10 +90,10 @@
       <span>Privacy Policy</span>
     </Link>
     <Link
-      href="/terms-and-conditions"
-      ariaLabel="terms and conditions"
+      href="/terms-of-service"
+      ariaLabel="terms of service"
     >
-      <span>Terms and Conditions</span>
+      <span>Terms of Service</span>
     </Link>
   </div>
   <div class="text-center">
