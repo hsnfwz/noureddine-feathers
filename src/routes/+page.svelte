@@ -34,7 +34,7 @@
     </div>
     <div class="flex items-center">
       <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
-        <span>View All</span>
+        <span class="text-blue-500">View All</span>
       </Link>
     </div>
   </div>
@@ -49,7 +49,7 @@
     </div>
     <div class="flex items-center">
       <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters">
-        <span>View All</span>
+        <span class="text-blue-500">View All</span>
       </Link>
     </div>
   </div>
@@ -64,7 +64,7 @@
     </div>
     <div class="flex items-center">
       <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters">
-        <span>View All</span>
+        <span class="text-blue-500">View All</span>
       </Link>
     </div>
   </div>
@@ -79,7 +79,7 @@
     </div>
     <div class="flex items-center">
       <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers">
-        <span>View All</span>
+        <span class="text-blue-500">View All</span>
       </Link>
     </div>
   </div>
@@ -94,7 +94,7 @@
     </div>
     <div class="flex items-center">
       <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells">
-        <span>View All</span>
+        <span class="text-blue-500">View All</span>
       </Link>
     </div>
   </div>
