@@ -15,7 +15,12 @@ const getOrderProducts = async (
   const { data, error } = await supabase
   .from('order_product')
   .select(`
-    id
+    id,
+    order_id,
+    profile_id,
+    quantity,
+    stripe_product_id (name, size, size_unit, color, thumbnail_url),
+    stripe_price_id (price, quantity)
   `)
   .match(filters)
   .order(sort.key, sort.value)

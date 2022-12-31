@@ -9,7 +9,8 @@ const getProfileByUserId = async (userId: string): Promise<I_Profile | undefined
   .from('profile')
   .select(`
     id,
-    user_id
+    user_id,
+    is_admin
   `)
   .match({ user_id: userId });
 

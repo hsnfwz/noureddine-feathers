@@ -127,14 +127,12 @@
         <p class="text-gray-500">Package</p>
         <div class="flex gap-2">
           {#each product.prices as price}
-            <div class={`${productPrice === price ? 'pointer-events-none outline outline-2 outline-black' : 'outline-none'}`}>
-              <button
-                class="rounded px-4 py-2 bg-neutral-100 text-black nf-font-bold disabled:opacity-50"
-                on:click={() => productPrice = price}
-              >
-                {formatPackage(price.quantity)}
-              </button>
-            </div>
+            <button
+              class={`${productPrice === price ? 'pointer-events-none border-black' : 'border-white'} border-2 rounded px-4 py-2 bg-neutral-100 text-black nf-font-bold disabled:opacity-50`}
+              on:click={() => productPrice = price}
+            >
+              {formatPackage(price.quantity)}
+            </button>
           {/each}
         </div>
       </div>

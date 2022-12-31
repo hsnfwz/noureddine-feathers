@@ -90,6 +90,9 @@
             <Link href="/cart" ariaLabel="cart" handleClick={() => showNavMobile = false}>
               <span>Cart ({$cart.cartTotalItems})</span>
             </Link>
+            {#if currentProfile && currentProfile.is_admin}
+              <Link href="/admin" ariaLabel="admin" handleClick={() => showNavMobile = false}>Admin</Link>
+            {/if}
           </div>
         </div>
       </div>
@@ -143,6 +146,9 @@
             <Link href="/cart" ariaLabel="cart">
               <span>Cart ({$cart.cartTotalItems})</span>
             </Link>
+            {#if currentProfile && currentProfile.is_admin}
+              <Link href="/admin" ariaLabel="admin">Admin</Link>
+            {/if}
           </div>
         </div>
       </div>
