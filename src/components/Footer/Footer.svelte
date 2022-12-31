@@ -97,6 +97,6 @@
     </Link>
   </div>
   <div class="text-center">
-    <p>Copyright &copy; 2022 Noureddine Feathers</p>
+    <p>Copyright &copy; 2023 Noureddine Feathers</p>
   </div>
 </footer>

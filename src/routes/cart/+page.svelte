@@ -118,7 +118,7 @@ const checkout = async () => {
           />
         </div> -->
         <!-- <p class="text-gray-500">Shipping, taxes, and discounts calculated at checkout</p> -->
-        <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
+        <p class="text-gray-500">Shipping, taxes, and additional fees calculated at checkout</p>
         <button
           class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
           type="button"

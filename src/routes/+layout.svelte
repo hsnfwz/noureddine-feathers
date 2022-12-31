@@ -33,15 +33,11 @@
   onMount(async () => {
     subscriptionAuthStateChange = supabase.auth.onAuthStateChange((event: any, sbSession: any) => {
       if (event === 'SIGNED_OUT' || event === 'USER_DELETED') {
-        // const expires = new Date(0).toUTCString();
-        // document.cookie = `sb-access-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
-        // document.cookie = `sb-refresh-token=; path=/; expires=${expires}; SameSite=Lax; secure`;
         session.set(undefined);
         profile.set(undefined);
+        console.log('SIGNED OUT');
       } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        // const maxAge = 100 * 365 * 24 * 60 * 60; // 100 years, never expires
-        // document.cookie = `my-access-token=${sbSession.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
-        // document.cookie = `my-refresh-token=${sbSession.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
+        console.log('SIGNED IN');
       }
     });
 

@@ -8,24 +8,31 @@
   // stores
   import { profile } from '$stores/ProfileStore';
 
+  // state
+  let isLoading: boolean = true;
   let currentProfile: I_Profile | undefined = undefined;
 
   profile.subscribe(async (value) => {
+    isLoading = true;
+    
     currentProfile = value;
 
-    if (value && !value.is_admin) {
-      window.location.replace('/');
-    } else if (value && value.is_admin) {
-
-    }
+    isLoading = false;
   });
 </script>
 
-{#if currentProfile && currentProfile.is_admin}
+{#if isLoading}
+  <p class="text-center">Loading...</p>
+{:else if !isLoading && currentProfile && currentProfile.is_admin}
   <div class="flex flex-col items-center gap-4">
     <Heading>
       <span>Admin - Review</span>
     </Heading>
     <div class="flex flex-col gap-4"></div>
   </div>
+{:else}
+  <Heading customClass="text-center">
+    <span>404 Not Found</span>
+  </Heading>
+  <p class="text-center">Woops! We could not find what you were looking for.</p>
 {/if}

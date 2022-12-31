@@ -8,26 +8,16 @@
   // stores
   import { profile } from '$stores/ProfileStore';
 
-  // state
-  let isLoading: boolean = true;
   let currentProfile: I_Profile | undefined = undefined;
   let reviews: [] = [];
 
-  profile.subscribe(async (value) => {
-    isLoading = true;
-
-    currentProfile = value;
-
-    isLoading = false;
-  });
+  profile.subscribe(async (value) => currentProfile = value);
 </script>
 
-{#if isLoading}
-  <p class="text-center">Loading...</p>
-{:else if !isLoading && currentProfile && currentProfile.is_admin}
+{#if currentProfile}
   <div class="flex flex-col items-center gap-4">
     <Heading>
-      <span>Admin - Reviews</span>
+      <span>Account - Reviews</span>
     </Heading>
     <div class="flex flex-col gap-4">
       {#if reviews.length === 0}
@@ -39,9 +29,4 @@
       {/if}
     </div>
   </div>
-{:else}
-  <Heading customClass="text-center">
-    <span>404 Not Found</span>
-  </Heading>
-  <p class="text-center">Woops! We could not find what you were looking for.</p>
 {/if}

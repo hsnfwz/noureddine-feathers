@@ -7,13 +7,15 @@ import { groupBy } from '$helpers/helpers';
 // config
 import supabase from '$config/supabase';
 
+const SB_TEST = false;
+
 const getProductById = async (id: string): Promise<I_Product | undefined> => {
   let product: I_Product | undefined = undefined;
 
   const productQuery = supabase
   .from('product')
   .select('id, thumbnail_url, name, description, color, size, size_unit, rating_average, rating_count')
-  .match({ id });
+  .match({ id, is_hidden: SB_TEST });
 
   const productPriceQuery = supabase
   .from('product_price')
@@ -68,7 +70,7 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
   const productQuery = supabase
   .from('product')
   .select('id, thumbnail_url, name, color, size, size_unit, rating_average, rating_count')
-  .match({ ...filters, is_hidden: false })
+  .match({ ...filters, is_hidden: SB_TEST })
   .order(sort.key, sort.value)
   .limit(limit);
 

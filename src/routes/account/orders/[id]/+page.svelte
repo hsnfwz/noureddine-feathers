@@ -9,16 +9,12 @@
   import { profile } from '$stores/ProfileStore';
   import { page } from '$app/stores';
 
-  // api
-  import { updateOrder } from '$api/order';
-  import { getOrders } from '$api/order';
-  import { getOrderProducts } from '$api/order-product';
-
   // helpers
   import { formatPackage } from '$helpers/helpers';
 
-  // supabase
-  import supabase from '$config/supabase';
+  // api
+  import { getOrders } from '$api/order';
+  import { getOrderProducts } from '$api/order-product';
 
   // state
   let isLoading: boolean = true;
@@ -29,9 +25,9 @@
   profile.subscribe(async (value) => {
     isLoading = true;
 
-    if (value && value.is_admin) {
-      const _orders: [] | undefined = await getOrders({ id: $page.params.id });
-      const _orderProducts: any = await getOrderProducts({ order_id: $page.params.id });
+    if (value) {
+      const _orders: [] | undefined = await getOrders({ id: $page.params.id, profile_id: value.id });
+      const _orderProducts: any = await getOrderProducts({ order_id: $page.params.id, profile_id: value.id });
 
       order = _orders[0];
       orderProducts = [..._orderProducts];
@@ -41,19 +37,14 @@
 
     isLoading = false;
   });
-
-  supabase
-  .channel('public:order')
-  .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'order' }, payload => order = payload.new)
-  .subscribe()
 </script>
 
 {#if isLoading}
   <p class="text-center">Loading...</p>
-{:else if !isLoading && currentProfile && currentProfile.is_admin && order && orderProducts}
+{:else if !isLoading && currentProfile && order && orderProducts}
   <div class="flex flex-col items-center gap-4">
     <Heading>
-      <span>Admin - Order</span>
+      <span>Account - Order</span>
     </Heading>
     <div class="flex flex-col gap-4">
       <div>
@@ -101,23 +92,6 @@
           </div>
         {/each}
       </div>
-      {#if order.is_fulfilled}
-        <button
-          class="px-4 py-2 bg-red-500 text-white rounded nf-font-bold"
-          type="button"
-          on:click={async () => await updateOrder(order.id, { is_fulfilled: !order.is_fulfilled })}
-        >
-          Unfulfill
-        </button>
-      {:else}
-        <button
-          class="px-4 py-2 bg-green-500 text-white rounded nf-font-bold"
-          type="button"
-          on:click={async () => await updateOrder(order.id, { is_fulfilled: !order.is_fulfilled })}
-        >
-          Fulfill
-        </button>
-      {/if}
     </div>
   </div>
 {:else}

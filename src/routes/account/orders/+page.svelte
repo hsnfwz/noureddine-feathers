@@ -8,23 +8,20 @@
   // stores
   import { profile } from '$stores/ProfileStore';
 
-  // supabase
-  import supabase from '$config/supabase';
-
   // api
   import { getOrders } from '$api/order';
 
   // state
   let isLoading: boolean = true;
-  let currentProfile: I_Profile | undefined = undefined;
+  let currentProfile: I_Profile | undefined;
   let fulfilledOrders: any;
   let unfulfilledOrders: any;
 
   profile.subscribe(async (value) => {
     isLoading = true;
 
-    if (value && value.is_admin) {
-      const _orders: [] | undefined = await getOrders();
+    if (value) {
+      const _orders: [] | undefined = await getOrders({ profile_id: value.id });
 
       let _fulfilledOrders: [] = [];
       let _unfulfilledOrders: [] = [];
@@ -50,62 +47,39 @@
 
     isLoading = false;
   });
-
-  supabase
-  .channel('public:order')
-  .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'order' }, payload => unfulfilledOrders = [...unfulfilledOrders, payload.new])
-  .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'order' }, payload => {
-    let _fulfilledOrders: [] = [];
-    let _unfulfilledOrders: [] = [];
-
-    if (payload.new.is_fulfilled) {
-      _fulfilledOrders = [...fulfilledOrders, payload.new];
-      _unfulfilledOrders = unfulfilledOrders.filter(order => order.id !== payload.new.id);
-    } else {
-      _fulfilledOrders = fulfilledOrders.filter(order => order.id !== payload.new.id);
-      _unfulfilledOrders = [...unfulfilledOrders, payload.new];
-    }
-
-    _fulfilledOrders.sort((a, b) => a.created_at < b.created_at);
-    _unfulfilledOrders.sort((a, b) => a.created_at < b.created_at);
-
-    fulfilledOrders = [..._fulfilledOrders];
-    unfulfilledOrders = [..._unfulfilledOrders];
-  })
-  .subscribe()
 </script>
 
 {#if isLoading}
   <p class="text-center">Loading...</p>
-{:else if !isLoading && currentProfile && currentProfile.is_admin && fulfilledOrders && unfulfilledOrders}
+{:else if !isLoading && currentProfile && fulfilledOrders && unfulfilledOrders}
   <div class="flex flex-col items-center gap-4">
     <Heading>
-      <span>Admin - Orders</span>
+      <span>Account - Orders</span>
     </Heading>
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-4">
-        <h1>Unfulfilled Orders ({unfulfilledOrders.length})</h1>
+        <h1>Current Orders ({unfulfilledOrders.length})</h1>
         {#if unfulfilledOrders.length === 0}
           <p class="text-gray-500">You have no current orders.</p>
         {:else}
           {#each unfulfilledOrders as order}
             <div class="flex justify-between gap-4 p-4 bg-neutral-100 rounded items-center">
               <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(new Date(order.created_at))}</p>
-              <a class="text-blue-500" href={`/admin/orders/${order.id}`}>View Order</a>
+              <a class="text-blue-500" href={`/account/orders/${order.id}`}>View Order</a>
               <a class="text-blue-500" href={order.stripe_receipt_url} target="_blank" rel="noreferrer">View Receipt</a>
             </div>
           {/each}
         {/if}
       </div>
       <div class="flex flex-col gap-4">
-        <h1>Fulfilled Orders ({fulfilledOrders.length})</h1>
+        <h1>Past Orders ({fulfilledOrders.length})</h1>
         {#if fulfilledOrders.length === 0}
           <p class="text-gray-500">You have no past orders.</p>
         {:else}
           {#each fulfilledOrders as order}
             <div class="flex justify-between gap-4 p-4 bg-neutral-100 rounded items-center">
               <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(new Date(order.created_at))}</p>
-              <a class="text-blue-500" href={`/admin/orders/${order.id}`}>View Order</a>
+              <a class="text-blue-500" href={`/account/orders/${order.id}`}>View Order</a>
               <a class="text-blue-500" href={order.stripe_receipt_url} target="_blank" rel="noreferrer">View Receipt</a>
             </div>
           {/each}
