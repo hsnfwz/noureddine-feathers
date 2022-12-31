@@ -78,7 +78,7 @@
     </Heading>
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-4">
-        <h1>Unfulfilled Orders</h1>
+        <h1>Unfulfilled Orders ({unfulfilledOrders.length})</h1>
         {#if unfulfilledOrders.length === 0}
           <p class="text-gray-500">You have no current orders.</p>
         {:else}
@@ -92,7 +92,7 @@
         {/if}
       </div>
       <div class="flex flex-col gap-4">
-        <h1>Fulfilled Orders</h1>
+        <h1>Fulfilled Orders ({fulfilledOrders.length})</h1>
         {#if fulfilledOrders.length === 0}
           <p class="text-gray-500">You have no past orders.</p>
         {:else}

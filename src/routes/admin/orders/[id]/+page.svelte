@@ -45,11 +45,11 @@
     </Heading>
     <div class="flex flex-col gap-4">
       <div>
-        <p class="nf-font-bold text-neutral-500">Order Date:</p>
+        <p class="text-neutral-500">Order Date:</p>
         <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(new Date(data.order.created_at))}</p>
       </div>
       <div>
-        <p class="nf-font-bold text-neutral-500">Shipping Address:</p>
+        <p class="text-neutral-500">Shipping Address:</p>
         <p>{data.order.shipping_address_line1}</p>
         {#if data.order.shipping_address_line2}
           <p>{data.order.shipping_address_line2}</p>
@@ -57,11 +57,11 @@
         <p>{data.order.shipping_address_city}, {data.order.shipping_address_state}, {data.order.shipping_address_country} {data.order.shipping_address_postal_code}</p>
       </div>
       <div>
-        <p class="nf-font-bold text-neutral-500">Receipt</p>
+        <p class="text-neutral-500">Receipt</p>
         <a href={data.order.stripe_receipt_url} class="text-blue-500" target="_blank" rel="noreferrer">View Receipt</a>
       </div>
       <div class="flex flex-col gap-4">
-        <p class="nf-font-bold text-neutral-500">Products ({data.orderProducts.length})</p>
+        <p class="text-neutral-500">Products ({data.orderProducts.length})</p>
         {#each data.orderProducts as orderProduct}
           <div class="bg-neutral-100 rounded p-4 flex flex-col">
             <div class="flex gap-2 justify-between">
