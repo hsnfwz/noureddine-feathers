@@ -33,7 +33,7 @@
   <Link href={`/${formatText(cartItem.name)}s/${cartItem.product_id}-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${cartItem.size || ''}-${formatText(cartItem.size_unit) || ''}`} ariaLabel={cartItem.name}>
     <div class="flex justify-center p-2 bg-neutral-100 rounded-lg">
       <img
-        src={getPublicUrl(`${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}/${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}-Thumbnail.webp`)}
+        src={getPublicUrl(`${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}/${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}-0.webp`)}
         alt={cartItem.name}
         width=""
         height=""

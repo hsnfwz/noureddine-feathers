@@ -4,6 +4,9 @@ import { error } from '@sveltejs/kit';
 import { getProductById } from '$api/product';
 import { getProductImagePublicUrls } from '$api/storage';
 
+// helpers
+import { formatName } from '$helpers/helpers';
+
 // interfaces
 import type I_Product from '$interfaces/I_Product';
 
@@ -16,7 +19,7 @@ export async function load({ params }: any) {
     throw error(404, 'Not Found');
   }
 
-  const productImagePublicUrls: string[] | undefined = await getProductImagePublicUrls(`${product.name} - ${product.color} - ${product.size} ${product.size_unit}`);
+  const productImagePublicUrls: string[] | undefined = await getProductImagePublicUrls(formatName(product.name, product.color, product.size, product.size_unit));
 
   if (!productImagePublicUrls) {
     throw error (404, 'Not Found');
