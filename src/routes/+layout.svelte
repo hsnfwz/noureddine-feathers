@@ -38,13 +38,16 @@
         console.log('SIGNED OUT');
       } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         console.log('SIGNED IN');
+      } else if (event === 'USER_UPDATED') {
+        session.set({ userId: sbSession.data.session.user.id, userEmail: sbSession.data.session.user.email });
+        console.log('USER UPDATED', session)
       }
     });
 
     const currentSession = await supabase.auth.getSession();
 
     if (currentSession && currentSession.data && currentSession.data.session) {
-      session.set({ userId: currentSession.data.session.user.id });
+      session.set({ userId: currentSession.data.session.user.id, userEmail: currentSession.data.session.user.email });
 
       let profileRecord: I_Profile | undefined = await getProfileByUserId(currentSession.data.session.user.id);
 
