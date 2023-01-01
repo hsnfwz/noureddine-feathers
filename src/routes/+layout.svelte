@@ -39,8 +39,8 @@
       } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         console.log('SIGNED IN');
       } else if (event === 'USER_UPDATED') {
-        session.set({ userId: sbSession.data.session.user.id, userEmail: sbSession.data.session.user.email });
-        console.log('USER UPDATED', session)
+        session.set({ userId: sbSession.user.id, userEmail: sbSession.user.email });
+        console.log('USER UPDATED', session);
       }
     });
 
