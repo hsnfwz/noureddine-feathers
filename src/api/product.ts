@@ -14,7 +14,7 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
 
   const productQuery = supabase
   .from('product')
-  .select('id, thumbnail_url, name, description, color, size, size_unit, rating_average, rating_count')
+  .select('id, name, description, color, size, size_unit, rating_average, rating_count')
   .match({ id, is_hidden: SB_TEST });
 
   const productPriceQuery = supabase
@@ -69,7 +69,7 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
 
   const productQuery = supabase
   .from('product')
-  .select('id, thumbnail_url, name, color, size, size_unit, rating_average, rating_count')
+  .select('id, name, color, size, size_unit, rating_average, rating_count')
   .match({ ...filters, is_hidden: SB_TEST })
   .order(sort.key, sort.value)
   .limit(limit);

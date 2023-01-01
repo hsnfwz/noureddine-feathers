@@ -1,11 +1,14 @@
 <script lang="ts">
   import { afterUpdate } from 'svelte';
 
+  // storage
+  import { getPublicUrl } from '$api/storage';
+
   // interfaces
   import type I_CartItem from '$interfaces/I_CartItem';
 
   // helpers
-  import { formatCurrency, formatText, formatPackage } from '$helpers/helpers';
+  import { formatCurrency, formatText, formatPackage, formatName } from '$helpers/helpers';
 
   // stores
   import { cart } from '$stores/CartStore';
@@ -30,7 +33,7 @@
   <Link href={`/${formatText(cartItem.name)}s/${cartItem.product_id}-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${cartItem.size || ''}-${formatText(cartItem.size_unit) || ''}`} ariaLabel={cartItem.name}>
     <div class="flex justify-center p-2 bg-neutral-100 rounded-lg">
       <img
-        src={cartItem.thumbnail_url}
+        src={getPublicUrl(`${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}/${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}-Thumbnail.webp`)}
         alt={cartItem.name}
         width=""
         height=""

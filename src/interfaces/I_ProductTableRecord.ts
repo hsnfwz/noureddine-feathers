@@ -2,7 +2,6 @@ interface I_ProductTableRecord {
   id: number,
   created_at: string,
   stripe_product_id: string,
-  thumbnail_url: string,
   name: string,
   description: string,
   size: number,

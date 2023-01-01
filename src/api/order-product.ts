@@ -19,7 +19,7 @@ const getOrderProducts = async (
     order_id,
     profile_id,
     quantity,
-    stripe_product_id (name, size, size_unit, color, thumbnail_url),
+    stripe_product_id (name, size, size_unit, color),
     stripe_price_id (price, quantity)
   `)
   .match(filters)

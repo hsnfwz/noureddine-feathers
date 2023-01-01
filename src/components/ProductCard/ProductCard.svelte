@@ -1,8 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  // storage
+  import { getPublicUrl } from '$api/storage';
+
   // helpers
-  import { formatCurrency, formatText, formatPackage } from '$helpers/helpers';
+  import { formatCurrency, formatText, formatPackage, formatName } from '$helpers/helpers';
 
   // interfaces
   import type I_Product from '$interfaces/I_Product';
@@ -28,7 +31,7 @@
     <Link href={`/${formatText(product.name)}s/${product.id}-${formatText(product.name)}-${formatText(product.color)}-${product.size || ''}-${formatText(product.size_unit) || ''}`} ariaLabel={product.name}>
       <div class="flex justify-center p-2 bg-neutral-100 rounded-lg">
         <img
-          src={product.thumbnail_url}
+          src={getPublicUrl(`${formatName(product.name, product.color, product.size, product.size_unit)}/${formatName(product.name, product.color, product.size, product.size_unit)}-Thumbnail.webp`)}
           alt={product.name}
           width=""
           height=""

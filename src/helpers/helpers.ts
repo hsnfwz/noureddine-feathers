@@ -85,6 +85,13 @@ const formatPackage = (quantity: number, showBrackets: boolean = false) => {
   return _quantity;
 }
 
+const formatName = (name: string, color: string, size: number, sizeUnit: string) => {
+  const _name = name.split(' ').join('-');
+  const _color = color.split(' ').join('-');
+
+  return `${_name}-${_color}-${size}-${sizeUnit}`;
+}
+
 export {
   calculateAverageRating,
   calculateSalePrice,
@@ -95,4 +102,5 @@ export {
   getMaxPrice,
   generateClass,
   formatPackage,
+  formatName,
 }

@@ -54,7 +54,6 @@ function createCart() {
         product_id: product.id,
         product_price_id: productPrice.id,
         stripe_price_id: productPrice.stripe_price_id,
-        thumbnail_url: product.thumbnail_url,
         name: product.name,
         color: product.color,
         size: product.size,

@@ -1,6 +1,17 @@
 // config
 import supabase from '$config/supabase';
 
+const getPublicUrl = (path: string) => {
+  const { data } = supabase
+  .storage
+  .from('noureddine-feathers')
+  .getPublicUrl(path);
+
+  const { publicUrl } = data;
+  
+  return publicUrl;
+}
+
 const getProductImagePublicUrls = async (folderName: string): Promise<string[] | undefined> => {
   let productImagePublicUrls: string[] = [];
 
@@ -39,4 +50,5 @@ const getProductImagePublicUrls = async (folderName: string): Promise<string[] |
 
 export {
   getProductImagePublicUrls,
+  getPublicUrl,
 }
