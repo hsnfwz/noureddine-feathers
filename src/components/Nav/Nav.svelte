@@ -43,7 +43,7 @@
 <nav>
   {#if showNavMobile}
     <div class="fixed top-0 bg-neutral-100 w-full h-full z-50 overflow-auto">
-      <div class="flex flex-col gap-4 px-8 py-2">
+      <div class="flex flex-col gap-4 px-4 py-2">
         <div class="flex gap-4">
           <div class="flex flex-row flex-shrink-0">
             <Link href="/" ariaLabel="home" handleClick={() => showNavMobile = false}>
@@ -65,33 +65,33 @@
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-col gap-4">
-            <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters" handleClick={() => showNavMobile = false}>
-              <span>Feather Dusters</span>
+            <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters" handleClick={() => showNavMobile = false} customClass="text-sm">
+              Feather Dusters
             </Link>
-            <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters" handleClick={() => showNavMobile = false}>
-              <span>Extendable Lambswool Dusters</span>
+            <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters" handleClick={() => showNavMobile = false} customClass="text-sm">
+              Extendable Lambswool Dusters
             </Link>
-            <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters" handleClick={() => showNavMobile = false}>
-              <span>Lambswool Dusters</span>
+            <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters" handleClick={() => showNavMobile = false} customClass="text-sm">
+              Lambswool Dusters
             </Link>
-            <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers" handleClick={() => showNavMobile = false}>
-              <span>Feathers</span>
+            <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers" handleClick={() => showNavMobile = false} customClass="text-sm">
+              Feathers
             </Link>
-            <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells" handleClick={() => showNavMobile = false}>
-              <span>Eggshells</span>
+            <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells" handleClick={() => showNavMobile = false} customClass="text-sm">
+              Eggshells
             </Link>
           </div>
           <div class="flex flex-col gap-4">
             {#if currentSession}
-              <Link href="/account" ariaLabel="account" handleClick={() => showNavMobile = false}>Account</Link>
+              <Link href="/account" ariaLabel="account" handleClick={() => showNavMobile = false} customClass="text-sm">Account</Link>
             {:else}
-              <Link href="/sign-in" ariaLabel="sign in" handleClick={() => showNavMobile = false}>Sign In</Link>
+              <Link href="/sign-in" ariaLabel="sign in" handleClick={() => showNavMobile = false} customClass="text-sm">Sign In</Link>
             {/if}
-            <Link href="/cart" ariaLabel="cart" handleClick={() => showNavMobile = false}>
-              <span>Cart ({$cart.cartTotalItems})</span>
+            <Link href="/cart" ariaLabel="cart" handleClick={() => showNavMobile = false} customClass="text-sm">
+              Cart ({$cart.cartTotalItems})
             </Link>
             {#if currentProfile && currentProfile.is_admin}
-              <Link href="/admin" ariaLabel="admin" handleClick={() => showNavMobile = false}>Admin</Link>
+              <Link href="/admin" ariaLabel="admin" handleClick={() => showNavMobile = false} customClass="text-sm">Admin</Link>
             {/if}
           </div>
         </div>
@@ -99,7 +99,7 @@
     </div>
   {:else}
     <div class={`flex flex-col w-full mb-4 bg-neutral-100`}>
-      <div class="flex items-center justify-between gap-4 px-8 py-2">
+      <div class="flex items-center justify-between gap-4 px-4 py-2">
         <div class="flex flex-row flex-shrink-0">
           <Link href="/" ariaLabel="home">
             <div>
@@ -119,35 +119,35 @@
         </div>
         <div class="hidden lg:flex">
           <div class="flex flex-col gap-4 flex-grow justify-center lg:flex-row items-center">
-            <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
-              <span>Feather Dusters</span>
+            <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters" customClass="text-sm">
+              Feather Dusters
             </Link>
-            <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters">
-              <span>Extendable Lambswool Dusters</span>
+            <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters" customClass="text-sm">
+              Extendable Lambswool Dusters
             </Link>
-            <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters">
-              <span>Lambswool Dusters</span>
+            <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters" customClass="text-sm">
+              Lambswool Dusters
             </Link>
-            <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers">
-              <span>Feathers</span>
+            <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers" customClass="text-sm">
+              Feathers
             </Link>
-            <Link href="/ostrich-eggshells" ariaLabel="ostrich-eggshells">
-              <span>Eggshells</span>
+            <Link href="/ostrich-eggshells" ariaLabel="ostrich-eggshells" customClass="text-sm">
+              Eggshells
             </Link>
           </div>
         </div>
         <div class="hidden lg:flex">
           <div class="flex flex-col gap-4 flex-shrink-0 lg:flex-row items-center">
             {#if currentSession}
-              <Link href="/account" ariaLabel="account">Account</Link>
+              <Link href="/account" ariaLabel="account" customClass="text-sm">Account</Link>
             {:else}
-              <Link href="/sign-in" ariaLabel="sign in">Sign In</Link>
+              <Link href="/sign-in" ariaLabel="sign in" customClass="text-sm">Sign In</Link>
             {/if}
-            <Link href="/cart" ariaLabel="cart">
-              <span>Cart ({$cart.cartTotalItems})</span>
+            <Link href="/cart" ariaLabel="cart" customClass="text-sm">
+              Cart ({$cart.cartTotalItems})
             </Link>
             {#if currentProfile && currentProfile.is_admin}
-              <Link href="/admin" ariaLabel="admin">Admin</Link>
+              <Link href="/admin" ariaLabel="admin" customClass="text-sm">Admin</Link>
             {/if}
           </div>
         </div>
