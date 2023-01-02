@@ -80,9 +80,15 @@
       <h1 class="nf-font-bold text-xl">{product.name}</h1>
       <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
       <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
-      <p>
-        {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
-      </p>
+      {#if productPrice.quantity === 1}
+        <p>
+          {formatCurrency(productPrice.price)}
+        </p>
+      {:else}
+        <p>
+          {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
+        </p>
+      {/if}
     </div>
     <div class="flex flex-col gap-4">
       {#each productImagePublicUrls as publicUrl}
@@ -104,9 +110,15 @@
         <h1 class="nf-font-bold text-xl">{product.name}</h1>
         <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
         <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
-        <p>
-          {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
-        </p>
+        {#if productPrice.quantity === 1}
+          <p>
+            {formatCurrency(productPrice.price)}
+          </p>
+        {:else}
+          <p>
+            {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
+          </p>
+        {/if}
       </div>
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Description</p>

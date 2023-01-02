@@ -44,7 +44,15 @@
       <p class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}` : ''}</p>
       <div class="flex flex-col gap-2">
         {#each product.prices as productPrice}
-          <p>{formatCurrency(productPrice.price / productPrice.quantity)} per unit {formatPackage(productPrice.quantity, true)}</p>
+          {#if productPrice.quantity === 1}
+            <p>
+              {formatCurrency(productPrice.price)}
+            </p>
+          {:else}
+            <p>
+              {formatCurrency(productPrice.price / productPrice.quantity)} per unit {formatPackage(productPrice.quantity, true)}
+            </p>
+          {/if}
         {/each}
       </div>
     </div>

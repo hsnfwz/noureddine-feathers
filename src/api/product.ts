@@ -64,7 +64,7 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
   return product;
 }
 
-const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'rating_average', value: { ascending: false } }, limit: number = 10): Promise<I_Product[] | undefined> => {
+const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'rating_average', value: { ascending: false } }, limit: number = 100): Promise<I_Product[] | undefined> => {
   let products: I_Product[] = [];
 
   const productQuery = supabase
