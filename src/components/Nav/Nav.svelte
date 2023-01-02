@@ -51,13 +51,13 @@
                 <img
                   src={ImageLogo}
                   alt="Noureddine Feathers"
-                  width="128"
+                  width="100"
                   height="72"
                 />
               </div>
             </Link>
           </div>
-          <div class="flex items-center flex-1 justify-end 2xl:hidden">
+          <div class="flex items-center flex-1 justify-end lg:hidden">
             <Button handleClick={() => showNavMobile = false}>
               <IconX />
             </Button>
@@ -66,19 +66,19 @@
         <div class="flex flex-col gap-4">
           <div class="flex flex-col gap-4">
             <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters" handleClick={() => showNavMobile = false}>
-              <span>Premium Ostrich Feather Dusters</span>
+              <span>Feather Dusters</span>
             </Link>
             <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters" handleClick={() => showNavMobile = false}>
-              <span>Premium Extendable Lambswool Dusters</span>
+              <span>Extendable Lambswool Dusters</span>
             </Link>
             <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters" handleClick={() => showNavMobile = false}>
-              <span>Premium Lambswool Dusters</span>
+              <span>Lambswool Dusters</span>
             </Link>
             <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers" handleClick={() => showNavMobile = false}>
-              <span>Ostrich Feathers</span>
+              <span>Feathers</span>
             </Link>
             <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells" handleClick={() => showNavMobile = false}>
-              <span>Ostrich Eggshells</span>
+              <span>Eggshells</span>
             </Link>
           </div>
           <div class="flex flex-col gap-4">
@@ -106,38 +106,38 @@
               <img
                 src={ImageLogo}
                 alt="Noureddine Feathers"
-                width="128"
+                width="100"
                 height="72"
               />
             </div>
           </Link>
         </div>
-        <div class="flex items-center 2xl:hidden">
+        <div class="flex items-center lg:hidden">
           <Button handleClick={() => showNavMobile = true}>
             <IconStack />
           </Button>
         </div>
-        <div class="hidden 2xl:flex">
-          <div class="flex flex-col gap-4 flex-grow justify-center 2xl:flex-row">
+        <div class="hidden lg:flex">
+          <div class="flex flex-col gap-4 flex-grow justify-center lg:flex-row items-center">
             <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
-              <span>Premium Ostrich Feather Dusters</span>
+              <span>Feather Dusters</span>
             </Link>
             <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters">
-              <span>Premium Extendable Lambswool Dusters</span>
+              <span>Extendable Lambswool Dusters</span>
             </Link>
             <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters">
-              <span>Premium Lambswool Dusters</span>
+              <span>Lambswool Dusters</span>
             </Link>
             <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers">
-              <span>Ostrich Feathers</span>
+              <span>Feathers</span>
             </Link>
             <Link href="/ostrich-eggshells" ariaLabel="ostrich-eggshells">
-              <span>Ostrich Eggshells</span>
+              <span>Eggshells</span>
             </Link>
           </div>
         </div>
-        <div class="hidden 2xl:flex">
-          <div class="flex flex-col gap-4 flex-shrink-0 2xl:flex-row items-center">
+        <div class="hidden lg:flex">
+          <div class="flex flex-col gap-4 flex-shrink-0 lg:flex-row items-center">
             {#if currentSession}
               <Link href="/account" ariaLabel="account">Account</Link>
             {:else}
