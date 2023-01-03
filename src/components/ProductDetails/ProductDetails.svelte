@@ -133,7 +133,7 @@
             <li><span class="nf-font-bold">Size:</span> {product.size} {product.size_unit}</li>
           {/if}
         </ul>
-        <p>*Because our products are handmade, sizes and/or colors may vary slightly</p>
+        <p>*Sizes and/or colors may vary slightly</p>
       </div>
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Package</p>
