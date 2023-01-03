@@ -19,7 +19,7 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
 
   const productPriceQuery = supabase
   .from('product_price')
-  .select('id, price, quantity, product_id, stripe_price_id')
+  .select('id, price, quantity, product_id, stripe_price_id, stripe_shipping_rate_id, stripe_tax_rate_ids')
   .order('price', { ascending: true })
   .match({ product_id: id });
 

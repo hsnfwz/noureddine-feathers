@@ -66,12 +66,12 @@
           />
         </div>
         {#if showErrorMessage}
-          <p class="text-red-500">Email must be between 3 and 320 characters</p>
+          <p class="text-red-500">Email must be at least 3 characters</p>
         {/if}
         <button
           class="rounded px-4 py-2 bg-blue-500 text-white nf-font-bold disabled:opacity-50"
           on:click={async () => await handleSubmit()}
-          disabled={showErrorMessage}
+          disabled={showErrorMessage || email === ''}
         >
           Sign In
         </button>

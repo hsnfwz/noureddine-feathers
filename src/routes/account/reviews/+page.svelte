@@ -14,6 +14,11 @@
   profile.subscribe(async (value) => currentProfile = value);
 </script>
 
+<svelte:head>
+  <title>Account Reviews | Noureddine Feathers</title>
+  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+</svelte:head>
+
 {#if currentProfile}
   <div class="flex flex-col items-center gap-4">
     <Heading>

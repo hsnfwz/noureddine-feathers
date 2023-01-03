@@ -39,6 +39,7 @@
       const lineItems = [{
         price: productPrice.stripe_price_id,
         quantity,
+        tax_rates: productPrice.stripe_tax_rate_ids,
       }];
 
       // let discounts = undefined;
@@ -133,7 +134,6 @@
             <li><span class="nf-font-bold">Size:</span> {product.size} {product.size_unit}</li>
           {/if}
         </ul>
-        <p>*Sizes and/or colors may vary slightly</p>
       </div>
       <div class="flex flex-col gap-2">
         <p class="text-gray-500">Package</p>
@@ -166,6 +166,17 @@
         >
           Buy Now
         </button>
+        <!-- {#if currentProfile}
+          <button
+            class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
+            on:click={async () => await checkout()}
+            disabled={isLoadingCheckout}
+          >
+            Buy Now
+          </button>
+        {:else}
+          <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to buy now</p>
+        {/if} -->
         {#if isLoadingCheckout}
           <div class="flex justify-center uppercase p-2">
             <p>Redirecting to Checkout...</p>

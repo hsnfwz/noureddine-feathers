@@ -7,9 +7,7 @@
   // stores
   import { cart } from '$stores/CartStore';
 
-  onMount(() => {
-    cart.clearCart();
-  }); // todo: on success, create the required records, but only if we actually ordered, users can currently access this page anytime, which will lead to creating records we dont want
+  onMount(() => cart.clearCart());
 </script>
 
 <svelte:head>

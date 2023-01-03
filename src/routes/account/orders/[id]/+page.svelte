@@ -39,20 +39,25 @@
   });
 </script>
 
+<svelte:head>
+  <title>Account Order | Noureddine Feathers</title>
+  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+</svelte:head>
+
+<Heading customClass="text-center">
+  <span>Account - Order</span>
+</Heading>
 {#if isLoading}
   <p class="text-center">Loading...</p>
 {:else if !isLoading && currentProfile && order && orderProducts}
-  <div class="flex flex-col items-center gap-4">
-    <Heading>
-      <span>Account - Order</span>
-    </Heading>
+  <div class="flex flex-col gap-8 m-auto">
     <div class="flex flex-col gap-4">
       <div>
-        <p class="text-neutral-500">Order Date:</p>
+        <p class="nf-font-bold">Date</p>
         <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(new Date(order.created_at))}</p>
       </div>
       <div>
-        <p class="text-neutral-500">Shipping Address:</p>
+        <p class="nf-font-bold">Shipping Address</p>
         <p>{order.shipping_address_line1}</p>
         {#if order.shipping_address_line2}
           <p>{order.shipping_address_line2}</p>
@@ -60,37 +65,55 @@
         <p>{order.shipping_address_city}, {order.shipping_address_state}, {order.shipping_address_country} {order.shipping_address_postal_code}</p>
       </div>
       <div>
-        <p class="text-neutral-500">Receipt</p>
+        <p class="nf-font-bold">Receipt</p>
         <a href={order.stripe_receipt_url} class="text-blue-500" target="_blank" rel="noreferrer">View Receipt</a>
       </div>
-      <div class="flex flex-col gap-4">
-        <p class="text-neutral-500">Products ({orderProducts.length})</p>
-        {#each orderProducts as orderProduct}
-          <div class="bg-neutral-100 rounded p-4 flex flex-col">
-            <div class="flex gap-2 justify-between">
-              <p class="nf-font-bold">Category:</p>
-              <p>{orderProduct.stripe_product_id.name}</p>
-            </div>
-            <div class="flex gap-2 justify-between">
-              <p class="nf-font-bold">Color:</p>
-              <p>{orderProduct.stripe_product_id.color}</p>
-            </div>
-            {#if orderProduct.stripe_product_id.size}
-              <div class="flex gap-2 justify-between">
-                <p class="nf-font-bold">Size:</p>
-                <p>{orderProduct.stripe_product_id.size} {orderProduct.stripe_product_id.size_unit}</p>
-              </div>
-            {/if}
-            <div class="flex gap-2 justify-between">
-              <p class="nf-font-bold">Package:</p>
-              <p>{formatPackage(orderProduct.stripe_price_id.quantity)}</p>
-            </div>
-            <div class="flex gap-2 justify-between">
-              <p class="nf-font-bold">Quantity:</p>
-              <p>{orderProduct.quantity}</p>
-            </div>
+    </div>
+    <div class="flex flex-col gap-4">
+      <p class="nf-font-bold">Products ({orderProducts.length})</p>
+      {#each orderProducts as orderProduct}
+        <div class="bg-neutral-100 rounded p-4 flex flex-col gap-4">
+          <div>
+            <p class="nf-font-bold">Category</p>
+            <p>{orderProduct.stripe_product_id.name}</p>
           </div>
-        {/each}
+          <div>
+            <p class="nf-font-bold">Color</p>
+            <p>{orderProduct.stripe_product_id.color}</p>
+          </div>
+          {#if orderProduct.stripe_product_id.size}
+            <div>
+              <p class="nf-font-bold">Size</p>
+              <p>{orderProduct.stripe_product_id.size} {orderProduct.stripe_product_id.size_unit}</p>
+            </div>
+          {/if}
+          <div>
+            <p class="nf-font-bold">Package</p>
+            <p>{formatPackage(orderProduct.stripe_price_id.quantity)}</p>
+          </div>
+          <div>
+            <p class="nf-font-bold">Quantity</p>
+            <p>{orderProduct.quantity}</p>
+          </div>
+        </div>
+      {/each}
+    </div>
+    <div class="flex flex-col gap-4">
+      <div>
+        <p class="nf-font-bold">Shipped By</p>
+        <p>Canada Post</p>
+      </div>
+      <div>
+        <p class="nf-font-bold">Shipping Service</p>
+        <p>Registered Mail</p>
+      </div>
+      <div>
+        <p class="nf-font-bold">Tracking ID</p>
+        {#if order.is_fulfilled}
+          <p>{order.tracking_id}</p>
+        {:else}
+          <p>No Tracking ID</p>
+        {/if}
       </div>
     </div>
   </div>

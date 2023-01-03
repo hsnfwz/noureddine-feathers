@@ -25,7 +25,8 @@ const getOrders = async (
     shipping_address_line1,
     shipping_address_line2,
     stripe_receipt_url,
-    is_fulfilled
+    is_fulfilled,
+    tracking_id
   `)
   .match(filters)
   .order(sort.key, sort.value)

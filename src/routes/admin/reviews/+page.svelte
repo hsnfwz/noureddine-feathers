@@ -22,6 +22,11 @@
   });
 </script>
 
+<svelte:head>
+  <title>Admin Reviews | Noureddine Feathers</title>
+  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+</svelte:head>
+
 {#if isLoading}
   <p class="text-center">Loading...</p>
 {:else if !isLoading && currentProfile && currentProfile.is_admin}
