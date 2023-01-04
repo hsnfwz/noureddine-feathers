@@ -40,6 +40,7 @@
         price: productPrice.stripe_price_id,
         quantity,
         tax_rates: productPrice.stripe_tax_rate_ids,
+        stripe_shipping_rate_id: productPrice.stripe_shipping_rate_id,
       }];
 
       // let discounts = undefined;
@@ -159,14 +160,14 @@
         >
           Add to Cart
         </button>
-        <button
+        <!-- <button
           class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
           on:click={async () => await checkout()}
           disabled={isLoadingCheckout}
         >
           Buy Now
-        </button>
-        <!-- {#if currentProfile}
+        </button> -->
+        {#if currentProfile}
           <button
             class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
             on:click={async () => await checkout()}
@@ -176,7 +177,7 @@
           </button>
         {:else}
           <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to buy now</p>
-        {/if} -->
+        {/if}
         {#if isLoadingCheckout}
           <div class="flex justify-center uppercase p-2">
             <p>Redirecting to Checkout...</p>

@@ -21,14 +21,8 @@ export async function POST({ request }: any) {
         const session: any = event.data.object;
         const sessionExpanded: any = await stripe.checkout.sessions.retrieve(session.id, { expand: ['line_items', 'payment_intent.latest_charge'] });
 
-        // todo:
-        /* 
-          - how to make orders over 600 (subtotal) free shipping?
-          - how does shipping work for orders with multiple items?
-          - do we charge taxes for shipping?
-        */
-        // todo: users can track their orders, guests cannot. so, what to do? (redo the cart system if users must sign in before purchasing)
         // todo: collect total price paid (including shipping and tax) ?
+        // todo: compress images below 100kb
 
         const newOrder: any = {
           profile_id: sessionExpanded.metadata?.profileId,

@@ -34,6 +34,7 @@ const checkout = async () => {
         price: cartItem.stripe_price_id,
         quantity: cartItem.cart_item_quantity,
         tax_rates: cartItem.stripe_tax_rate_ids,
+        stripe_shipping_rate_id: cartItem.stripe_shipping_rate_id,
       }
     });
 
@@ -120,15 +121,15 @@ const checkout = async () => {
         </div> -->
         <!-- <p class="text-gray-500">Shipping, taxes, and discounts calculated at checkout</p> -->
         <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
-        <button
+        <!-- <button
           class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
           type="button"
           on:click={async () => await checkout()}
           disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
         >
           Checkout
-        </button>
-        <!-- {#if currentProfile}
+        </button> -->
+        {#if currentProfile}
           <button
             class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
             type="button"
@@ -139,7 +140,7 @@ const checkout = async () => {
           </button>
         {:else}
           <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
-        {/if} -->
+        {/if}
         {#if isLoadingCheckout}
           <div class="flex justify-center uppercase p-2">
             <p>Redirecting to Checkout...</p>
