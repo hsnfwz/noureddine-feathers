@@ -71,13 +71,11 @@
   </div>
 {:else}
   <div class="flex flex-col gap-4 items-center lg:flex-row lg:items-start lg:justify-center">
-    <div class="max-w-[500px] w-full flex flex-col gap-4">
+    <div class={`max-w-[500px] w-full flex flex-col gap-4 border-2 border-neutral-100 p-4 rounded-lg`}>
       <div class="flex flex-col gap-2">
         <Heading>YOUR Cart</Heading>
-        <div>
-          <p>SUBTOTAL ({$cart.cartTotalItems} items)</p>
-          <p class="text-xl text-red-500 nf-font-bold">{formatCurrency($cart.cartTotalPrice)}</p>
-        </div>
+        <p>SUBTOTAL ({$cart.cartTotalItems} items)</p>
+        <p class="text-xl text-red-500 nf-font-bold">{formatCurrency($cart.cartTotalPrice)}</p>
       </div>
       {#if $cart.cartTotalItems !== 0}
         <div class="max-w-[500px] flex flex-col gap-4">
@@ -87,7 +85,7 @@
         </div>
       {/if}
     </div>
-    <div class={`max-w-[500px] w-full flex flex-col gap-4 ${$cart.cartTotalItems === 0 ? 'items-center' : 'items-start'} sticky top-4 border-2 border-neutral-100 p-4 rounded-lg`}>
+    <div class={`max-w-[500px] w-full flex flex-col gap-4 border-2 border-neutral-100 p-4 rounded-lg`}>
       <div class="flex flex-col gap-4 flex-grow w-full">
         <div class="lg:flex">
           <Heading>SUMMARY</Heading>

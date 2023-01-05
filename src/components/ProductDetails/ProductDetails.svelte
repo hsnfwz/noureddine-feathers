@@ -97,7 +97,7 @@
     </div>
   </div>
   <div class="max-w-[500px]">
-    <div class="flex flex-col gap-4 flex-1 sticky top-4">
+    <div class="flex flex-col gap-4 flex-1">
       <div class="hidden lg:flex lg:flex-col lg:gap-2">
         <h1 class="nf-font-bold text-xl"><p>{product.name} - {product.color} {product.size ? `- ${product.size} ${product.size_unit}` : ''}</p></h1>
         <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
