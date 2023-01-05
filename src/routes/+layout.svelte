@@ -78,7 +78,10 @@
 <!-- 
 
   todo:
-  - combine lamsbwool dusters?
+  - customize stripe checkout page
+  - look into redirecting user after signing in after clicking "sign in to checkout"
+  - fix scroll on product details - edge and chrome act differently
+  - combine lamsbwool dusters with extendables
   - make items on display smaller or show more at a time
   - can you display the package for each item on the checkout page
   - compress images below 100kb

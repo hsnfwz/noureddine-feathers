@@ -14,7 +14,7 @@
   </Heading>
   <div class="flex flex-col gap-4 max-w-[500px]">
     <p>
-      All orders above $900 will be shipped for free.
+      All orders above $600 will be shipped for free.
     </p>
   </div>
   <div class="max-w-[500px]">
