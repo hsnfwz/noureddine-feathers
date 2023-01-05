@@ -30,7 +30,7 @@
       const products: any = $cart.cartItems.map((cartItem: any) => {
         return {
           productPriceId: cartItem.product_price_id,
-          quantity: cartItem.quantity,
+          quantity: cartItem.cart_item_quantity,
         }
       });
 
