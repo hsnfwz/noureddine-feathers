@@ -70,16 +70,28 @@ const generateClass = (unconditionalClasses: string[] = [], conditionalClasses: 
 const formatPackage = (quantity: number, showPer: boolean = false) => {
   let _quantity: string = '';
 
+  // if (quantity === 1) {
+  //   _quantity = showPer ? 'each' : '1';
+  // } else if (quantity === 10) {
+  //   _quantity = showPer ? 'per pack of 10' : '10';
+  // } else if (quantity === 12) {
+  //   _quantity = showPer ? 'per 1 dz.': '1 dz.';
+  // } else if (quantity === 36) {
+  //   _quantity = showPer ? 'per 3 dz.': '3 dz.';
+  // } else if (quantity === 60) {
+  //   _quantity = showPer ? 'per 5 dz.': '5 dz.';
+  // }
+
   if (quantity === 1) {
     _quantity = showPer ? 'each' : '1';
   } else if (quantity === 10) {
-    _quantity = showPer ? 'per pack of 10' : '10';
+    _quantity = showPer ? '/pack of 10' : '10';
   } else if (quantity === 12) {
-    _quantity = showPer ? 'per 1 dz.': '1 dz.';
+    _quantity = showPer ? '/dz.': '1 dz.';
   } else if (quantity === 36) {
-    _quantity = showPer ? 'per 3 dz.': '3 dz.';
+    _quantity = showPer ? '/3 dz.': '3 dz.';
   } else if (quantity === 60) {
-    _quantity = showPer ? 'per 5 dz.': '5 dz.';
+    _quantity = showPer ? '/5 dz.': '5 dz.';
   }
 
   return _quantity;

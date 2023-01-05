@@ -46,7 +46,7 @@
           {#if productPrice.quantity === 1}
             <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
           {:else}
-            <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
+            <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span>{formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)}/unit)</p>
           {/if}
         {/each}
       </div>

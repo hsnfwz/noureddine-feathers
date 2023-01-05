@@ -79,7 +79,7 @@
       {#if productPrice.quantity === 1}
         <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
       {:else}
-        <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
+        <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span>{formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)}/unit)</p>
       {/if}
     </div>
     <div class="flex flex-col gap-4">
@@ -104,7 +104,7 @@
         {#if productPrice.quantity === 1}
           <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
         {:else}
-          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
+          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span>{formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)}/unit)</p>
         {/if}
       </div>
       <div class="flex flex-col gap-2">
@@ -142,7 +142,7 @@
         {#if productPrice.quantity === 1}
           <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
         {:else}
-          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
+          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span>{formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)}/unit)</p>
         {/if}
         <p>Shipping and taxes calculated at checkout</p>
         <div class="flex flex-col gap-2">
