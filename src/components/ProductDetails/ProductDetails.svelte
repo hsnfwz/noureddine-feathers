@@ -67,7 +67,7 @@
   }
 
   $: {
-    if (showAddToCartMessage) setTimeout(() => showAddToCartMessage = false, 900);
+    if (showAddToCartMessage) setTimeout(() => showAddToCartMessage = false, 1000);
   }
 </script>
 
