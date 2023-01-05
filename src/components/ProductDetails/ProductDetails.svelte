@@ -28,6 +28,7 @@
   let quantity: number = 1;
   let isLoadingCheckout: boolean = false;
   let checkoutErrorMessage: string = '';
+  let showAddToCartMessage: boolean = false;
 
   profile.subscribe((value) => currentProfile = value);
 
@@ -64,22 +65,21 @@
       console.log(error);
     }
   }
+
+  $: {
+    if (showAddToCartMessage) setTimeout(() => showAddToCartMessage = false, 900);
+  }
 </script>
 
 <div class="flex flex-col lg:flex-row gap-4 m-auto">
   <div class="max-w-[500px] flex flex-col gap-4">
     <div class="flex flex-col gap-2 lg:hidden">
       <h1 class="nf-font-bold text-xl">{product.name}</h1>
-      <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
       <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
       {#if productPrice.quantity === 1}
-        <p>
-          {formatCurrency(productPrice.price)}
-        </p>
+        <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
       {:else}
-        <p>
-          {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
-        </p>
+        <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
       {/if}
     </div>
     <div class="flex flex-col gap-4">
@@ -100,16 +100,11 @@
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
       <div class="hidden lg:flex lg:flex-col lg:gap-2">
         <h1 class="nf-font-bold text-xl">{product.name}</h1>
-        <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
-        <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
+        <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
         {#if productPrice.quantity === 1}
-          <p>
-            {formatCurrency(productPrice.price)}
-          </p>
+          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
         {:else}
-          <p>
-            {formatCurrency(productPrice.price)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
-          </p>
+          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
         {/if}
       </div>
       <div class="flex flex-col gap-2">
@@ -143,32 +138,47 @@
         <p class="text-gray-500">Quantity</p>
         <Counter bind:value={quantity} />
       </div>
-      <div class="flex flex-col gap-2">
-        <button
-          class="rounded px-4 py-2 bg-orange-500 text-white nf-font-bold disabled:opacity-50"
-          on:click={() => cart.addCartItem(product, productPrice, quantity)}
-        >
-          Add to Cart
-        </button>
-        {#if currentProfile}
-          <button
-            class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
-            on:click={async () => await checkout()}
-            disabled={isLoadingCheckout}
-          >
-            Buy Now
-          </button>
+      <div class="flex flex-col gap-4 p-4 border-2 border-neutral-100 rounded-lg">
+        {#if productPrice.quantity === 1}
+          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
         {:else}
-          <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to buy now</p>
+          <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
         {/if}
-        {#if isLoadingCheckout}
-          <div class="flex justify-center uppercase p-2">
-            <p>Redirecting to Checkout...</p>
-          </div>
-        {/if}
-        {#if checkoutErrorMessage !== ''}
-          <p class="text-rose-500">*{checkoutErrorMessage}</p>
-        {/if}
+        <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
+        <div class="flex flex-col gap-2">
+          {#if showAddToCartMessage}
+            <!-- <div class="flex justify-center uppercase p-2">
+              <p>Added to Cart ( {$cart.cartTotalItems} )</p>
+            </div> -->
+            <p class="text-center px-4 py-2 bg-neutral-100 rounded">Added to Cart ( {$cart.cartTotalItems} )</p>
+          {:else}
+            <button
+              class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
+              on:click={() => {
+                cart.addCartItem(product, productPrice, quantity);
+                showAddToCartMessage = true;
+              }}
+              disabled={showAddToCartMessage || isLoadingCheckout}
+            >
+              Add to Cart
+            </button>
+          {/if}
+          {#if currentProfile}
+            {#if isLoadingCheckout}
+              <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
+            {:else}
+              <button
+                class="rounded px-4 py-2 bg-orange-500 text-white nf-font-bold disabled:opacity-50"
+                on:click={async () => await checkout()}
+                disabled={isLoadingCheckout}
+              >
+                Buy Now
+              </button>
+            {/if}
+          {:else}
+            <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to buy now</p>
+          {/if}
+        </div>
       </div>
     </div>
   </div>

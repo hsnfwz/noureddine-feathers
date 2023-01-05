@@ -26,7 +26,7 @@
       handleClick={() => decrementQuantity()}
       disabled={value === 1}
     >
-      <div class="px-4 py-2 bg-neutral-100 cursor-pointer rounded">
+      <div class="p-2 bg-neutral-100 cursor-pointer rounded">
         <div class="w-6 h-6">
           <MinusIcon />
         </div>
@@ -41,7 +41,7 @@
       handleClick={() => incrementQuantity()}
       disabled={value === 100}
     >
-      <div class="px-4 py-2 bg-neutral-100 cursor-pointer rounded">
+      <div class="p-2 bg-neutral-100 cursor-pointer rounded">
         <div class="w-6 h-6">
           <PlusIcon />
         </div>

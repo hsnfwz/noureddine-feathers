@@ -15,6 +15,6 @@
 </svelte:head>
 
 <Heading>
-  <span>Premium Lambswool Duster</span>
+  <span>Premium Lambswool Dusters</span>
 </Heading>
 <ProductCardGrid products={data.products} />

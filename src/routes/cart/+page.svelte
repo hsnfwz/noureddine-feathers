@@ -71,50 +71,52 @@
   </div>
 {:else}
   <div class="flex flex-col gap-4 items-center lg:flex-row lg:items-start lg:justify-center">
-    <div class="flex lg:hidden">
-      <Heading>Cart</Heading>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <Heading>YOUR Cart</Heading>
+        <div>
+          <p>SUBTOTAL ({$cart.cartTotalItems} items)</p>
+          <p class="text-xl text-red-500 nf-font-bold">{formatCurrency($cart.cartTotalPrice)}</p>
+        </div>
+      </div>
+      {#if $cart.cartTotalItems !== 0}
+        <div class="max-w-[500px] flex flex-col gap-4">
+          {#each $cart.cartItems as item, index}
+            <CartCard cartItem={item} cartItemIndex={index} />
+          {/each}
+        </div>
+      {/if}
     </div>
-    {#if $cart.cartTotalItems !== 0}
-      <div class="max-w-[500px] flex flex-col gap-4">
-        {#each $cart.cartItems as item, index}
-          <CartCard cartItem={item} cartItemIndex={index} />
-        {/each}
-      </div>
-    {/if}
-    <div class={`max-w-[500px] flex flex-col gap-4 ${$cart.cartTotalItems === 0 ? 'items-center' : 'items-start'} sticky top-4`}>
-      <div class="hidden lg:flex">
-        <Heading>Cart</Heading>
-      </div>
-      <div class="flex flex-col gap-4 flex-grow">
+    <div class={`max-w-[500px] w-full flex flex-col gap-4 ${$cart.cartTotalItems === 0 ? 'items-center' : 'items-start'} sticky top-4 border-2 border-neutral-100 p-4 rounded-lg`}>
+      <div class="flex flex-col gap-4 flex-grow w-full">
+        <div class="lg:flex">
+          <Heading>SUMMARY</Heading>
+        </div>
         <p>{$cart.cartTotalItems} ITEMS</p>
-        <div class="flex gap-2">
+        <div class="flex gap-2 items-center">
           <p class="nf-font-bold flex-grow">
-            ORDER SUBTOTAL
+            SUBTOTAL
           </p>
-          <p class="nf-font-bold">
+          <p class="nf-font-bold text-xl text-red-500">
             {formatCurrency($cart.cartTotalPrice)}
           </p>
         </div>
         <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
         {#if currentProfile}
-          <button
-            class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
-            type="button"
-            on:click={async () => await checkout()}
-            disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
-          >
-            Checkout
-          </button>
+          {#if isLoadingCheckout}
+            <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
+          {:else}
+            <button
+              class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
+              type="button"
+              on:click={async () => await checkout()}
+              disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
+            >
+              Checkout
+            </button>
+          {/if}
         {:else}
           <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
-        {/if}
-        {#if isLoadingCheckout}
-          <div class="flex justify-center uppercase p-2">
-            <p>Redirecting to Checkout...</p>
-          </div>
-        {/if}
-        {#if checkoutErrorMessage !== ''}
-          <p class="text-rose-500">*{checkoutErrorMessage}</p>
         {/if}
       </div>
     </div>

@@ -27,9 +27,9 @@
 {#if isLoading}
   <ProductCardSkeleton />
 {:else}
-  <div class="flex flex-col gap-4 rounded-lg">
+  <div class="flex flex-col">
     <Link href={`/${formatText(product.name)}s/${product.id}-${formatText(product.name)}-${formatText(product.color)}-${product.size || ''}-${formatText(product.size_unit) || ''}`} ariaLabel={product.name}>
-      <div class="flex justify-center p-2 bg-neutral-100 rounded-lg">
+      <div class="flex justify-center p-2 bg-neutral-100 rounded-t-lg">
         <img
           src={getPublicUrl(`${formatName(product.name, product.color, product.size, product.size_unit)}/${formatName(product.name, product.color, product.size, product.size_unit)}-0.webp`)}
           alt={product.name}
@@ -39,18 +39,18 @@
         />
       </div>
     </Link>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 p-4 border-x-2 border-b-2 border-neutral-100 rounded-b-lg">
       <p>{product.name}</p>
       <p class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}` : ''}</p>
       <div class="flex flex-col gap-2">
         {#each product.prices as productPrice}
           {#if productPrice.quantity === 1}
             <p>
-              {formatCurrency(productPrice.price)}
+              {formatCurrency(productPrice.price)} {formatPackage(productPrice.quantity, true)}
             </p>
           {:else}
             <p>
-              {formatCurrency(productPrice.price / productPrice.quantity)} per unit {formatPackage(productPrice.quantity, true)}
+              {formatCurrency(productPrice.price)} {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)
             </p>
           {/if}
         {/each}

@@ -78,7 +78,7 @@
 <!-- 
 
   todo:
-
+  - can you display the package for each item on the checkout page
   - compress images below 100kb
   - user reviews (uncomment out the stars)
   - user display name

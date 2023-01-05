@@ -87,9 +87,9 @@
             {:else}
               <Link href="/sign-in" ariaLabel="sign in" handleClick={() => showNavMobile = false} customClass="text-sm">Sign In</Link>
             {/if}
-            <Link href="/cart" ariaLabel="cart" handleClick={() => showNavMobile = false} customClass="text-sm">
-              Cart ({$cart.cartTotalItems})
-            </Link>
+            <a href="/cart" class="text-sm text-center" on:click={() => showNavMobile = false}>
+              <span class="inline-block align-middle">Cart</span> ( <span class="inline-block align-middle text-xl text-orange-500 nf-font-bold">{$cart.cartTotalItems}</span> )
+            </a>
             {#if currentProfile && currentProfile.is_admin}
               <Link href="/admin" ariaLabel="admin" handleClick={() => showNavMobile = false} customClass="text-sm">Admin</Link>
             {/if}
@@ -143,9 +143,9 @@
             {:else}
               <Link href="/sign-in" ariaLabel="sign in" customClass="text-sm">Sign In</Link>
             {/if}
-            <Link href="/cart" ariaLabel="cart" customClass="text-sm">
-              Cart ({$cart.cartTotalItems})
-            </Link>
+            <a href="/cart" class="text-sm text-center">
+              <span class="inline-block align-middle">Cart</span> ( <span class="inline-block align-middle text-xl text-orange-500 nf-font-bold">{$cart.cartTotalItems}</span> )
+            </a>
             {#if currentProfile && currentProfile.is_admin}
               <Link href="/admin" ariaLabel="admin" customClass="text-sm">Admin</Link>
             {/if}
