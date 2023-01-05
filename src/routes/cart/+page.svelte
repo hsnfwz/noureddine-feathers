@@ -74,7 +74,7 @@
     <div class={`max-w-[500px] w-full flex flex-col gap-4 border-2 border-neutral-100 p-4 rounded-lg`}>
       <Heading>YOUR Cart</Heading>
       <div class="flex flex-col gap-2">
-        <p>SUBTOTAL ({$cart.cartTotalItems} items)</p>
+        <p class="uppercase">Subtotal ({$cart.cartTotalItems} {$cart.cartTotalItems === 1 ? 'item' : 'items'})</p>
         <p class="text-xl text-red-500 nf-font-bold">{formatCurrency($cart.cartTotalPrice)}</p>
       </div>
       {#if $cart.cartTotalItems !== 0}
@@ -88,11 +88,9 @@
     <div class={`max-w-[500px] w-full flex flex-col gap-4 border-2 border-neutral-100 p-4 rounded-lg`}>
       <Heading>SUMMARY</Heading>
       <div class="flex flex-col gap-2">
-        <p>{$cart.cartTotalItems} ITEMS</p>
+        <p class="uppercase">{$cart.cartTotalItems} {$cart.cartTotalItems === 1 ? 'item' : 'items'}</p>
         <div class="flex gap-2 items-center">
-          <p class="nf-font-bold flex-grow">
-            SUBTOTAL
-          </p>
+          <p class="nf-font-bold flex-grow uppercase">Subtotal</p>
           <p class="nf-font-bold text-xl text-red-500">
             {formatCurrency($cart.cartTotalPrice)}
           </p>
