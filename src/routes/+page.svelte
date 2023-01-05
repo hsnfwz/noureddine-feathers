@@ -1,7 +1,6 @@
 <script lang="ts">
   // components
   import Heading from '$components/Heading/Heading.svelte';
-  import Hero from '$components/Hero/Hero.svelte';
   import Link from '$components/Link/Link.svelte';
   import ProductCardGrid from '$components/ProductCardGrid/ProductCardGrid.svelte';
 
@@ -22,11 +21,9 @@
   <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
 </svelte:head>
 
-<!-- <Hero /> -->
-
 <div class="flex flex-col gap-8">
   <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row">
+    <div class="flex flex-col gap-4 sm:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
           <span>Feather Dusters</span>
@@ -40,38 +37,8 @@
     </div>
     <ProductCardGrid products={data.featherDusters} />
   </div>
-  <!-- <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row">
-      <div class="flex flex-grow items-center">
-        <Heading>
-          <span>Premium Extendable Lambswool Dusters</span>
-        </Heading>
-      </div>
-      <div class="flex items-center">
-        <Link href="/premium-extendable-lambswool-dusters" ariaLabel="Premium Extendable Lambswool Dusters">
-          <span class="text-blue-500">View All</span>
-        </Link>
-      </div>
-    </div>
-    <ProductCardGrid products={data.premiumExtendableLambswoolDusters} />
-  </div>
   <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row">
-      <div class="flex flex-grow items-center">
-        <Heading>
-          <span>Premium Lambswool Dusters</span>
-        </Heading>
-      </div>
-      <div class="flex items-center">
-        <Link href="/premium-lambswool-dusters" ariaLabel="Premium Lambswool Dusters">
-          <span class="text-blue-500">View All</span>
-        </Link>
-      </div>
-    </div>
-    <ProductCardGrid products={data.premiumLambswoolDusters} />
-  </div> -->
-  <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row">
+    <div class="flex flex-col gap-4 sm:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
           <span>Lambswool Dusters</span>
@@ -86,7 +53,7 @@
     <ProductCardGrid products={data.lambswoolDusters} />
   </div>
   <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row">
+    <div class="flex flex-col gap-4 sm:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
           <span>Feathers</span>
@@ -101,7 +68,7 @@
     <ProductCardGrid products={data.feathers} />
   </div>
   <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-4 lg:flex-row">
+    <div class="flex flex-col gap-4 sm:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
           <span>Eggshells</span>
