@@ -102,7 +102,7 @@
           </p>
         </div>
         <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
-        {#if currentProfile}
+        <!-- {#if currentProfile} -->
           {#if isLoadingCheckout}
             <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
           {:else}
@@ -115,9 +115,9 @@
               Checkout
             </button>
           {/if}
-        {:else}
+        <!-- {:else}
           <p class="text-center px-4 py-2 bg-neutral-100 rounded"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
-        {/if}
+        {/if} -->
       </div>
     </div>
   </div>

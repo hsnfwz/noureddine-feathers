@@ -163,7 +163,7 @@
               Add to Cart
             </button>
           {/if}
-          {#if currentProfile}
+          <!-- {#if currentProfile} -->
             {#if isLoadingCheckout}
               <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
             {:else}
@@ -175,9 +175,9 @@
                 Buy Now
               </button>
             {/if}
-          {:else}
+          <!-- {:else}
             <p class="text-center px-4 py-2 bg-neutral-100 rounded"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
-          {/if}
+          {/if} -->
         </div>
       </div>
     </div>

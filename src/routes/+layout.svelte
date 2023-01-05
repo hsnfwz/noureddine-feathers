@@ -78,6 +78,8 @@
 <!-- 
 
   todo:
+  - we must create email template and send it with tracking id manually after order completion using info@nprofiles to email of user (show email of user on order page)
+  - search up if you can hyperlink an email
   - customize stripe checkout page
   - look into redirecting user after signing in after clicking "sign in to checkout"
   - fix scroll on product details - edge and chrome act differently
