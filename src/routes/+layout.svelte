@@ -66,6 +66,7 @@
 
 {#if !isLoading}
   <main class="bg-white min-h-screen">
+    <div class="text-center p-2"><p class="uppercase"><span class="nf-font-bold">Free shipping</span> on orders over $600</p></div>
     <Nav />
     <div class="flex flex-col gap-4 m-4">
       <slot />
@@ -73,3 +74,15 @@
     <Footer />
   </main>
 {/if}
+
+<!-- 
+
+  todo:
+
+  - compress images below 100kb
+  - user reviews (uncomment out the stars)
+  - user display name
+  - filter, sort, search
+  - replace localstorage cart with db cart
+
+ -->

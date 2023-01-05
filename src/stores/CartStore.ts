@@ -53,9 +53,6 @@ function createCart() {
       const _cartItem = {
         product_id: product.id,
         product_price_id: productPrice.id,
-        stripe_price_id: productPrice.stripe_price_id,
-        stripe_shipping_rate_id: productPrice.stripe_shipping_rate_id,
-        stripe_tax_rate_ids: productPrice.stripe_tax_rate_ids,
         name: product.name,
         color: product.color,
         size: product.size,

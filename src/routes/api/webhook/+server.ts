@@ -21,9 +21,6 @@ export async function POST({ request }: any) {
         const session: any = event.data.object;
         const sessionExpanded: any = await stripe.checkout.sessions.retrieve(session.id, { expand: ['line_items', 'payment_intent.latest_charge'] });
 
-        // todo: collect total price paid (including shipping and tax) ?
-        // todo: compress images below 100kb
-
         const newOrder: any = {
           profile_id: sessionExpanded.metadata?.profileId,
           stripe_payment_intent_id: sessionExpanded.payment_intent.id,

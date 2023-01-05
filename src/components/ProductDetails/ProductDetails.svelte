@@ -17,7 +17,6 @@
   // components
   import Stars from '$components/Stars/Stars.svelte';
   import Counter from '$components/Counter/Counter.svelte';
-  import Button from '$components/Button/Button.svelte';
 
   // props
   export let product: I_Product;
@@ -36,29 +35,20 @@
     try {
       isLoadingCheckout = true;
 
-      const lineItems = [{
-        price: productPrice.stripe_price_id,
+      const products: any = [{
+        productPriceId: productPrice.id,
         quantity,
-        tax_rates: productPrice.stripe_tax_rate_ids,
-        stripe_shipping_rate_id: productPrice.stripe_shipping_rate_id,
       }];
-
-      // let discounts = undefined;
-      
-      // if (promoCode) discounts = [{ coupon: promoCode }];
-
-      const body = {
-        profileId: currentProfile?.id,
-        lineItems,
-        // discounts,
-      };
 
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          profileId: currentProfile?.id,
+          products,
+        }),
       });
 
       const data = await response.json();
@@ -81,7 +71,7 @@
     <div class="flex flex-col gap-2 lg:hidden">
       <h1 class="nf-font-bold text-xl">{product.name}</h1>
       <h2 class="text-gray-500">{product.color} {product.size ? `- ${product.size} ${product.size_unit}`: ''}</h2>
-      <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
+      <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
       {#if productPrice.quantity === 1}
         <p>
           {formatCurrency(productPrice.price)}
@@ -160,13 +150,6 @@
         >
           Add to Cart
         </button>
-        <!-- <button
-          class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
-          on:click={async () => await checkout()}
-          disabled={isLoadingCheckout}
-        >
-          Buy Now
-        </button> -->
         {#if currentProfile}
           <button
             class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"

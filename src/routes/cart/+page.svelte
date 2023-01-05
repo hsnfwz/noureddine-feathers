@@ -1,74 +1,63 @@
 <script lang="ts">
-// components
-import CartCard from '$components/CartCard/CartCard.svelte';
-import Heading from '$components/Heading/Heading.svelte';
+  // components
+  import CartCard from '$components/CartCard/CartCard.svelte';
+  import Heading from '$components/Heading/Heading.svelte';
 
-// helpers
-import { formatCurrency } from '$helpers/helpers';
+  // helpers
+  import { formatCurrency } from '$helpers/helpers';
 
-// interfaces
-import type I_CartItem from '$interfaces/I_CartItem';
-import type I_Profile from '$interfaces/I_Profile';
+  // interfaces
+  import type I_Profile from '$interfaces/I_Profile';
 
-// config
-import getStripe from '$config/stripe';
+  // config
+  import getStripe from '$config/stripe';
 
-// store
-import { profile } from '$stores/ProfileStore';
-import { cart } from '$stores/CartStore';
+  // store
+  import { profile } from '$stores/ProfileStore';
+  import { cart } from '$stores/CartStore';
 
-// state
-// let promoCode: string = '';
-let currentProfile: I_Profile | undefined;
-let isLoadingCheckout: boolean = false;
-let checkoutErrorMessage: string = '';
+  // state
+  let currentProfile: I_Profile | undefined;
+  let isLoadingCheckout: boolean = false;
+  let checkoutErrorMessage: string = '';
 
-profile.subscribe((value) => currentProfile = value);
+  profile.subscribe((value) => currentProfile = value);
 
-const checkout = async () => {
-  try {
-    isLoadingCheckout = true;
+  const checkout = async () => {
+    try {
+      isLoadingCheckout = true;
 
-    const lineItems = $cart.cartItems.map((cartItem: I_CartItem) => {
-      return {
-        price: cartItem.stripe_price_id,
-        quantity: cartItem.cart_item_quantity,
-        tax_rates: cartItem.stripe_tax_rate_ids,
-        stripe_shipping_rate_id: cartItem.stripe_shipping_rate_id,
-      }
-    });
+      const products: any = $cart.cartItems.map((cartItem: any) => {
+        return {
+          productPriceId: cartItem.product_price_id,
+          quantity: cartItem.quantity,
+        }
+      });
 
-    // let discounts = undefined;
-    
-    // if (promoCode) discounts = [{ coupon: promoCode }];
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          profileId: currentProfile?.id,
+          products,
+        }),
+      });
 
-    const body = {
-      profileId: currentProfile?.id,
-      lineItems,
-      // discounts,
-    };
+      const data = await response.json();
 
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
+      // Redirect to Checkout.
+      const stripe = await getStripe();
+      const { error } = await stripe!.redirectToCheckout({ sessionId: data.id });
 
-    const data = await response.json();
+      if (error && error.message) checkoutErrorMessage = error.message;
 
-    // Redirect to Checkout.
-    const stripe = await getStripe();
-    const { error } = await stripe!.redirectToCheckout({ sessionId: data.id });
-
-    if (error && error.message) checkoutErrorMessage = error.message;
-
-    isLoadingCheckout = false;
-  } catch (error) {
-    console.log(error);
+      isLoadingCheckout = false;
+    } catch (error) {
+      console.log(error);
+    }
   }
-}
 </script>
 
 <svelte:head>
@@ -106,29 +95,7 @@ const checkout = async () => {
             {formatCurrency($cart.cartTotalPrice)}
           </p>
         </div>
-        <!-- <div class="flex flex-col gap-2">
-          <label htmlFor="promo-code">
-            Promo Code
-          </label>
-          <input
-            id="promo-code"
-            type="text"
-            placeholder="Enter promo code"
-            value={promoCode}
-            onChange={(e: any) => setPromoCode(e.target.value)}
-            class="p-2 border-2 border-gray-100 rounded-sm box-border"
-          />
-        </div> -->
-        <!-- <p class="text-gray-500">Shipping, taxes, and discounts calculated at checkout</p> -->
         <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
-        <!-- <button
-          class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
-          type="button"
-          on:click={async () => await checkout()}
-          disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
-        >
-          Checkout
-        </button> -->
         {#if currentProfile}
           <button
             class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  

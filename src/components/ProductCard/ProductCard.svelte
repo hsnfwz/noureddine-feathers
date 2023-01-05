@@ -56,6 +56,6 @@
         {/each}
       </div>
     </div>
-    <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} />
+    <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
   </div>
 {/if}

@@ -19,43 +19,34 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
 
   const productPriceQuery = supabase
   .from('product_price')
-  .select('id, price, quantity, product_id, stripe_price_id, stripe_shipping_rate_id, stripe_tax_rate_ids')
+  .select('id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids')
   .order('price', { ascending: true })
-  .match({ product_id: id });
-
-  const productRatingQuery = supabase
-  .from('product_rating')
-  .select('id, rating, product_id')
   .match({ product_id: id });
 
   const [
     { data: productData, error: productError },
     { data: productPriceData, error: productPriceError },
-    { data: productRatingData, error: productRatingError },
   ] = await Promise.all([
     productQuery,
     productPriceQuery,
-    productRatingQuery
   ]);
 
-  if (productError || productPriceError || productRatingError) {
-    console.log('[getProductById]:[error]', productError, productPriceError, productRatingError);
+  if (productError || productPriceError) {
+    console.log('[getProductById]:[error]', productError, productPriceError);
     return product;
   }
 
-  if (!productData || !productPriceData || !productRatingData) {
-    console.log('[getProductById]:[null]', productData, productPriceData, productRatingData);
+  if (!productData || !productPriceData) {
+    console.log('[getProductById]:[null]', productData, productPriceData);
     return product;
   }
 
   const groupedProductPriceData = groupBy(productPriceData, 'product_id');
-  const groupedProductRatingData = groupBy(productRatingData, 'product_id');
 
   product = productData.map((productRecord: any) => {
     const product: I_Product = {
       ...productRecord,
       prices: groupedProductPriceData[productRecord.id] || [],
-      ratings: groupedProductRatingData[productRecord.id] || [],
     };
 
     return product;
@@ -64,7 +55,7 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
   return product;
 }
 
-const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'rating_average', value: { ascending: false } }, limit: number = 100): Promise<I_Product[] | undefined> => {
+const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'created_at', value: { ascending: false } }, limit: number = 100): Promise<I_Product[] | undefined> => {
   let products: I_Product[] = [];
 
   const productQuery = supabase
@@ -76,7 +67,7 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
 
   const productPriceQuery = supabase
   .from('product_price')
-  .select('id, price, quantity, product_id, stripe_price_id')
+  .select('id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids')
   .order('price', { ascending: true });
 
   const [
@@ -111,7 +102,22 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
   return products;
 }
 
+const getProductPricesByIds = async (productPriceIds: any) => {
+  const { data, error } = await supabase
+  .from('product_price')
+  .select('id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids')
+  .in('id', productPriceIds);
+
+  if (error) {
+    console.log('[getProductPricesByIds]:[error]', error);
+    return [];
+  }
+
+  return data;
+}
+
 export {
   getProductById,
   getProducts,
+  getProductPricesByIds,
 }
