@@ -72,8 +72,8 @@
 {:else}
   <div class="flex flex-col gap-4 items-center lg:flex-row lg:items-start lg:justify-center">
     <div class={`max-w-[500px] w-full flex flex-col gap-4 border-2 border-neutral-100 p-4 rounded-lg`}>
+      <Heading>YOUR Cart</Heading>
       <div class="flex flex-col gap-2">
-        <Heading>YOUR Cart</Heading>
         <p>SUBTOTAL ({$cart.cartTotalItems} items)</p>
         <p class="text-xl text-red-500 nf-font-bold">{formatCurrency($cart.cartTotalPrice)}</p>
       </div>
@@ -86,10 +86,8 @@
       {/if}
     </div>
     <div class={`max-w-[500px] w-full flex flex-col gap-4 border-2 border-neutral-100 p-4 rounded-lg`}>
-      <div class="flex flex-col gap-4 flex-grow w-full">
-        <div class="lg:flex">
-          <Heading>SUMMARY</Heading>
-        </div>
+      <Heading>SUMMARY</Heading>
+      <div class="flex flex-col gap-2">
         <p>{$cart.cartTotalItems} ITEMS</p>
         <div class="flex gap-2 items-center">
           <p class="nf-font-bold flex-grow">
@@ -99,24 +97,20 @@
             {formatCurrency($cart.cartTotalPrice)}
           </p>
         </div>
-        <p>Shipping and taxes calculated at checkout</p>
-        <!-- {#if currentProfile} -->
-          {#if isLoadingCheckout}
-            <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
-          {:else}
-            <button
-              class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
-              type="button"
-              on:click={async () => await checkout()}
-              disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
-            >
-              Checkout
-            </button>
-          {/if}
-        <!-- {:else}
-          <p class="text-center px-4 py-2 bg-neutral-100 rounded"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
-        {/if} -->
       </div>
+      <p>Shipping and taxes calculated at checkout</p>
+      {#if isLoadingCheckout}
+        <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
+      {:else}
+        <button
+          class="rounded px-4 py-2 bg-green-500 text-white nf-font-bold disabled:opacity-50"  
+          type="button"
+          on:click={async () => await checkout()}
+          disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
+        >
+          Checkout
+        </button>
+      {/if}
     </div>
   </div>
 {/if}

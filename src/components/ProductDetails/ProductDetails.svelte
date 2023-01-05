@@ -147,9 +147,6 @@
         <p>Shipping and taxes calculated at checkout</p>
         <div class="flex flex-col gap-2">
           {#if showAddToCartMessage}
-            <!-- <div class="flex justify-center uppercase p-2">
-              <p>Added to Cart ( {$cart.cartTotalItems} )</p>
-            </div> -->
             <p class="text-center px-4 py-2 bg-neutral-100 rounded">Added to Cart ( {$cart.cartTotalItems} )</p>
           {:else}
             <button
@@ -163,21 +160,17 @@
               Add to Cart
             </button>
           {/if}
-          <!-- {#if currentProfile} -->
-            {#if isLoadingCheckout}
-              <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
-            {:else}
-              <button
-                class="rounded px-4 py-2 text-white bg-orange-500 nf-font-bold disabled:opacity-50"
-                on:click={async () => await checkout()}
-                disabled={isLoadingCheckout}
-              >
-                Buy Now
-              </button>
-            {/if}
-          <!-- {:else}
-            <p class="text-center px-4 py-2 bg-neutral-100 rounded"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
-          {/if} -->
+          {#if isLoadingCheckout}
+            <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
+          {:else}
+            <button
+              class="rounded px-4 py-2 text-white bg-orange-500 nf-font-bold disabled:opacity-50"
+              on:click={async () => await checkout()}
+              disabled={isLoadingCheckout}
+            >
+              Buy Now
+            </button>
+          {/if}
         </div>
       </div>
     </div>
