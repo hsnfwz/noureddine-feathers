@@ -71,7 +71,7 @@
   </div>
 {:else}
   <div class="flex flex-col gap-4 items-center lg:flex-row lg:items-start lg:justify-center">
-    <div class="flex flex-col gap-4">
+    <div class="max-w-[500px] w-full flex flex-col gap-4">
       <div class="flex flex-col gap-2">
         <Heading>YOUR Cart</Heading>
         <div>
@@ -116,7 +116,7 @@
             </button>
           {/if}
         {:else}
-          <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
+          <p class="text-center px-4 py-2 bg-neutral-100 rounded"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
         {/if}
       </div>
     </div>

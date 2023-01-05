@@ -176,7 +176,7 @@
               </button>
             {/if}
           {:else}
-            <p class="text-center"><a href="/sign-in" class="text-blue-500">Sign in</a> to buy now</p>
+            <p class="text-center px-4 py-2 bg-neutral-100 rounded"><a href="/sign-in" class="text-blue-500">Sign in</a> to checkout</p>
           {/if}
         </div>
       </div>

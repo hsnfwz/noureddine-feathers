@@ -78,6 +78,8 @@
 <!-- 
 
   todo:
+  - combine lamsbwool dusters?
+  - make items on display smaller or show more at a time
   - can you display the package for each item on the checkout page
   - compress images below 100kb
   - user reviews (uncomment out the stars)
