@@ -14,7 +14,7 @@
   </Heading>
   <div class="flex flex-col gap-4 max-w-[500px]">
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">
+      <p class="nf-font-bold">
         Where do your ostrich feathers come from?
       </p>
       <p>
@@ -22,7 +22,7 @@
       </p>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">
+      <p class="nf-font-bold">
         Why ostrich feathers?
       </p>
       <p>
@@ -33,7 +33,7 @@
       </p>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">
+      <p class="nf-font-bold">
         How do I clean ostrich feather dusters?
       </p>
       <p>
@@ -41,7 +41,7 @@
       </p>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">
+      <p class="nf-font-bold">
         What if I am not satisifed with my order?
       </p>
       <p>

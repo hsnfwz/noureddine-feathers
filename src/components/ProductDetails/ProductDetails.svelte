@@ -74,7 +74,7 @@
 <div class="flex flex-col lg:flex-row gap-4 m-auto">
   <div class="max-w-[500px] flex flex-col gap-4">
     <div class="flex flex-col gap-2 lg:hidden">
-      <h1 class="nf-font-bold text-xl">{product.name}</h1>
+      <h1 class="nf-font-bold text-xl"><p>{product.name} - {product.color} {product.size ? `- ${product.size} ${product.size_unit}` : ''}</p></h1>
       <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
       {#if productPrice.quantity === 1}
         <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
@@ -99,7 +99,7 @@
   <div class="max-w-[500px]">
     <div class="flex flex-col gap-4 flex-1 sticky top-4">
       <div class="hidden lg:flex lg:flex-col lg:gap-2">
-        <h1 class="nf-font-bold text-xl">{product.name}</h1>
+        <h1 class="nf-font-bold text-xl"><p>{product.name} - {product.color} {product.size ? `- ${product.size} ${product.size_unit}` : ''}</p></h1>
         <!-- <Stars id={product.id} ratingAverage={product.rating_average} ratingCount={product.rating_count} /> -->
         {#if productPrice.quantity === 1}
           <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)}</p>
@@ -108,21 +108,21 @@
         {/if}
       </div>
       <div class="flex flex-col gap-2">
-        <p class="text-gray-500">Description</p>
+        <p class="nf-font-bold">Description</p>
         <p>{product.description}</p>
       </div>
       <div class="flex flex-col gap-2">
-        <p class="text-gray-500">Details</p>
+        <p class="nf-font-bold">Specifications</p>
         <ul class="list-disc list-inside">
-          <li><span class="nf-font-bold">Category:</span> {product.name}s</li>
-          <li><span class="nf-font-bold">Color:</span> {product.color}</li>
+          <li><span>Category:</span> {product.category}</li>
+          <li><span>Color:</span> {product.color}</li>
           {#if product.size}
-            <li><span class="nf-font-bold">Size:</span> {product.size} {product.size_unit}</li>
+            <li><span>Size:</span> {product.size} {product.size_unit}</li>
           {/if}
         </ul>
       </div>
       <div class="flex flex-col gap-2">
-        <p class="text-gray-500">Package</p>
+        <p class="nf-font-bold">Package</p>
         <div class="flex gap-2">
           {#each product.prices as price}
             <button
@@ -135,7 +135,7 @@
         </div>
       </div>
       <div class="flex flex-col gap-2">
-        <p class="text-gray-500">Quantity</p>
+        <p class="nf-font-bold">Quantity</p>
         <Counter bind:value={quantity} />
       </div>
       <div class="flex flex-col gap-4 p-4 border-2 border-neutral-100 rounded-lg">
@@ -144,7 +144,7 @@
         {:else}
           <p><span class="text-xl text-red-500 nf-font-bold">{formatCurrency(productPrice.price)}</span> {formatPackage(productPrice.quantity, true)} ({formatCurrency(productPrice.price / productPrice.quantity)} per unit)</p>
         {/if}
-        <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
+        <p>Shipping and taxes calculated at checkout</p>
         <div class="flex flex-col gap-2">
           {#if showAddToCartMessage}
             <!-- <div class="flex justify-center uppercase p-2">
@@ -153,7 +153,7 @@
             <p class="text-center px-4 py-2 bg-neutral-100 rounded">Added to Cart ( {$cart.cartTotalItems} )</p>
           {:else}
             <button
-              class="rounded px-4 py-2 bg-orange-300 text-white nf-font-bold disabled:opacity-50"
+              class="rounded px-4 py-2 text-white bg-yellow-500 nf-font-bold disabled:opacity-50"
               on:click={() => {
                 cart.addCartItem(product, productPrice, quantity);
                 showAddToCartMessage = true;
@@ -168,7 +168,7 @@
               <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>
             {:else}
               <button
-                class="rounded px-4 py-2 bg-orange-500 text-white nf-font-bold disabled:opacity-50"
+                class="rounded px-4 py-2 text-white bg-orange-500 nf-font-bold disabled:opacity-50"
                 on:click={async () => await checkout()}
                 disabled={isLoadingCheckout}
               >

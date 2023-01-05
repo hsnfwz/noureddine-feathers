@@ -81,11 +81,8 @@
   - we must create email template and send it with tracking id manually after order completion using info@nprofiles to email of user (show email of user on order page)
   - search up if you can hyperlink an email
   - customize stripe checkout page
-  - look into redirecting user after signing in after clicking "sign in to checkout"
-  - fix scroll on product details - edge and chrome act differently
-  - combine lamsbwool dusters with extendables
-  - make items on display smaller or show more at a time
-  - can you display the package for each item on the checkout page
+  - fix scroll on product details - edge and chrome and firefox act differently
+  - can you display the package for each item on the checkout page ?
   - compress images below 100kb
   - user reviews (uncomment out the stars)
   - user display name

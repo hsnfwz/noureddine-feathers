@@ -14,18 +14,18 @@
   </Heading>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">Address</p>
+      <p class="nf-font-bold">Address</p>
       <p>Noureddine Feathers</p>
       <p>7751 Berkley St</p>
       <p>Burnaby, BC, Canada V5E 2J8</p>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">Phone</p>
+      <p class="nf-font-bold">Phone</p>
       <p>CALL 604-889-4117</p>
       <p>FAX 604-986-0231</p>
     </div>
     <div class="flex flex-col gap-2">
-      <p class="text-gray-500">Email</p>
+      <p class="nf-font-bold">Email</p>
       <p>info@nprofiles.com</p>
     </div>
   </div>

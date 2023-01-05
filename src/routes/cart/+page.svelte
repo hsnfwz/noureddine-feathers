@@ -101,7 +101,7 @@
             {formatCurrency($cart.cartTotalPrice)}
           </p>
         </div>
-        <p class="text-gray-500">Shipping and taxes calculated at checkout</p>
+        <p>Shipping and taxes calculated at checkout</p>
         <!-- {#if currentProfile} -->
           {#if isLoadingCheckout}
             <p class="text-center px-4 py-2 bg-neutral-100 rounded">Redirecting to Checkout...</p>

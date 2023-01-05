@@ -10,11 +10,10 @@
 
   // data
   export let data: {
-    premiumOstrichfeatherDusters: I_Product[],
-    premiumExtendableLambswoolDusters: I_Product[],
-    premiumLambswoolDusters: I_Product[],
-    ostrichFeathers: I_Product[],
-    ostrichEggshells: I_Product[],
+    featherDusters: I_Product[],
+    lambswoolDusters: I_Product[],
+    feathers: I_Product[],
+    eggshells: I_Product[],
   };
 </script>
 
@@ -30,18 +29,18 @@
     <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
-          <span>Premium Ostrich Feather Dusters</span>
+          <span>Feather Dusters</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/premium-ostrich-feather-dusters" ariaLabel="Premium Ostrich Feather Dusters">
+        <Link href="/feather-dusters" ariaLabel="Feather Dusters">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>
     </div>
-    <ProductCardGrid products={data.premiumOstrichfeatherDusters} />
+    <ProductCardGrid products={data.featherDusters} />
   </div>
-  <div class="flex flex-col gap-4">
+  <!-- <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
@@ -70,35 +69,50 @@
       </div>
     </div>
     <ProductCardGrid products={data.premiumLambswoolDusters} />
+  </div> -->
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 lg:flex-row">
+      <div class="flex flex-grow items-center">
+        <Heading>
+          <span>Lambswool Dusters</span>
+        </Heading>
+      </div>
+      <div class="flex items-center">
+        <Link href="/lambswool-dusters" ariaLabel="Lambswool Dusters">
+          <span class="text-blue-500">View All</span>
+        </Link>
+      </div>
+    </div>
+    <ProductCardGrid products={data.lambswoolDusters} />
   </div>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
-          <span>Ostrich Feathers</span>
+          <span>Feathers</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/ostrich-feathers" ariaLabel="Ostrich Feathers">
+        <Link href="/feathers" ariaLabel="Feathers">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>
     </div>
-    <ProductCardGrid products={data.ostrichFeathers} />
+    <ProductCardGrid products={data.feathers} />
   </div>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-4 lg:flex-row">
       <div class="flex flex-grow items-center">
         <Heading>
-          <span>Ostrich Eggshells</span>
+          <span>Eggshells</span>
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/ostrich-eggshells" ariaLabel="Ostrich Eggshells">
+        <Link href="/eggshells" ariaLabel="Eggshells">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>
     </div>
-    <ProductCardGrid products={data.ostrichEggshells} />
+    <ProductCardGrid products={data.eggshells} />
   </div>
 </div>

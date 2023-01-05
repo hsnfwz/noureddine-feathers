@@ -5,11 +5,10 @@ import { getProducts } from '$api/product';
 
 export async function load({ params }: any) {
   const products = await Promise.all([
-    getProducts({ name: 'Premium Ostrich Feather Duster' }, undefined, 3),
-    getProducts({ name: 'Premium Extendable Lambswool Duster' }, undefined, 3),
-    getProducts({ name: 'Premium Lambswool Duster' }, undefined, 3),
-    getProducts({ name: 'Ostrich Feather' }, undefined, 3),
-    getProducts({ name: 'Ostrich Eggshell' }, undefined, 3),
+    getProducts({ category: 'Feather Dusters' }, undefined, 4),
+    getProducts({ category: 'Lambswool Dusters' }, undefined, 4),
+    getProducts({ category: 'Feathers' }, undefined, 4),
+    getProducts({ category: 'Eggshells' }, undefined, 4),
   ]);
 
   if (!products) {
@@ -17,10 +16,9 @@ export async function load({ params }: any) {
   }
 
   return {
-    premiumOstrichfeatherDusters: products[0] || [],
-    premiumExtendableLambswoolDusters: products[1] || [],
-    premiumLambswoolDusters: products[2] || [],
-    ostrichFeathers: products[3] || [],
-    ostrichEggshells: products[4] || [],
+    featherDusters: products[0] || [],
+    lambswoolDusters: products[1] || [],
+    feathers: products[2] || [],
+    eggshells: products[3] || [],
   };
 }
