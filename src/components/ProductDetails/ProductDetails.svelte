@@ -4,10 +4,13 @@
   import { cart } from '$stores/CartStore';
 
   // helpers
-  import { formatCurrency, formatPackage } from '$helpers/helpers';
+  import { formatCurrency, formatPackage, formatName } from '$helpers/helpers';
 
   // config
   import getStripe from '$config/stripe';
+
+  // storage
+  import { getPublicUrl } from '$api/storage';
 
   // interfaces
   import type I_Product from '$interfaces/I_Product';
@@ -83,17 +86,29 @@
       {/if}
     </div>
     <div class="flex flex-col gap-4">
-      {#each productImagePublicUrls as publicUrl}
+      {#if product.category === 'Feathers'}
         <div class="bg-neutral-100 p-2 flex justify-center rounded-lg">
           <img
-            src={publicUrl}
+            src={getPublicUrl(`${formatName(product.name, product.color, product.size, product.size_unit)}/0-${formatName(product.name, product.color, product.size, product.size_unit)}-1024x1024.webp`)}
             alt={product.name}
             width=""
             height=""
             class="object-cover"
           />
         </div>
-      {/each}
+      {:else}
+        {#each productImagePublicUrls as publicUrl}
+          <div class="bg-neutral-100 p-2 flex justify-center rounded-lg">
+            <img
+              src={publicUrl}
+              alt={product.name}
+              width=""
+              height=""
+              class="object-cover"
+            />
+          </div>
+        {/each}
+      {/if}
     </div>
   </div>
   <div class="max-w-[500px]">

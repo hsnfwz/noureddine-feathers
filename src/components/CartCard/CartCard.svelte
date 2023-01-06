@@ -23,17 +23,26 @@
 
   // state
   let quantity: number = cartItem.cart_item_quantity;
+  let src: string = '';
   
   $: cart.updateCartItem(cartItemIndex, quantity);
 
-  afterUpdate(() => quantity = cartItem.cart_item_quantity);
+  afterUpdate(() => {
+    quantity = cartItem.cart_item_quantity;
+
+    if (cartItem.category === 'Feathers') {
+      src = getPublicUrl(`${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}/0-${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}-1024x1024.webp`);
+    } else {
+      src = getPublicUrl(`${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}/${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}-0.webp`);
+    }
+  });
 </script>
 
 <div class="flex flex-col md:flex-row">
   <Link href={`/${formatText(cartItem.category)}/${cartItem.product_id}-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${cartItem.size || ''}-${formatText(cartItem.size_unit) || ''}`} ariaLabel={cartItem.name}>
     <div class="flex justify-center h-full p-2 bg-neutral-100 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:rounded-bl-lg">
       <img
-        src={getPublicUrl(`${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}/${formatName(cartItem.name, cartItem.color, cartItem.size, cartItem.size_unit)}-0.webp`)}
+        src={src}
         alt={cartItem.name}
         width=""
         height=""

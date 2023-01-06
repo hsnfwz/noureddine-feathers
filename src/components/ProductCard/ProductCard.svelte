@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, afterUpdate } from 'svelte';
 
   // storage
   import { getPublicUrl } from '$api/storage';
@@ -20,8 +20,17 @@
 
   // state
   let isLoading: boolean = true;
+  let src: string = '';
 
   onMount(() => isLoading = false);
+
+  afterUpdate(() => {
+    if (product.category === 'Feathers') {
+      src = getPublicUrl(`${formatName(product.name, product.color, product.size, product.size_unit)}/0-${formatName(product.name, product.color, product.size, product.size_unit)}-1024x1024.webp`);
+    } else {
+      src = getPublicUrl(`${formatName(product.name, product.color, product.size, product.size_unit)}/${formatName(product.name, product.color, product.size, product.size_unit)}-0.webp`);
+    }
+  });
 </script>
 
 {#if isLoading}
@@ -31,7 +40,7 @@
     <Link href={`/${formatText(product.category)}/${product.id}-${formatText(product.name)}-${formatText(product.color)}-${product.size || ''}-${formatText(product.size_unit) || ''}`} ariaLabel={product.name}>
       <div class="flex justify-center p-2 bg-neutral-100 rounded-t-lg">
         <img
-          src={getPublicUrl(`${formatName(product.name, product.color, product.size, product.size_unit)}/${formatName(product.name, product.color, product.size, product.size_unit)}-0.webp`)}
+          src={src}
           alt={product.name}
           width=""
           height=""
