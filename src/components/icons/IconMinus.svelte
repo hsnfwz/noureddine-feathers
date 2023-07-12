@@ -1,9 +1,9 @@
 <script lang="ts">
-  export let fill: string = 'fill-none';
+  export let fill: string = "fill-none";
 
-  let _class = 'w-6 h-6';
+  let _class = "w-6 h-6";
 
-  if (fill) _class = _class + ' ' + fill;
+  if (fill) _class = _class + " " + fill;
 </script>
 
 <svg
@@ -13,9 +13,5 @@
   stroke-width="1.5"
   stroke="currentColor"
 >
-  <path
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    d="M19.5 12h-15"
-  />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
 </svg>

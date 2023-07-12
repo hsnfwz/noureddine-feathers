@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let linearGradientId: string = '';
-  export let offset: string = '';
+  export let linearGradientId: string = "";
+  export let offset: string = "";
 
-  let _class = 'w-6 h-6';
+  let _class = "w-6 h-6";
 </script>
 
 <svg
@@ -14,14 +14,8 @@
 >
   <defs>
     <linearGradient id={linearGradientId}>
-      <stop
-        offset={offset}
-        stop-color="black"
-      />
-      <stop
-        offset="0%" 
-        stop-color="white"
-      />
+      <stop {offset} stop-color="black" />
+      <stop offset="0%" stop-color="white" />
     </linearGradient>
   </defs>
   <path

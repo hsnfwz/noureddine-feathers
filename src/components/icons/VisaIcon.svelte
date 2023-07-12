@@ -1,9 +1,9 @@
 <script lang="ts">
-  export let fill: string = '';
+  export let fill: string = "";
 
-  let _class = '';
+  let _class = "";
 
-  if (fill) _class = _class + ' ' + fill;
+  if (fill) _class = _class + " " + fill;
 </script>
 
 <svg

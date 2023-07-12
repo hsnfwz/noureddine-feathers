@@ -1,8 +1,7 @@
 interface I_Profile {
-  id: number,
-  created_at?: string,
-  user_id: string,
-  is_admin: boolean,
+  id: string;
+  created_at?: string;
+  is_admin: boolean;
 }
 
 export default I_Profile;

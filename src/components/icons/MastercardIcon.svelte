@@ -1,9 +1,9 @@
 <script lang="ts">
-  export let fill: string = '';
+  export let fill: string = "";
 
-  let _class = '';
+  let _class = "";
 
-  if (fill) _class = _class + ' ' + fill;
+  if (fill) _class = _class + " " + fill;
 </script>
 
 <svg
@@ -12,14 +12,8 @@
   viewBox="0 0 152.407 108"
 >
   <title>Mastercard</title>
-  <path
-    class="fill-none"
-    d="M0 0h152.407v108H0z"
-  />
-  <path
-    class="fill-[#ff5f00]"
-    d="M60.412 25.697h31.5v56.606h-31.5z"
-  />
+  <path class="fill-none" d="M0 0h152.407v108H0z" />
+  <path class="fill-[#ff5f00]" d="M60.412 25.697h31.5v56.606h-31.5z" />
   <path
     d="M382.208 306a35.938 35.938 0 0 1 13.75-28.303 36 36 0 1 0 0 56.606A35.938 35.938 0 0 1 382.208 306Z"
     transform="translate(-319.796 -252)"

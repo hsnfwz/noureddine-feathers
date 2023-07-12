@@ -1,26 +1,20 @@
 <script lang="ts">
   // components
-  import Link from '$components/Link/Link.svelte';
-  import FacebookIcon from '$components/icons/FacebookIcon.svelte';
-  import InstagramIcon from '$components/icons/InstagramIcon.svelte';
-  import PinterestIcon from '$components/icons/PinterestIcon.svelte';
+  import Link from "$components/Link/Link.svelte";
+  import FacebookIcon from "$components/icons/FacebookIcon.svelte";
+  import InstagramIcon from "$components/icons/InstagramIcon.svelte";
+  import PinterestIcon from "$components/icons/PinterestIcon.svelte";
 
   // lib
-  import ImageLogo from '$lib/images/logo.webp';
+  import ImageLogo from "$lib/images/logo.webp";
 </script>
 
-<footer class="flex flex-col bg-neutral-100 p-4 mt-4 gap-4 justify-center items-center">    
-  <Link
-    href="/"
-    ariaLabel="home"
-  >
+<footer
+  class="mt-4 flex flex-col items-center justify-center gap-4 bg-neutral-100 p-4"
+>
+  <Link href="/" ariaLabel="home">
     <div>
-      <img
-        src={ImageLogo}
-        alt="Noureddine Feathers"
-        width="128"
-        height="72"
-      />
+      <img src={ImageLogo} alt="Noureddine Feathers" width="128" height="72" />
     </div>
   </Link>
   <!-- <div class="flex flex-col gap-4 justify-center items-center">
@@ -52,47 +46,26 @@
       </Link>
     </div>
   </div> -->
-  <div class="grid grid-flow-row lg:grid-flow-col gap-4">
-    <Link
-      href="/contact"
-      ariaLabel="contact"
-    >
+  <div class="grid grid-flow-row gap-4 lg:grid-flow-col">
+    <Link href="/info/contact" ariaLabel="contact">
       <span>Contact</span>
     </Link>
-    <Link
-      href="/about"
-      ariaLabel="about"
-    >
+    <Link href="/info/about" ariaLabel="about">
       <span>About</span>
     </Link>
-    <Link
-      href="/faq"
-      ariaLabel="faq"
-    >
+    <Link href="/info/faq" ariaLabel="faq">
       <span>FAQ</span>
     </Link>
-    <Link
-      href="/shipping"
-      ariaLabel="shipping"
-    >
+    <Link href="/info/shipping" ariaLabel="shipping">
       <span>Shipping</span>
     </Link>
-    <Link
-      href="/returns"
-      ariaLabel="returns"
-    >
+    <Link href="/info/returns" ariaLabel="returns">
       <span>Returns</span>
     </Link>
-    <Link
-      href="/privacy-policy"
-      ariaLabel="privacy policy"
-    >
+    <Link href="/info/privacy-policy" ariaLabel="privacy policy">
       <span>Privacy Policy</span>
     </Link>
-    <Link
-      href="/terms-of-service"
-      ariaLabel="terms of service"
-    >
+    <Link href="/info/terms-of-service" ariaLabel="terms of service">
       <span>Terms of Service</span>
     </Link>
   </div>
