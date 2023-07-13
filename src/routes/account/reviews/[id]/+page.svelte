@@ -1,28 +1,32 @@
 <script lang="ts">
+  import { page } from "$app/stores";
+
   // components
-  import Heading from '$components/Heading/Heading.svelte';
-
-  // interfaces
-  import type I_Profile from '$interfaces/I_Profile';
-
-  // stores
-  import { profile } from '$stores/ProfileStore';
-
-  let currentProfile: I_Profile | undefined = undefined;
-
-  profile.subscribe(async (value) => currentProfile = value);
+  import Heading from "$components/Heading/Heading.svelte";
+  import Link from "$components/Link/Link.svelte";
 </script>
 
 <svelte:head>
-  <title>Account Review | Noureddine Feathers</title>
-  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+  <title>Your Review | Noureddine Feathers</title>
+  <meta
+    name="description"
+    content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells"
+  />
 </svelte:head>
 
-{#if currentProfile}
-  <div class="flex flex-col items-center gap-4">
-    <Heading>
-      <span>Account - Review</span>
-    </Heading>
-    <div class="flex flex-col gap-4"></div>
-  </div>
-{/if}
+<div class="flex flex-col items-center gap-4">
+  <Heading>
+    <span>Your Review</span>
+  </Heading>
+  {#if $page.data.session}
+    <div class="flex flex-col gap-4" />
+  {:else}
+    <p class="text-center">
+      <Link
+        href="/account/sign-in"
+        customClass="text-sky-500"
+        ariaLabel="account">Sign In</Link
+      > to view your review.
+    </p>
+  {/if}
+</div>

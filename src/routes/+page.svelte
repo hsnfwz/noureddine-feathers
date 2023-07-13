@@ -1,24 +1,28 @@
+<!-- @format -->
 <script lang="ts">
   // components
-  import Heading from '$components/Heading/Heading.svelte';
-  import Link from '$components/Link/Link.svelte';
-  import ProductCardGrid from '$components/ProductCardGrid/ProductCardGrid.svelte';
+  import Heading from "$components/Heading/Heading.svelte";
+  import Link from "$components/Link/Link.svelte";
+  import ProductCardGrid from "$components/ProductCardGrid/ProductCardGrid.svelte";
 
   // interfaces
-  import type I_Product from '$interfaces/I_Product';
+  import type I_Product from "$interfaces/I_Product";
 
   // data
   export let data: {
-    featherDusters: I_Product[],
-    lambswoolDusters: I_Product[],
-    feathers: I_Product[],
-    eggshells: I_Product[],
+    featherDusters: I_Product[];
+    lambswoolDusters: I_Product[];
+    feathers: I_Product[];
+    eggshells: I_Product[];
   };
 </script>
 
 <svelte:head>
   <title>Noureddine Feathers</title>
-  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+  <meta
+    name="description"
+    content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells"
+  />
 </svelte:head>
 
 <div class="flex flex-col gap-8">
@@ -30,7 +34,7 @@
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/feather-dusters" ariaLabel="Feather Dusters">
+        <Link href="/products/feather-dusters" ariaLabel="Feather Dusters">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>
@@ -45,7 +49,7 @@
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/lambswool-dusters" ariaLabel="Lambswool Dusters">
+        <Link href="/products/lambswool-dusters" ariaLabel="Lambswool Dusters">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>
@@ -60,7 +64,7 @@
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/feathers" ariaLabel="Feathers">
+        <Link href="/products/feathers" ariaLabel="Feathers">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>
@@ -75,7 +79,7 @@
         </Heading>
       </div>
       <div class="flex items-center">
-        <Link href="/eggshells" ariaLabel="Eggshells">
+        <Link href="/products/eggshells" ariaLabel="Eggshells">
           <span class="text-blue-500">View All</span>
         </Link>
       </div>

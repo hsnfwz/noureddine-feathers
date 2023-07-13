@@ -1,3 +1,5 @@
+/** @format */
+
 // interfaces
 import type I_Product from '$interfaces/I_Product';
 
@@ -13,23 +15,24 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
   let product: I_Product | undefined = undefined;
 
   const productQuery = supabase
-  .from('product')
-  .select('id, name, description, color, size, size_unit, rating_average, rating_count, category')
-  .match({ id, is_hidden: SB_TEST });
+    .from('product')
+    .select(
+      'id, name, description, color, size, size_unit, rating_average, rating_count, category'
+    )
+    .match({ id, is_hidden: SB_TEST });
 
   const productPriceQuery = supabase
-  .from('product_price')
-  .select('id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids')
-  .order('price', { ascending: true })
-  .match({ product_id: id });
+    .from('product_price')
+    .select(
+      'id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids'
+    )
+    .order('price', { ascending: true })
+    .match({ product_id: id });
 
   const [
     { data: productData, error: productError },
     { data: productPriceData, error: productPriceError },
-  ] = await Promise.all([
-    productQuery,
-    productPriceQuery,
-  ]);
+  ] = await Promise.all([productQuery, productPriceQuery]);
 
   if (productError || productPriceError) {
     console.log('[getProductById]:[error]', productError, productPriceError);
@@ -53,30 +56,38 @@ const getProductById = async (id: string): Promise<I_Product | undefined> => {
   })[0];
 
   return product;
-}
+};
 
-const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascending: boolean } } = { key: 'id', value: { ascending: true } }, limit: number = 100): Promise<I_Product[] | undefined> => {
+const getProducts = async (
+  filters: {} = {},
+  sort: { key: string; value: { ascending: boolean } } = {
+    key: 'id',
+    value: { ascending: true },
+  },
+  limit: number = 100
+): Promise<I_Product[] | undefined> => {
   let products: I_Product[] = [];
 
   const productQuery = supabase
-  .from('product')
-  .select('id, name, color, size, size_unit, rating_average, rating_count, category')
-  .match({ ...filters, is_hidden: SB_TEST })
-  .order(sort.key, sort.value)
-  .limit(limit);
+    .from('product')
+    .select(
+      'id, name, color, size, size_unit, rating_average, rating_count, category'
+    )
+    .match({ ...filters, is_hidden: SB_TEST })
+    .order(sort.key, sort.value)
+    .limit(limit);
 
   const productPriceQuery = supabase
-  .from('product_price')
-  .select('id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids')
-  .order('price', { ascending: true });
+    .from('product_price')
+    .select(
+      'id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids'
+    )
+    .order('price', { ascending: true });
 
   const [
     { data: productData, error: productError },
     { data: productPriceData, error: productPriceError },
-  ] = await Promise.all([
-    productQuery,
-    productPriceQuery,
-  ]);
+  ] = await Promise.all([productQuery, productPriceQuery]);
 
   if (productError || productPriceError) {
     console.log('[getProducts]:[error]', productError, productPriceError);
@@ -100,13 +111,15 @@ const getProducts = async (filters: {} = {}, sort: { key: string, value: { ascen
   });
 
   return products;
-}
+};
 
 const getProductPricesByIds = async (productPriceIds: any) => {
   const { data, error } = await supabase
-  .from('product_price')
-  .select('id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids')
-  .in('id', productPriceIds);
+    .from('product_price')
+    .select(
+      'id, price, quantity, shipping_fee, product_id, stripe_price_id, stripe_tax_rate_ids'
+    )
+    .in('id', productPriceIds);
 
   if (error) {
     console.log('[getProductPricesByIds]:[error]', error);
@@ -114,10 +127,6 @@ const getProductPricesByIds = async (productPriceIds: any) => {
   }
 
   return data;
-}
+};
 
-export {
-  getProductById,
-  getProducts,
-  getProductPricesByIds,
-}
+export { getProductById, getProducts, getProductPricesByIds };

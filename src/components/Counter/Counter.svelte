@@ -1,8 +1,7 @@
+<!-- @format -->
 <script lang="ts">
   // components
   import Button from '$components/Button/Button.svelte';
-  import MinusIcon from '$components/icons/IconMinus.svelte';
-  import PlusIcon from '$components/icons/IconPlus.svelte';
 
   // props
   export let value: number = 1;
@@ -11,40 +10,50 @@
     value = value + 1;
 
     if (value > 100) value = 100;
-  }
+  };
 
   const decrementQuantity = () => {
     value = value - 1;
 
     if (value < 1) value = 1;
-  }
+  };
 </script>
 
-<div class="flex rounded-sm">
-  <div class="flex justify-center items-center">
-    <Button
-      handleClick={() => decrementQuantity()}
-      disabled={value === 1}
-    >
-      <div class="p-2 bg-neutral-100 cursor-pointer rounded">
-        <div class="w-6 h-6">
-          <MinusIcon />
-        </div>
+<div class="flex rounded border-2 border-neutral-100">
+  <div class="flex items-center justify-center">
+    <Button handleClick={() => decrementQuantity()} disabled={value === 1}>
+      <div class="cursor-pointer p-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="h-5 w-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+            clip-rule="evenodd"
+          />
+        </svg>
       </div>
     </Button>
   </div>
-  <div class="flex justify-center items-center">
-    <p class="w-16 text-center">{value}</p>
+  <div class="flex items-center justify-center">
+    <p class="w-8 select-none text-center">{value}</p>
   </div>
-  <div class="flex justify-center items-center">
-    <Button
-      handleClick={() => incrementQuantity()}
-      disabled={value === 100}
-    >
-      <div class="p-2 bg-neutral-100 cursor-pointer rounded">
-        <div class="w-6 h-6">
-          <PlusIcon />
-        </div>
+  <div class="flex items-center justify-center">
+    <Button handleClick={() => incrementQuantity()} disabled={value === 100}>
+      <div class="cursor-pointer p-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="h-5 w-5"
+        >
+          <path
+            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+          />
+        </svg>
       </div>
     </Button>
   </div>

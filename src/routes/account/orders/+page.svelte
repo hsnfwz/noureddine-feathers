@@ -1,103 +1,101 @@
 <script lang="ts">
+  export let data;
+
+  import { page } from "$app/stores";
+
   // components
-  import Heading from '$components/Heading/Heading.svelte';
-
-  // interfaces
-  import type I_Profile from '$interfaces/I_Profile';
-
-  // stores
-  import { profile } from '$stores/ProfileStore';
-
-  // api
-  import { getOrders } from '$api/order';
-
-  // state
-  let isLoading: boolean = true;
-  let currentProfile: I_Profile | undefined;
-  let fulfilledOrders: any;
-  let unfulfilledOrders: any;
-
-  profile.subscribe(async (value) => {
-    isLoading = true;
-
-    if (value) {
-      const _orders: [] | undefined = await getOrders({ profile_id: value.id });
-
-      let _fulfilledOrders: [] = [];
-      let _unfulfilledOrders: [] = [];
-
-      if (_orders) {
-        _orders.forEach(order => {
-          if (order.is_fulfilled) {
-            _fulfilledOrders.push(order);
-          } else {
-            _unfulfilledOrders.push(order);
-          }
-        });
-
-        _fulfilledOrders.sort((a, b) => a.created_at < b.created_at);
-        _unfulfilledOrders.sort((a, b) => a.created_at < b.created_at);
-
-        fulfilledOrders = [..._fulfilledOrders];
-        unfulfilledOrders = [..._unfulfilledOrders];
-      }
-    }
-
-    currentProfile = value;
-
-    isLoading = false;
-  });
+  import Heading from "$components/Heading/Heading.svelte";
+  import Link from "$components/Link/Link.svelte";
 </script>
 
 <svelte:head>
-  <title>Account Orders | Noureddine Feathers</title>
-  <meta name="description" content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells" />
+  <title>Your Orders | Noureddine Feathers</title>
+  <meta
+    name="description"
+    content="Noureddine Feathers - Shop premium ostrich feather dusters, premium extendable lambswool dusters, premium lambswool dusters, ostrich feathers, and ostrich eggshells - handmade from 100% natural farm-raised ostrich feathers and eggshells"
+  />
 </svelte:head>
 
 <Heading customClass="text-center">
-  <span>Account - Orders</span>
+  <span>Your Orders</span>
 </Heading>
-{#if isLoading}
-  <p class="text-center">Loading...</p>
-{:else if !isLoading && currentProfile && fulfilledOrders && unfulfilledOrders}
-  <div class="flex flex-col gap-8 m-auto">
+{#if $page.data.session}
+  <div class="m-auto flex flex-col gap-8">
     <div class="flex flex-col gap-4">
-      <h1>New Orders ({unfulfilledOrders.length})</h1>
-      {#if unfulfilledOrders.length === 0}
+      <h1>New Orders ({data.unfulfilledOrders.length})</h1>
+      {#if data.unfulfilledOrders.length === 0}
         <p class="text-gray-500">You have no new orders.</p>
       {:else}
-        {#each unfulfilledOrders as order}
-          <div class="grid md:grid-cols-3 gap-4 p-4 bg-neutral-100 rounded">
+        {#each data.unfulfilledOrders as order}
+          <div class="grid gap-4 rounded bg-neutral-100 p-4 md:grid-cols-3">
             <div class="self-center">
-              <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(new Date(order.created_at))}</p>
+              <p>
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                }).format(new Date(order.created_at))}
+              </p>
             </div>
             <div class="md:self-center">
               <p class="text-neutral-500">No Tracking ID</p>
             </div>
-            <div class="grid md:grid-cols-2 md:self-center md:justify-self-end gap-4">
-              <a class="text-blue-500 md:justify-self-end" href={`/account/orders/${order.id}`}>View Order</a>
-              <a class="text-blue-500 md:justify-self-end" href={order.stripe_receipt_url} target="_blank" rel="noreferrer">View Receipt</a>
+            <div
+              class="grid gap-4 md:grid-cols-2 md:self-center md:justify-self-end"
+            >
+              <a
+                class="text-blue-500 md:justify-self-end"
+                href={`/account/orders/${order.id}`}>View Order</a
+              >
+              <a
+                class="text-blue-500 md:justify-self-end"
+                href={order.stripe_receipt_url}
+                target="_blank"
+                rel="noreferrer">View Receipt</a
+              >
             </div>
           </div>
         {/each}
       {/if}
     </div>
     <div class="flex flex-col gap-4">
-      <h1>Shipped Orders ({fulfilledOrders.length})</h1>
-      {#if fulfilledOrders.length === 0}
+      <h1>Shipped Orders ({data.fulfilledOrders.length})</h1>
+      {#if data.fulfilledOrders.length === 0}
         <p class="text-gray-500">You have no shipped orders.</p>
       {:else}
-        {#each fulfilledOrders as order}
-          <div class="grid md:grid-cols-3 gap-4 p-4 bg-neutral-100 rounded">
+        {#each data.fulfilledOrders as order}
+          <div class="grid gap-4 rounded bg-neutral-100 p-4 md:grid-cols-3">
             <div class="self-center">
-              <p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }).format(new Date(order.created_at))}</p>
+              <p>
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                }).format(new Date(order.created_at))}
+              </p>
             </div>
             <div class="md:self-center">
-              <p class="nf-font-bold">{order.tracking_id}</p>
+              <p class="nf-font-bold">
+                {order.tracking_id || "No Tracking ID"}
+              </p>
             </div>
-            <div class="grid md:grid-cols-2 md:self-center md:justify-self-end gap-4">
-              <a class="text-blue-500 md:justify-self-end" href={`/account/orders/${order.id}`}>View Order</a>
-              <a class="text-blue-500 md:justify-self-end" href={order.stripe_receipt_url} target="_blank" rel="noreferrer">View Receipt</a>
+            <div
+              class="grid gap-4 md:grid-cols-2 md:self-center md:justify-self-end"
+            >
+              <a
+                class="text-blue-500 md:justify-self-end"
+                href={`/account/orders/${order.id}`}>View Order</a
+              >
+              <a
+                class="text-blue-500 md:justify-self-end"
+                href={order.stripe_receipt_url}
+                target="_blank"
+                rel="noreferrer">View Receipt</a
+              >
             </div>
           </div>
         {/each}
@@ -105,8 +103,9 @@
     </div>
   </div>
 {:else}
-  <Heading customClass="text-center">
-    <span>404 Not Found</span>
-  </Heading>
-  <p class="text-center">Woops! We could not find what you were looking for.</p>
+  <p class="text-center">
+    <Link href="/account/sign-in" customClass="text-sky-500" ariaLabel="account"
+      >Sign In</Link
+    > to view your orders.
+  </p>
 {/if}
