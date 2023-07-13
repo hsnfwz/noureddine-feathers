@@ -1,9 +1,11 @@
-import { writable } from "svelte/store";
+/** @format */
+
+import { writable } from 'svelte/store';
 
 // interfaces
-import type I_CartItem from "$interfaces/I_CartItem";
-import type I_ProductPriceTableRecord from "$interfaces/I_ProductPriceTableRecord";
-import type I_ProductTableRecord from "$interfaces/I_ProductTableRecord";
+import type I_CartItem from '$interfaces/I_CartItem';
+import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecord';
+import type I_ProductTableRecord from '$interfaces/I_ProductTableRecord';
 
 function createCart() {
   const { subscribe, set, update } = writable<{
@@ -34,12 +36,12 @@ function createCart() {
   const getCartItems = () => {
     let _cart: I_CartItem[] = [];
 
-    const cart: string | null = localStorage.getItem("cart");
+    const cart: string | null = localStorage.getItem('cart');
 
     if (cart) {
       _cart = JSON.parse(cart);
     } else {
-      localStorage.setItem("cart", JSON.stringify([]));
+      localStorage.setItem('cart', JSON.stringify([]));
     }
 
     const { cartTotalPrice, cartTotalItems } = calculateTotals(_cart);
@@ -89,7 +91,7 @@ function createCart() {
       _cartItems.push(_cartItem);
     }
 
-    localStorage.setItem("cart", JSON.stringify(_cartItems));
+    localStorage.setItem('cart', JSON.stringify(_cartItems));
 
     getCartItems();
   };
@@ -99,7 +101,7 @@ function createCart() {
 
     _cartItems.splice(cartItemIndex, 1);
 
-    localStorage.setItem("cart", JSON.stringify(_cartItems));
+    localStorage.setItem('cart', JSON.stringify(_cartItems));
 
     getCartItems();
   };
@@ -109,13 +111,13 @@ function createCart() {
 
     _cartItems[cartItemIndex].cart_item_quantity = cartItemQuantity;
 
-    localStorage.setItem("cart", JSON.stringify(_cartItems));
+    localStorage.setItem('cart', JSON.stringify(_cartItems));
 
     getCartItems();
   };
 
   const clearCart = () => {
-    localStorage.setItem("cart", JSON.stringify([]));
+    localStorage.setItem('cart', JSON.stringify([]));
 
     set({
       cartItems: [],

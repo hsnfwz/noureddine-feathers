@@ -1,12 +1,12 @@
+<!-- @format -->
 <script lang="ts">
-  import { enhance } from "$app/forms";
-  import { page } from "$app/stores";
+  import { enhance } from '$app/forms';
+  import { page } from '$app/stores';
   export let form;
 
   // components
-  import Heading from "$components/Heading/Heading.svelte";
+  import Heading from '$components/Heading/Heading.svelte';
 </script>
-
 <svelte:head>
   <title>Sign In | Noureddine Feathers</title>
   <meta
@@ -29,21 +29,21 @@
     <form
       method="post"
       use:enhance
-      class="flex w-60 flex-col gap-4 rounded-lg bg-neutral-100 p-4"
+      class="flex w-60 flex-col gap-4 rounded bg-neutral-100 p-4"
     >
       <div class="flex flex-col gap-2">
         <label
           for="email"
-          class={`${form?.success === false ? "text-red-500" : ""}`}
+          class={`${form?.success === false ? 'text-red-500' : ''}`}
           >* Email</label
         >
         <input
           id="email"
           name="email"
           autoComplete="off"
-          value={form?.email ?? ""}
+          value={form?.email ?? ''}
           class={`${
-            form?.success === false ? "border-red-500" : "border-white"
+            form?.success === false ? 'border-red-500' : 'border-white'
           } box-border w-full rounded border-2 p-2`}
           placeholder="Email"
         />

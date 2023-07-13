@@ -1,18 +1,17 @@
+<!-- @format -->
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { page } from "$app/stores";
+  import { onMount } from 'svelte';
+  import { page } from '$app/stores';
 
   // components
-  import Link from "$components/Link/Link.svelte";
-  import Button from "$components/Button/Button.svelte";
-  import IconStack from "$components/icons/IconStack.svelte";
-  import IconX from "$components/icons/IconX.svelte";
+  import Link from '$components/Link/Link.svelte';
+  import Button from '$components/Button/Button.svelte';
 
   // stores
-  import { cart } from "$stores/CartStore";
+  import { cart } from '$stores/CartStore';
 
   // lib
-  import ImageLogo from "$lib/images/logo.webp";
+  import ImageLogo from '$lib/images/logo.webp';
 
   // props
   let showNavMobile: boolean = false;
@@ -20,13 +19,13 @@
   // state
   let bodyElement: any;
 
-  onMount(() => (bodyElement = document.querySelector("body")));
+  onMount(() => (bodyElement = document.querySelector('body')));
 
   $: {
     if (showNavMobile) {
-      if (bodyElement) bodyElement.style.overflow = "hidden";
+      if (bodyElement) bodyElement.style.overflow = 'hidden';
     } else {
-      if (bodyElement) bodyElement.style.overflow = "auto";
+      if (bodyElement) bodyElement.style.overflow = 'auto';
     }
   }
 </script>
@@ -54,7 +53,16 @@
           </div>
           <div class="flex flex-1 items-center justify-end lg:hidden">
             <Button handleClick={() => (showNavMobile = false)}>
-              <IconX />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class="h-5 w-5"
+              >
+                <path
+                  d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+                />
+              </svg>
             </Button>
           </div>
         </div>
@@ -91,7 +99,7 @@
           </div>
           <div class="flex flex-col gap-4">
             <Link
-              href={`${$page.data.session ? "/account" : "/account/sign-in"}`}
+              href={`${$page.data.session ? '/account' : '/account/sign-in'}`}
               ariaLabel="account"
               handleClick={() => (showNavMobile = false)}>Account</Link
             >
@@ -125,7 +133,18 @@
       </Link>
       <div class="flex items-center justify-self-end lg:hidden">
         <Button handleClick={() => (showNavMobile = true)}>
-          <IconStack />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="h-5 w-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
+              clip-rule="evenodd"
+            />
+          </svg>
         </Button>
       </div>
       <div class="hidden lg:col-span-2 lg:flex lg:justify-self-center">
@@ -150,7 +169,7 @@
       <div class="hidden lg:flex lg:justify-self-end">
         <div class="flex flex-shrink-0 flex-col items-center gap-4 lg:flex-row">
           <Link
-            href={`${$page.data.session ? "/account" : "/account/sign-in"}`}
+            href={`${$page.data.session ? '/account' : '/account/sign-in'}`}
             ariaLabel="account">Account</Link
           >
           <a href="/cart" class="text-center">

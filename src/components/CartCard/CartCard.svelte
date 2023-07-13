@@ -1,11 +1,12 @@
+<!-- @format -->
 <script lang="ts">
-  import { afterUpdate } from "svelte";
+  import { afterUpdate } from 'svelte';
 
   // storage
-  import { getPublicUrl } from "$api/storage";
+  import { getPublicUrl } from '$api/storage';
 
   // interfaces
-  import type I_CartItem from "$interfaces/I_CartItem";
+  import type I_CartItem from '$interfaces/I_CartItem';
 
   // helpers
   import {
@@ -13,14 +14,14 @@
     formatText,
     formatPackage,
     formatName,
-  } from "$helpers/helpers";
+  } from '$helpers/helpers';
 
   // stores
-  import { cart } from "$stores/CartStore";
+  import { cart } from '$stores/CartStore';
 
   // components
-  import Link from "$components/Link/Link.svelte";
-  import Counter from "$components/Counter/Counter.svelte";
+  import Link from '$components/Link/Link.svelte';
+  import Counter from '$components/Counter/Counter.svelte';
 
   // props
   export let cartItem: I_CartItem;
@@ -28,14 +29,14 @@
 
   // state
   let quantity: number = cartItem.cart_item_quantity;
-  let src: string = "";
+  let src: string = '';
 
   $: cart.updateCartItem(cartItemIndex, quantity);
 
   afterUpdate(() => {
     quantity = cartItem.cart_item_quantity;
 
-    if (cartItem.category === "Feathers") {
+    if (cartItem.category === 'Feathers') {
       src = getPublicUrl(
         `${formatName(
           cartItem.name,
@@ -67,56 +68,63 @@
   });
 </script>
 
-<div class="flex flex-col md:flex-row">
-  <Link
-    href={`/${formatText(cartItem.category)}/${
-      cartItem.product_id
-    }-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${
-      cartItem.size || ""
-    }-${formatText(cartItem.size_unit) || ""}`}
-    ariaLabel={cartItem.name}
-  >
-    <div
-      class="flex h-full justify-center rounded-t-lg bg-neutral-100 p-2 md:rounded-t-none md:rounded-bl-lg md:rounded-tl-lg"
+<div class="flex flex-row gap-4">
+  <div>
+    <Link
+      href={`/products/${formatText(cartItem.category)}/${
+        cartItem.product_id
+      }-${formatText(cartItem.name)}-${formatText(cartItem.color)}-${
+        cartItem.size || ''
+      }-${formatText(cartItem.size_unit) || ''}`}
+      ariaLabel={cartItem.name}
     >
       <img
         {src}
         alt={cartItem.name}
         width=""
         height=""
-        class="object-contain"
+        class="w-full max-w-[200px] items-center justify-center rounded bg-neutral-100 object-contain p-2"
       />
-    </div>
-  </Link>
-  <div
-    class="flex flex-col gap-4 rounded-b-lg border-x-2 border-b-2 border-neutral-100 p-4 md:rounded-b-none md:rounded-t-none md:rounded-br-lg md:rounded-tr-lg md:border-y-2 md:border-r-2"
-  >
-    <div class="flex flex-col gap-2">
-      <p>
+    </Link>
+  </div>
+  <div class="flex w-full flex-col gap-4">
+    <div class="flex gap-4">
+      <p class="flex-grow">
         {cartItem.name} - {cartItem.color}
-        {cartItem.size ? `- ${cartItem.size} ${cartItem.size_unit}` : ""}
+        {cartItem.size ? `- ${cartItem.size} ${cartItem.size_unit}` : ''}
       </p>
-      <div class="flex gap-2">
+      <button
+        class="self-start rounded bg-neutral-100 p-2"
+        type="button"
+        on:click={() => cart.removeCartItem(cartItemIndex)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="h-5 w-5"
+        >
+          <path
+            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4 lg:grid lg:grid-cols-3">
+      <div class="flex gap-4 lg:flex-col lg:gap-4">
         <p class="flex flex-grow">Package</p>
         <p>{formatPackage(cartItem.quantity)}</p>
       </div>
-      <div class="flex gap-2">
+      <div class="flex gap-4 lg:flex-col lg:gap-4">
         <p class="flex flex-grow">Price</p>
         <p class="nf-font-bold">
           {formatCurrency(cartItem.price * cartItem.cart_item_quantity)}
         </p>
       </div>
-      <div class="flex gap-2">
+      <div class="flex items-start gap-4 lg:flex-col lg:gap-4">
         <p class="flex flex-grow items-center">Quantity</p>
         <Counter bind:value={quantity} />
       </div>
     </div>
-    <button
-      class="nf-font-bold rounded bg-red-500 px-4 py-2 text-white disabled:opacity-50"
-      type="button"
-      on:click={() => cart.removeCartItem(cartItemIndex)}
-    >
-      Remove
-    </button>
   </div>
 </div>

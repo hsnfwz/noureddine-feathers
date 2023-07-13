@@ -1,8 +1,9 @@
+<!-- @format -->
 <script lang="ts">
-  import { onMount, afterUpdate } from "svelte";
+  import { onMount, afterUpdate } from 'svelte';
 
   // storage
-  import { getPublicUrl } from "$api/storage";
+  import { getPublicUrl } from '$api/storage';
 
   // helpers
   import {
@@ -10,27 +11,27 @@
     formatText,
     formatPackage,
     formatName,
-  } from "$helpers/helpers";
+  } from '$helpers/helpers';
 
   // interfaces
-  import type I_Product from "$interfaces/I_Product";
+  import type I_Product from '$interfaces/I_Product';
 
   // components
-  import Stars from "$components/Stars/Stars.svelte";
-  import Link from "$components/Link/Link.svelte";
-  import ProductCardSkeleton from "$components/ProductCard/ProductCardSkeleton.svelte";
+  import Stars from '$components/Stars/Stars.svelte';
+  import Link from '$components/Link/Link.svelte';
+  import ProductCardSkeleton from '$components/ProductCard/ProductCardSkeleton.svelte';
 
   // props
   export let product: I_Product;
 
   // state
   let isLoading: boolean = true;
-  let src: string = "";
+  let src: string = '';
 
   onMount(() => (isLoading = false));
 
   afterUpdate(() => {
-    if (product.category === "Feathers") {
+    if (product.category === 'Feathers') {
       src = getPublicUrl(
         `${formatName(
           product.name,
@@ -61,7 +62,6 @@
     }
   });
 </script>
-
 {#if isLoading}
   <ProductCardSkeleton />
 {:else}
@@ -70,8 +70,8 @@
       href={`/products/${formatText(product.category)}/${
         product.id
       }-${formatText(product.name)}-${formatText(product.color)}-${
-        product.size || ""
-      }-${formatText(product.size_unit) || ""}`}
+        product.size || ''
+      }-${formatText(product.size_unit) || ''}`}
       ariaLabel={product.name}
     >
       <div class="flex justify-center rounded-t-lg bg-neutral-100 p-2">
@@ -83,7 +83,7 @@
     >
       <p>
         {product.name} - {product.color}
-        {product.size ? `- ${product.size} ${product.size_unit}` : ""}
+        {product.size ? `- ${product.size} ${product.size_unit}` : ''}
       </p>
       <div class="flex flex-col gap-2">
         {#each product.prices as productPrice}

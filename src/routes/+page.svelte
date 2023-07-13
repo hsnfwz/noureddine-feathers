@@ -1,3 +1,4 @@
+<!-- @format -->
 <script lang="ts">
   // components
   import Heading from "$components/Heading/Heading.svelte";

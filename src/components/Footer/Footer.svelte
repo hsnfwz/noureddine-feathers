@@ -1,12 +1,10 @@
+<!-- @format -->
 <script lang="ts">
   // components
-  import Link from "$components/Link/Link.svelte";
-  import FacebookIcon from "$components/icons/FacebookIcon.svelte";
-  import InstagramIcon from "$components/icons/InstagramIcon.svelte";
-  import PinterestIcon from "$components/icons/PinterestIcon.svelte";
+  import Link from '$components/Link/Link.svelte';
 
   // lib
-  import ImageLogo from "$lib/images/logo.webp";
+  import ImageLogo from '$lib/images/logo.webp';
 </script>
 
 <footer
@@ -17,35 +15,6 @@
       <img src={ImageLogo} alt="Noureddine Feathers" width="128" height="72" />
     </div>
   </Link>
-  <!-- <div class="flex flex-col gap-4 justify-center items-center">
-    <p class="text-center">Follow Us</p>
-    <div class="flex gap-4">
-      <Link
-        href="/"
-        ariaLabel="facebook"
-      >
-        <div class="w-6 h-6">
-          <FacebookIcon />
-        </div>
-      </Link>
-      <Link
-        href="/"
-        ariaLabel="instagram"
-      >
-        <div class="w-6 h-6">  
-          <InstagramIcon />
-        </div>
-      </Link>
-      <Link
-        href="/"
-        ariaLabel="pinterest"
-      >
-        <div class="w-6 h-6">  
-          <PinterestIcon />
-        </div>
-      </Link>
-    </div>
-  </div> -->
   <div class="grid grid-flow-row gap-4 lg:grid-flow-col">
     <Link href="/info/contact" ariaLabel="contact">
       <span>Contact</span>

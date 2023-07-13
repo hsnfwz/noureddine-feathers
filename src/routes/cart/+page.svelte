@@ -1,22 +1,23 @@
+<!-- @format -->
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from '$app/stores';
 
   // components
-  import CartCard from "$components/CartCard/CartCard.svelte";
-  import Heading from "$components/Heading/Heading.svelte";
+  import CartCard from '$components/CartCard/CartCard.svelte';
+  import Heading from '$components/Heading/Heading.svelte';
 
   // helpers
-  import { formatCurrency } from "$helpers/helpers";
+  import { formatCurrency } from '$helpers/helpers';
 
   // config
-  import getStripe from "$config/stripe";
+  import getStripe from '$config/stripe';
 
   // store
-  import { cart } from "$stores/CartStore";
+  import { cart } from '$stores/CartStore';
 
   // state
   let isLoadingCheckout: boolean = false;
-  let checkoutErrorMessage: string = "";
+  let checkoutErrorMessage: string = '';
 
   const checkout = async () => {
     try {
@@ -29,13 +30,13 @@
         };
       });
 
-      const response = await fetch("/api/checkout", {
-        method: "POST",
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userProfileId: $page.data.session.user.id,
+          userProfileId: $page.data.session && $page.data.session.user.id,
           products,
         }),
       });
@@ -76,34 +77,30 @@
     class="flex flex-col items-center gap-4 lg:flex-row lg:items-start lg:justify-center"
   >
     <div
-      class={`flex w-full max-w-[500px] flex-col gap-4 rounded-lg border-2 border-neutral-100 p-4`}
+      class={`flex w-full basis-3/5 flex-col gap-4 rounded border-2 border-neutral-100 p-4`}
     >
-      <Heading>YOUR Cart</Heading>
-      <div class="flex flex-col gap-2">
-        <p class="uppercase">
-          Subtotal ({$cart.cartTotalItems}
-          {$cart.cartTotalItems === 1 ? "item" : "items"})
-        </p>
-        <p class="nf-font-bold text-xl text-red-500">
-          {formatCurrency($cart.cartTotalPrice)}
-        </p>
-      </div>
+      <Heading>Your Cart</Heading>
       {#if $cart.cartTotalItems !== 0}
-        <div class="flex max-w-[500px] flex-col gap-4">
+        <div class="flex flex-col gap-4">
           {#each $cart.cartItems as item, index}
             <CartCard cartItem={item} cartItemIndex={index} />
+            {#if index !== $cart.cartItems.length - 1}
+              <div class="h-[2px] w-full rounded-full bg-neutral-100" />
+            {/if}
           {/each}
         </div>
+      {:else}
+        <p>Empty</p>
       {/if}
     </div>
     <div
-      class={`flex w-full max-w-[500px] flex-col gap-4 rounded-lg border-2 border-neutral-100 p-4`}
+      class={`sticky top-4 flex w-full basis-2/5 flex-col gap-4 self-start rounded border-2 border-neutral-100 p-4`}
     >
-      <Heading>SUMMARY</Heading>
+      <Heading>Summary</Heading>
       <div class="flex flex-col gap-2">
         <p class="uppercase">
           {$cart.cartTotalItems}
-          {$cart.cartTotalItems === 1 ? "item" : "items"}
+          {$cart.cartTotalItems === 1 ? 'item' : 'items'}
         </p>
         <div class="flex items-center gap-2">
           <p class="nf-font-bold flex-grow uppercase">Subtotal</p>

@@ -1,18 +1,20 @@
-import { error } from "@sveltejs/kit";
+/** @format */
+
+import { error } from '@sveltejs/kit';
 
 // api
-import { getProducts } from "$api/product";
+import { getProducts } from '$api/product';
 
 export async function load({ params }: any) {
   const products = await Promise.all([
-    getProducts({ category: "Feather Dusters" }, undefined, 4),
-    getProducts({ category: "Lambswool Dusters" }, undefined, 4),
-    getProducts({ category: "Feathers" }, undefined, 4),
-    getProducts({ category: "Eggshells" }, undefined, 4),
+    getProducts({ category: 'Feather Dusters' }, undefined, 4),
+    getProducts({ category: 'Lambswool Dusters' }, undefined, 4),
+    getProducts({ category: 'Feathers' }, undefined, 4),
+    getProducts({ category: 'Eggshells' }, undefined, 4),
   ]);
 
   if (!products) {
-    throw error(404, "Not Found");
+    throw error(404, 'Not Found');
   }
 
   return {
