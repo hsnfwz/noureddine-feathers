@@ -1,6 +1,8 @@
+<!-- @format -->
 <script lang="ts">
   // components
-  import Heading from "$components/Heading/Heading.svelte";
+  import Divider from '$components/Divider.svelte';
+  import Heading from '$components/Heading.svelte';
 </script>
 
 <svelte:head>
@@ -11,17 +13,14 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
   <Heading>
     <span>Shipping</span>
   </Heading>
-  <div class="flex max-w-[500px] flex-col gap-4">
-    <p>All orders above $600 will be shipped for free.</p>
-  </div>
-  <div class="max-w-[500px]">
-    <p>
-      *If you have any further questions, please contact us by email at
-      info@nprofiles.com.
-    </p>
-  </div>
+  <p>All orders above $600 will be shipped for free.</p>
+  <Divider />
+  <p>
+    If you have any further questions, please contact us by email at
+    info@nprofiles.com.
+  </p>
 </div>

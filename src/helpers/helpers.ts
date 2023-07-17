@@ -1,19 +1,21 @@
+/** @format */
+
 // interfaces
-import type I_ProductPriceTableRecord from "$interfaces/I_ProductPriceTableRecord";
+import type I_ProductPriceTableRecord from '$interfaces/I_ProductPriceTableRecord';
 
 const formatCurrency = (amount: number) => {
-  const formatToUSD = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const formatToUSD = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   });
   return formatToUSD.format(amount);
 };
 
 const formatText = (text: string) => {
-  let _text: string = "";
+  let _text: string = '';
 
   if (text) {
-    _text = text.split(" ").join("-").toLowerCase();
+    _text = text.split(' ').join('-').toLowerCase();
   }
 
   return _text;
@@ -64,7 +66,7 @@ const generateClass = (
   conditionalClasses: { [conditionalClass: string]: boolean }[] = []
 ) => {
   if (unconditionalClasses.length === 0 && conditionalClasses.length === 0)
-    return "";
+    return '';
 
   const passedConditionalClasses = [];
 
@@ -75,13 +77,13 @@ const generateClass = (
 
   const allClasses = unconditionalClasses.concat(passedConditionalClasses);
 
-  const generatedClass = allClasses.join(" ");
+  const generatedClass = allClasses.join(' ');
 
   return generatedClass;
 };
 
 const formatPackage = (quantity: number, showPer: boolean = false) => {
-  let _quantity: string = "";
+  let _quantity: string = '';
 
   // if (quantity === 1) {
   //   _quantity = showPer ? 'each' : '1';
@@ -96,15 +98,15 @@ const formatPackage = (quantity: number, showPer: boolean = false) => {
   // }
 
   if (quantity === 1) {
-    _quantity = showPer ? "each" : "1";
+    _quantity = showPer ? 'each' : '1 unit';
   } else if (quantity === 10) {
-    _quantity = showPer ? "/pack of 10" : "10";
+    _quantity = showPer ? '/pack of 10' : '10 units';
   } else if (quantity === 12) {
-    _quantity = showPer ? "/dz." : "1 dz.";
+    _quantity = showPer ? '/dz.' : '1 dz.';
   } else if (quantity === 36) {
-    _quantity = showPer ? "/3 dz." : "3 dz.";
+    _quantity = showPer ? '/3 dz.' : '3 dz.';
   } else if (quantity === 60) {
-    _quantity = showPer ? "/5 dz." : "5 dz.";
+    _quantity = showPer ? '/5 dz.' : '5 dz.';
   }
 
   return _quantity;
@@ -116,8 +118,8 @@ const formatName = (
   size: number,
   sizeUnit: string
 ) => {
-  const _name = name.split(" ").join("-");
-  const _color = color.split(" ").join("-");
+  const _name = name.split(' ').join('-');
+  const _color = color.split(' ').join('-');
 
   return `${_name}-${_color}-${size}-${sizeUnit}`;
 };

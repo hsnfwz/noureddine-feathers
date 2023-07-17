@@ -1,8 +1,8 @@
 <!-- @format -->
 <script lang="ts">
   // components
-  import Heading from '$components/Heading/Heading.svelte';
-  import Link from '$components/Link/Link.svelte';
+  import Heading from '$components/Heading.svelte';
+  import Link from '$components/Link.svelte';
 </script>
 
 <svelte:head>

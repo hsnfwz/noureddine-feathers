@@ -1,7 +1,8 @@
+<!-- @format -->
 <script lang="ts">
   // components
-  import Heading from "$components/Heading/Heading.svelte";
-  import Link from "$components/Link/Link.svelte";
+  import Heading from '$components/Heading.svelte';
+  import Link from '$components/Link.svelte';
 </script>
 
 <svelte:head>
@@ -12,12 +13,13 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
   <Heading>
     <span>Payment Cancelled</span>
   </Heading>
-  <p class="text-center">
+  <p>
     Your payment was cancelled. Continue shopping and checkout when you are
     ready.
   </p>
+  <Link href="/">Continue Shopping</Link>
 </div>

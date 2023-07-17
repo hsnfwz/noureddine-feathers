@@ -1,11 +1,8 @@
+<!-- @format -->
 <script lang="ts">
-  // components
-  import ProductDetails from "$components/ProductDetails/ProductDetails.svelte";
+  import ProductTemplate from '$templates/ProductTemplate.svelte';
 
-  // interfaces
-  import type I_Product from "$interfaces/I_Product";
-
-  export let data: { product: I_Product; productImagePublicUrls: string[] };
+  export let data;
 </script>
 
 <svelte:head>
@@ -16,7 +13,4 @@
   />
 </svelte:head>
 
-<ProductDetails
-  product={data.product}
-  productImagePublicUrls={data.productImagePublicUrls}
-/>
+<ProductTemplate {data} />

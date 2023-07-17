@@ -1,9 +1,11 @@
+<!-- @format -->
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from '$app/stores';
+  import Button from '$components/Button.svelte';
 
   // components
-  import Heading from "$components/Heading/Heading.svelte";
-  import Link from "$components/Link/Link.svelte";
+  import Heading from '$components/Heading.svelte';
+  import Link from '$components/Link.svelte';
 
   // state
   // let email: string = '';
@@ -40,23 +42,22 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="m-8 flex flex-col items-center gap-8">
   <Heading>
     <span>Account</span>
   </Heading>
   {#if $page.data.session}
-    <div class="flex flex-col items-center gap-4">
-      <a href="/account/orders" class="text-blue-500">Orders</a>
-      <a href="/account/reviews" class="text-blue-500">Reviews</a>
+    <div class="flex flex-col items-center gap-8">
+      <Link href="/account/orders" customClass="text-sky-500">Orders</Link>
+      <Link href="/account/reviews" customClass="text-sky-500">Reviews</Link>
     </div>
-    <button
-      class="nf-font-bold rounded bg-neutral-100 px-4 py-2"
-      type="button"
-      on:click={async () => await $page.data.supabase.auth.signOut()}
+    <Button
+      customClass="bg-sky-500 text-white"
+      handleClick={async () => await $page.data.supabase.auth.signOut()}
     >
       Sign Out
-    </button>
+    </Button>
   {:else}
-    <Link href="/account/sign-in" ariaLabel="account">Sign In</Link>
+    <Link href="/account/sign-in">Sign In</Link>
   {/if}
 </div>
