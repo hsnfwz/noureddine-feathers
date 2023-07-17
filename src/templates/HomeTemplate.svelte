@@ -12,7 +12,7 @@
 
 <div class="flex flex-col">
   <Hero />
-  <div class="m-8 flex flex-col gap-8">
+  <div class="flex flex-col gap-8 p-8">
     <div class="flex flex-col gap-8">
       <Heading>Feather Dusters</Heading>
       <ProductCardGrid products={data.featherDusters} />

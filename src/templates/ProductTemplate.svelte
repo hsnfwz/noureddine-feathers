@@ -78,7 +78,7 @@
   }
 </script>
 
-<div class="m-8 flex flex-col gap-8">
+<div class="flex flex-col gap-8 p-8">
   <div class="flex flex-col gap-4 lg:hidden">
     <h1 class="montserrat-bold text-xl">
       <p>

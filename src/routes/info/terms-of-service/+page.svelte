@@ -12,7 +12,7 @@
   />
 </svelte:head>
 
-<div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
+<div class="flex w-full flex-col gap-8 p-8 lg:w-3/5">
   <Heading>
     <span>Terms of Service</span>
   </Heading>

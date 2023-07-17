@@ -8,7 +8,7 @@
   import ProductCardGrid from '$components/ProductCardGrid.svelte';
 </script>
 
-<div class="m-8 flex flex-col gap-8">
+<div class="flex flex-col gap-8 p-8">
   <Heading>
     <span>{heading}</span>
   </Heading>

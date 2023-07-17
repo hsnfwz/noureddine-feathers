@@ -42,7 +42,7 @@
   />
 </svelte:head>
 
-<div class="m-8 flex flex-col items-center gap-8">
+<div class="flex flex-col items-center gap-8 p-8">
   <Heading>
     <span>Account</span>
   </Heading>

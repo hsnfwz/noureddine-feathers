@@ -62,7 +62,7 @@
 </script>
 
 <div
-  class="m-8 flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:justify-center"
+  class="flex flex-col items-center gap-8 p-8 lg:flex-row lg:items-start lg:justify-center"
 >
   <div class={`flex w-full basis-3/5 flex-col gap-8 `}>
     <Heading>Your Cart</Heading>
