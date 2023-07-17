@@ -1,9 +1,10 @@
+<!-- @format -->
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from '$app/stores';
 
   // components
-  import Heading from "$components/Heading/Heading.svelte";
-  import Link from "$components/Link/Link.svelte";
+  import Heading from '$components/Heading.svelte';
+  import Link from '$components/Link.svelte';
 </script>
 
 <svelte:head>
@@ -14,19 +15,16 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="flex flex-col items-center gap-8">
   <Heading>
     <span>Your Review</span>
   </Heading>
   {#if $page.data.session}
-    <div class="flex flex-col gap-4" />
+    <div class="flex flex-col gap-8" />
   {:else}
     <p class="text-center">
-      <Link
-        href="/account/sign-in"
-        customClass="text-sky-500"
-        ariaLabel="account">Sign In</Link
-      > to view your review.
+      <Link href="/account/sign-in" customClass="text-sky-500">Sign In</Link> to
+      view your review.
     </p>
   {/if}
 </div>

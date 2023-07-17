@@ -1,6 +1,8 @@
+<!-- @format -->
 <script lang="ts">
   // components
-  import Heading from "$components/Heading/Heading.svelte";
+  import Divider from '$components/Divider.svelte';
+  import Heading from '$components/Heading.svelte';
 </script>
 
 <svelte:head>
@@ -11,40 +13,37 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
   <Heading>
     <span>About</span>
   </Heading>
-  <div class="flex max-w-[500px] flex-col gap-4">
-    <p>
-      Noureddine Feathers is a family business that started manufacturing
-      feather dusters in the Mediterranean in 1976.
-    </p>
-    <p>
-      In 1997, we established our business in Vancouver, BC and started
-      distributing our feather dusters all over Canada and the United States.
-    </p>
-    <p>
-      Noureddine Feathers sells quality products and provides professional
-      services that guarantees customer satisfaction. All our feather dusters
-      are handmade from fine, washed, and treated 100% natural, farm-raised
-      ostrich feathers. These feathers are collected every year during the
-      summer through the natural molting process.
-    </p>
-    <p>
-      We have committed ourselves to produce the best quality products, ensuring
-      each handmade piece is beautiful and durable to meet all of your dusting
-      needs.
-    </p>
-    <p>
-      In addition to feather dusters, we sell lambswool dusters, ostrich
-      feathers, and ostrich eggshells.
-    </p>
-  </div>
-  <div class="max-w-[500px]">
-    <p>
-      *If you have any further questions, please contact us by email at
-      info@nprofiles.com.
-    </p>
-  </div>
+  <p>
+    Noureddine Feathers is a family business that started manufacturing feather
+    dusters in the Mediterranean in 1976.
+  </p>
+  <p>
+    In 1997, we established our business in Vancouver, BC and started
+    distributing our feather dusters all over Canada and the United States.
+  </p>
+  <p>
+    Noureddine Feathers sells quality products and provides professional
+    services that guarantees customer satisfaction. All our feather dusters are
+    handmade from fine, washed, and treated 100% natural, farm-raised ostrich
+    feathers. These feathers are collected every year during the summer through
+    the natural molting process.
+  </p>
+  <p>
+    We have committed ourselves to produce the best quality products, ensuring
+    each handmade piece is beautiful and durable to meet all of your dusting
+    needs.
+  </p>
+  <p>
+    In addition to feather dusters, we sell lambswool dusters, ostrich feathers,
+    and ostrich eggshells.
+  </p>
+  <Divider />
+  <p>
+    If you have any further questions, please contact us by email at
+    info@nprofiles.com.
+  </p>
 </div>

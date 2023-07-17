@@ -1,6 +1,7 @@
+<!-- @format -->
 <script lang="ts">
   // components
-  import Heading from "$components/Heading/Heading.svelte";
+  import Heading from '$components/Heading.svelte';
 </script>
 
 <svelte:head>
@@ -11,25 +12,31 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
   <Heading>
     <span>Contact</span>
   </Heading>
-  <div class="flex flex-col gap-4">
-    <div class="flex flex-col gap-2">
-      <p class="nf-font-bold">Address</p>
-      <p>Noureddine Feathers</p>
-      <p>7751 Berkley St</p>
-      <p>Burnaby, BC, Canada V5E 2J8</p>
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4">
+      <p class="montserrat-bold">Address</p>
+      <div>
+        <p>Noureddine Feathers</p>
+        <p>7751 Berkley St</p>
+        <p>Burnaby, BC, Canada V5E 2J8</p>
+      </div>
     </div>
-    <div class="flex flex-col gap-2">
-      <p class="nf-font-bold">Phone</p>
-      <p>CALL 604-889-4117</p>
-      <p>FAX 604-986-0231</p>
+    <div class="flex flex-col gap-4">
+      <p class="montserrat-bold">Phone</p>
+      <div>
+        <p>CALL 604-889-4117</p>
+        <p>FAX 604-986-0231</p>
+      </div>
     </div>
-    <div class="flex flex-col gap-2">
-      <p class="nf-font-bold">Email</p>
-      <p>info@nprofiles.com</p>
+    <div class="flex flex-col gap-4">
+      <p class="montserrat-bold">Email</p>
+      <div>
+        <p>info@nprofiles.com</p>
+      </div>
     </div>
   </div>
 </div>

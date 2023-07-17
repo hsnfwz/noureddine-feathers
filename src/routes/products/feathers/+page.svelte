@@ -1,12 +1,8 @@
+<!-- @format -->
 <script lang="ts">
-  // components
-  import Heading from "$components/Heading/Heading.svelte";
-  import ProductCardGrid from "$components/ProductCardGrid/ProductCardGrid.svelte";
+  import ProductsTemplate from '$templates/ProductsTemplate.svelte';
 
-  // interfaces
-  import type I_Product from "$interfaces/I_Product";
-
-  export let data: { products: I_Product[] };
+  export let data;
 </script>
 
 <svelte:head>
@@ -17,7 +13,4 @@
   />
 </svelte:head>
 
-<Heading>
-  <span>Feathers</span>
-</Heading>
-<ProductCardGrid products={data.products} />
+<ProductsTemplate heading="Feathers" {data} />

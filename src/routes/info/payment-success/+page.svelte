@@ -1,11 +1,13 @@
+<!-- @format -->
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
 
   // components
-  import Heading from "$components/Heading/Heading.svelte";
+  import Heading from '$components/Heading.svelte';
 
   // stores
-  import { cart } from "$stores/CartStore";
+  import { cart } from '$stores/CartStore';
+  import Link from '$components/Link.svelte';
 
   onMount(() => cart.clearCart());
 </script>
@@ -18,9 +20,10 @@
   />
 </svelte:head>
 
-<div class="flex flex-col items-center gap-4">
+<div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
   <Heading>
     <span>Payment Successful</span>
   </Heading>
-  <p class="text-center">Your payment was successful!</p>
+  <p>Your payment was successful!</p>
+  <Link href="/">Continue Shopping</Link>
 </div>

@@ -16,7 +16,7 @@ const config = {
       $config: resolve('./src/config/'),
       $api: resolve('./src/api/'),
       $helpers: resolve('./src/helpers/'),
-      $layouts: resolve('./src/layouts/'),
+      $templates: resolve('./src/templates/'),
     },
   },
 };
