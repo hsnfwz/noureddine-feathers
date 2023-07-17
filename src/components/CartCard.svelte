@@ -1,5 +1,6 @@
 <!-- @format -->
 <script lang="ts">
+  import { page } from '$app/stores';
   import { afterUpdate } from 'svelte';
 
   // storage
@@ -116,9 +117,17 @@
       </div>
       <div class="flex gap-8 lg:flex-col lg:gap-8">
         <p class="flex flex-grow">Price</p>
-        <p class="montserrat-bold">
-          {formatCurrency(cartItem.price * cartItem.cart_item_quantity)}
-        </p>
+        {#if cartItem.category === 'Feather Dusters' && !$page.data.session}
+          <p>
+            <Link href="/account/sign-in" customClass="text-sky-500"
+              >Sign in</Link
+            > to view prices
+          </p>
+        {:else}
+          <p class="montserrat-bold">
+            {formatCurrency(cartItem.price * cartItem.cart_item_quantity)}
+          </p>
+        {/if}
       </div>
       <div class="flex items-start gap-8 lg:flex-col lg:gap-8">
         <p class="flex flex-grow items-center">Quantity</p>

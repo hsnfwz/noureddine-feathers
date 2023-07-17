@@ -23,6 +23,7 @@
   import Counter from '$components/Counter.svelte';
   import Button from '$components/Button.svelte';
   import Divider from '$components/Divider.svelte';
+  import Link from '$components/Link.svelte';
 
   export let data;
 
@@ -92,7 +93,12 @@
       ratingAverage={data.product.rating_average}
       ratingCount={data.product.rating_count}
     />
-    {#if productPrice.quantity === 1}
+    {#if data.product.category === 'Feather Dusters' && !$page.data.session}
+      <p>
+        <Link href="/account/sign-in" customClass="text-sky-500">Sign in</Link> to
+        view prices
+      </p>
+    {:else if productPrice.quantity === 1}
       <p>
         <span class="montserrat-bold text-xl text-rose-500"
           >{formatCurrency(productPrice.price)}</span
@@ -164,7 +170,13 @@
           ratingAverage={data.product.rating_average}
           ratingCount={data.product.rating_count}
         />
-        {#if productPrice.quantity === 1}
+        {#if data.product.category === 'Feather Dusters' && !$page.data.session}
+          <p>
+            <Link href="/account/sign-in" customClass="text-sky-500"
+              >Sign in</Link
+            > to view prices
+          </p>
+        {:else if productPrice.quantity === 1}
           <p>
             <span class="montserrat-bold text-xl text-rose-500"
               >{formatCurrency(productPrice.price)}</span
@@ -216,56 +228,69 @@
         <Counter bind:value={quantity} />
       </div>
       <Divider />
-      <div class="flex flex-col gap-8">
-        {#if productPrice.quantity === 1}
-          <p>
-            <span class="montserrat-bold text-xl text-rose-500"
-              >{formatCurrency(productPrice.price)}</span
-            >
-            {formatPackage(productPrice.quantity, true)}
-          </p>
-        {:else}
-          <p>
-            <span class="montserrat-bold text-xl text-rose-500"
-              >{formatCurrency(productPrice.price)}</span
-            >{formatPackage(productPrice.quantity, true)} ({formatCurrency(
-              productPrice.price / productPrice.quantity
-            )}/unit)
-          </p>
-        {/if}
-        <p>Shipping and taxes calculated at checkout</p>
-        <div class="flex flex-col gap-4">
-          {#if showAddToCartMessage}
-            <p class="rounded bg-neutral-100 p-2 text-center">
-              Added to Cart ( {$cart.cartTotalItems} )
+      {#if data.product.category === 'Feather Dusters' && !$page.data.session}
+        <p>
+          <Link href="/account/sign-in" customClass="text-sky-500">Sign in</Link
+          > to purchase
+        </p>
+      {:else}
+        <div class="flex flex-col gap-8">
+          {#if data.product.category === 'Feather Dusters' && !$page.data.session}
+            <p>
+              <Link href="/account/sign-in" customClass="text-sky-500"
+                >Sign in</Link
+              > to view prices
+            </p>
+          {:else if productPrice.quantity === 1}
+            <p>
+              <span class="montserrat-bold text-xl text-rose-500"
+                >{formatCurrency(productPrice.price)}</span
+              >
+              {formatPackage(productPrice.quantity, true)}
             </p>
           {:else}
-            <Button
-              customClass="bg-yellow-500 text-white"
-              disabled={showAddToCartMessage || isLoadingCheckout}
-              handleClick={() => {
-                cart.addCartItem(data.product, productPrice, quantity);
-                showAddToCartMessage = true;
-              }}
-            >
-              Add to Cart
-            </Button>
-          {/if}
-          {#if isLoadingCheckout}
-            <p class="rounded bg-neutral-100 p-2 text-center">
-              Redirecting to Checkout...
+            <p>
+              <span class="montserrat-bold text-xl text-rose-500"
+                >{formatCurrency(productPrice.price)}</span
+              >{formatPackage(productPrice.quantity, true)} ({formatCurrency(
+                productPrice.price / productPrice.quantity
+              )}/unit)
             </p>
-          {:else}
-            <Button
-              customClass="bg-orange-500 text-white"
-              disabled={isLoadingCheckout}
-              handleClick={async () => await checkout()}
-            >
-              Buy Now
-            </Button>
           {/if}
+          <p>Shipping and taxes calculated at checkout</p>
+          <div class="flex flex-col gap-4">
+            {#if showAddToCartMessage}
+              <p class="rounded bg-neutral-100 p-2 text-center">
+                Added to Cart ( {$cart.cartTotalItems} )
+              </p>
+            {:else}
+              <Button
+                customClass="bg-yellow-500 text-white"
+                disabled={showAddToCartMessage || isLoadingCheckout}
+                handleClick={() => {
+                  cart.addCartItem(data.product, productPrice, quantity);
+                  showAddToCartMessage = true;
+                }}
+              >
+                Add to Cart
+              </Button>
+            {/if}
+            {#if isLoadingCheckout}
+              <p class="rounded bg-neutral-100 p-2 text-center">
+                Redirecting to Checkout...
+              </p>
+            {:else}
+              <Button
+                customClass="bg-orange-500 text-white"
+                disabled={isLoadingCheckout}
+                handleClick={async () => await checkout()}
+              >
+                Buy Now
+              </Button>
+            {/if}
+          </div>
         </div>
-      </div>
+      {/if}
     </div>
   </div>
 </div>
