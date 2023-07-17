@@ -14,12 +14,12 @@
 </svelte:head>
 
 <div class="m-8 flex w-full flex-col gap-8 lg:w-3/5">
-  <Heading>
-    <span>Payment Cancelled</span>
-  </Heading>
+  <Heading>Payment Cancelled</Heading>
   <p>
     Your payment was cancelled. Continue shopping and checkout when you are
     ready.
   </p>
-  <Link href="/">Continue Shopping</Link>
+  <Link href="/" customClass="px-4 py-2 bg-neutral-100 self-start"
+    >Continue Shopping</Link
+  >
 </div>
