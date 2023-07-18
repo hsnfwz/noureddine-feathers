@@ -129,7 +129,7 @@
           </p>
         {/if}
       </div>
-      <div class="flex items-start gap-8 lg:flex-col lg:gap-8">
+      <div class="flex gap-8 lg:flex-col lg:gap-8">
         <p class="flex flex-grow items-center">Quantity</p>
         <Counter bind:value={quantity} />
       </div>
