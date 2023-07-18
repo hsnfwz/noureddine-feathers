@@ -35,7 +35,7 @@
 
 <main class="min-h-screen bg-white">
   <div class="p-2 text-center">
-    <p class="uppercase">
+    <p class="text-sm uppercase">
       <span class="montserrat-bold">Free shipping</span> on orders over $600
     </p>
   </div>
