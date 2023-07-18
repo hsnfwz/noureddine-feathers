@@ -105,7 +105,7 @@
     </div>
   {:else}
     <div
-      class="grid w-full grid-cols-2 bg-neutral-100 px-4 py-2 lg:grid-cols-4"
+      class="grid w-full grid-cols-2 bg-neutral-100 px-8 py-2 lg:grid-cols-4"
     >
       <Link href="/">
         <img
