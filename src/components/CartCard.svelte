@@ -38,35 +38,47 @@
   afterUpdate(() => {
     quantity = cartItem.cart_item_quantity;
 
-    if (cartItem.category === 'Feathers') {
-      src = getPublicUrl(
-        `${formatName(
-          cartItem.name,
-          cartItem.color,
-          cartItem.size,
-          cartItem.size_unit
-        )}/0-${formatName(
-          cartItem.name,
-          cartItem.color,
-          cartItem.size,
-          cartItem.size_unit
-        )}-1024x1024.webp`
-      );
-    } else {
-      src = getPublicUrl(
-        `${formatName(
-          cartItem.name,
-          cartItem.color,
-          cartItem.size,
-          cartItem.size_unit
-        )}/${formatName(
-          cartItem.name,
-          cartItem.color,
-          cartItem.size,
-          cartItem.size_unit
-        )}-0.webp`
-      );
-    }
+    src = `/src/lib/images/products/${formatName(
+      cartItem.name,
+      cartItem.color,
+      cartItem.size,
+      cartItem.size_unit
+    )}/0-${formatName(
+      cartItem.name,
+      cartItem.color,
+      cartItem.size,
+      cartItem.size_unit
+    )}-1024x1024.webp`;
+
+    // if (cartItem.category === 'Feathers') {
+    //   src = getPublicUrl(
+    //     `${formatName(
+    //       cartItem.name,
+    //       cartItem.color,
+    //       cartItem.size,
+    //       cartItem.size_unit
+    //     )}/0-${formatName(
+    //       cartItem.name,
+    //       cartItem.color,
+    //       cartItem.size,
+    //       cartItem.size_unit
+    //     )}-1024x1024.webp`
+    //   );
+    // } else {
+    //   src = getPublicUrl(
+    //     `${formatName(
+    //       cartItem.name,
+    //       cartItem.color,
+    //       cartItem.size,
+    //       cartItem.size_unit
+    //     )}/${formatName(
+    //       cartItem.name,
+    //       cartItem.color,
+    //       cartItem.size,
+    //       cartItem.size_unit
+    //     )}-0.webp`
+    //   );
+    // }
   });
 </script>
 

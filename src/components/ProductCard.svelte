@@ -31,35 +31,47 @@
   let src: string = '';
 
   afterUpdate(() => {
-    if (product.category === 'Feathers') {
-      src = getPublicUrl(
-        `${formatName(
-          product.name,
-          product.color,
-          product.size,
-          product.size_unit
-        )}/0-${formatName(
-          product.name,
-          product.color,
-          product.size,
-          product.size_unit
-        )}-1024x1024.webp`
-      );
-    } else {
-      src = getPublicUrl(
-        `${formatName(
-          product.name,
-          product.color,
-          product.size,
-          product.size_unit
-        )}/${formatName(
-          product.name,
-          product.color,
-          product.size,
-          product.size_unit
-        )}-0.webp`
-      );
-    }
+    src = `/src/lib/images/products/${formatName(
+      product.name,
+      product.color,
+      product.size,
+      product.size_unit
+    )}/0-${formatName(
+      product.name,
+      product.color,
+      product.size,
+      product.size_unit
+    )}-1024x1024.webp`;
+
+    // if (product.category === 'Feathers') {
+    //   src = getPublicUrl(
+    //     `${formatName(
+    //       product.name,
+    //       product.color,
+    //       product.size,
+    //       product.size_unit
+    //     )}/0-${formatName(
+    //       product.name,
+    //       product.color,
+    //       product.size,
+    //       product.size_unit
+    //     )}-1024x1024.webp`
+    //   );
+    // } else {
+    //   src = getPublicUrl(
+    // `${formatName(
+    //   product.name,
+    //   product.color,
+    //   product.size,
+    //   product.size_unit
+    // )}/${formatName(
+    //   product.name,
+    //   product.color,
+    //   product.size,
+    //   product.size_unit
+    // )}-0.webp`
+    //   );
+    // }
 
     isLoading = false;
   });

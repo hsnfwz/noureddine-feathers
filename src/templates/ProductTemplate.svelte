@@ -120,22 +120,39 @@
   </div>
   <div class="flex flex-col gap-8 lg:flex-row">
     <div class="flex w-full flex-col gap-8 lg:w-3/5">
-      {#if data.product.category === 'Feathers'}
+      {#if data.product.category === 'Feather Dusters'}
         <div class="flex justify-center rounded bg-neutral-100 p-2">
           <img
-            src={getPublicUrl(
-              `${formatName(
-                data.product.name,
-                data.product.color,
-                data.product.size,
-                data.product.size_unit
-              )}/0-${formatName(
-                data.product.name,
-                data.product.color,
-                data.product.size,
-                data.product.size_unit
-              )}-1024x1024.webp`
-            )}
+            src={`/src/lib/images/products/${formatName(
+              data.product.name,
+              data.product.color,
+              data.product.size,
+              data.product.size_unit
+            )}/0-${formatName(
+              data.product.name,
+              data.product.color,
+              data.product.size,
+              data.product.size_unit
+            )}-1024x1024.webp`}
+            alt={data.product.name}
+            width=""
+            height=""
+            class="object-cover"
+          />
+        </div>
+        <div class="flex justify-center rounded bg-neutral-100 p-2">
+          <img
+            src={`/src/lib/images/products/${formatName(
+              data.product.name,
+              data.product.color,
+              data.product.size,
+              data.product.size_unit
+            )}/1-${formatName(
+              data.product.name,
+              data.product.color,
+              data.product.size,
+              data.product.size_unit
+            )}-1024x1024.webp`}
             alt={data.product.name}
             width=""
             height=""
@@ -143,17 +160,25 @@
           />
         </div>
       {:else}
-        {#each data.productImagePublicUrls as publicUrl}
-          <div class="flex justify-center rounded bg-neutral-100 p-2">
-            <img
-              src={publicUrl}
-              alt={data.product.name}
-              width=""
-              height=""
-              class="object-cover"
-            />
-          </div>
-        {/each}
+        <div class="flex justify-center rounded bg-neutral-100 p-2">
+          <img
+            src={`/src/lib/images/products/${formatName(
+              data.product.name,
+              data.product.color,
+              data.product.size,
+              data.product.size_unit
+            )}/0-${formatName(
+              data.product.name,
+              data.product.color,
+              data.product.size,
+              data.product.size_unit
+            )}-1024x1024.webp`}
+            alt={data.product.name}
+            width=""
+            height=""
+            class="object-cover"
+          />
+        </div>
       {/if}
     </div>
     <div

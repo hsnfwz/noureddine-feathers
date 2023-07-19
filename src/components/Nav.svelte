@@ -148,7 +148,7 @@
             href="/products/feather-dusters"
             customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('feather-dusters')
-                ? 'border-black border-b-2 pointer-events-none'
+                ? 'border-black border-b-2'
                 : 'border-transparent'
             }`}>Feather Dusters</Link
           >
@@ -156,7 +156,7 @@
             href="/products/lambswool-dusters"
             customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('lambswool-dusters')
-                ? 'border-black border-b-2 pointer-events-none'
+                ? 'border-black border-b-2'
                 : 'border-transparent'
             }`}>Lambswool Dusters</Link
           >
@@ -164,7 +164,7 @@
             href="/products/feathers"
             customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('feathers')
-                ? 'border-black border-b-2 pointer-events-none'
+                ? 'border-black border-b-2'
                 : 'border-transparent'
             }`}>Feathers</Link
           >
@@ -172,7 +172,7 @@
             href="/products/eggshells"
             customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('eggshells')
-                ? 'border-black border-b-2 pointer-events-none'
+                ? 'border-black border-b-2'
                 : 'border-transparent'
             }`}>Eggshells</Link
           >
@@ -184,7 +184,7 @@
             href={`${$page.data.session ? '/account' : '/account/sign-in'}`}
             customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('account')
-                ? 'border-black border-b-2 pointer-events-none'
+                ? 'border-black border-b-2'
                 : 'border-transparent'
             }`}>Account</Link
           >
@@ -192,7 +192,7 @@
             href="/cart"
             customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('cart')
-                ? 'border-black border-b-2 pointer-events-none'
+                ? 'border-black border-b-2'
                 : 'border-transparent'
             }`}
           >
