@@ -22,7 +22,7 @@
 <div class="flex">
   <div class="flex items-center justify-center">
     <Button
-      customClass="border-2 rounded-full border-neutral-100 hover:border-black transition-all"
+      customClass="rounded-full hover:border-black transition-all disabled:opacity-25"
       handleClick={() => decrementQuantity()}
       disabled={value === 1}
     >
@@ -45,7 +45,7 @@
   </div>
   <div class="flex items-center justify-center">
     <Button
-      customClass="border-2 rounded-full border-neutral-100 hover:border-black transition-all"
+      customClass="rounded-full hover:border-black transition-all disabled:opacity-25"
       handleClick={() => incrementQuantity()}
       disabled={value === 100}
     >

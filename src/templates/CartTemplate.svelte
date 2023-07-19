@@ -99,12 +99,12 @@
     <p>Shipping and taxes calculated at checkout</p>
 
     <Button
-      customClass="px-8 py-4 rounded-full bg-green-400 text-white hover:bg-green-500 transition-all disabled:opacity-100 disabled:bg-neutral-100"
+      customClass="px-8 py-4 rounded-full bg-green-400 text-white hover:bg-green-500 transition-all disabled:bg-neutral-100 disabled:text-black"
       handleClick={async () => await checkout()}
       disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
     >
       {#if isLoadingCheckout}
-        <span class="text-black">Redirecting to Checkout...</span>
+        Redirecting to Checkout...
       {:else}
         Checkout
       {/if}

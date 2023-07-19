@@ -98,8 +98,7 @@
             >
             <Link href="/cart" handleClick={() => (showNavMobile = false)}>
               <span class="inline-block align-middle">Cart</span> (
-              <span
-                class="montserrat-bold inline-block align-middle text-xl text-orange-500"
+              <span class="montserrat-bold inline-block align-middle text-xl"
                 >{$cart.cartTotalItems}</span
               > )
             </Link>
@@ -196,8 +195,7 @@
           >
             <p>
               <span class="inline-block align-middle">Cart</span> (
-              <span
-                class="montserrat-bold inline-block align-middle text-xl text-orange-500"
+              <span class="montserrat-bold inline-block align-middle text-xl"
                 >{$cart.cartTotalItems}</span
               > )
             </p>

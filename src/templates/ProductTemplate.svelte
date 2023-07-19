@@ -244,7 +244,7 @@
         <div class="flex gap-4">
           {#each data.product.prices as price}
             <Button
-              customClass="bg-neutral-100"
+              customClass="bg-neutral-100 px-8 py-4 rounded-full hover:border-black transition-all"
               handleClick={() => (productPrice = price)}
               selected={productPrice === price}
             >
@@ -295,7 +295,7 @@
           <p>Shipping and taxes calculated at checkout</p>
           <div class="flex flex-col gap-4">
             <Button
-              customClass="px-8 py-4 rounded-full bg-yellow-400 text-white hover:bg-yellow-500 transition-all disabled:opacity-100 disabled:bg-neutral-100"
+              customClass="px-8 py-4 rounded-full bg-yellow-400 text-white hover:bg-yellow-500 transition-all disabled:opacity-100 disabled:bg-neutral-100 disabled:text-black"
               disabled={showAddToCartMessage}
               handleClick={() => {
                 cart.addCartItem(data.product, productPrice, quantity);
@@ -303,20 +303,18 @@
               }}
             >
               {#if showAddToCartMessage}
-                <span class="text-black"
-                  >Added to Cart ( {$cart.cartTotalItems} )</span
-                >
+                Added to Cart ( {$cart.cartTotalItems} )
               {:else}
                 Add to Cart
               {/if}
             </Button>
             <Button
-              customClass="px-8 py-4 rounded-full bg-orange-400 text-white hover:bg-orange-500 transition-all disabled:opacity-100 disabled:bg-neutral-100"
+              customClass="px-8 py-4 rounded-full bg-orange-400 text-white hover:bg-orange-500 transition-all disabled:opacity-100 disabled:bg-neutral-100 disabled:text-black"
               disabled={isLoadingCheckout}
               handleClick={async () => await checkout()}
             >
               {#if isLoadingCheckout}
-                <span class="text-black">Redirecting to Checkout...</span>
+                Redirecting to Checkout...
               {:else}
                 Buy Now
               {/if}

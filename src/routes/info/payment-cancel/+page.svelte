@@ -19,7 +19,9 @@
     Your payment was cancelled. Continue shopping and checkout when you are
     ready.
   </p>
-  <Link href="/" customClass="px-4 py-2 bg-neutral-100 self-start"
+  <Link
+    href="/"
+    customClass="rounded-full px-8 py-4 hover:bg-black hover:text-white transition-all bg-neutral-100 self-start"
     >Continue Shopping</Link
   >
 </div>

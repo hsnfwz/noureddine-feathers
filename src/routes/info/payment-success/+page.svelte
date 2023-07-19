@@ -23,7 +23,9 @@
 <div class="flex w-full flex-col gap-8 p-8 lg:w-3/5">
   <Heading>Payment Successful</Heading>
   <p>Your payment was successful!</p>
-  <Link href="/" customClass="px-4 py-2 bg-neutral-100 self-start"
+  <Link
+    href="/"
+    customClass="rounded-full px-8 py-4 hover:bg-black hover:text-white transition-all bg-neutral-100 self-start"
     >Continue Shopping</Link
   >
 </div>

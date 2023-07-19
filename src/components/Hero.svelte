@@ -9,7 +9,7 @@
   <img
     src={ImageHero}
     alt="hero"
-    class="h-[calc(100vh-36px-72.25px)] w-full object-cover"
+    class="h-[calc(100vh-36px-72px)] w-full object-cover"
   />
   <div
     class="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-8 self-start px-8 py-2 text-center text-white"
