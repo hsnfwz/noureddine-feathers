@@ -3,8 +3,6 @@
   import { onMount } from 'svelte';
   import { page } from '$app/stores';
 
-  console.log($page);
-
   // components
   import Link from '$components/Link.svelte';
   import Button from '$components/Button.svelte';

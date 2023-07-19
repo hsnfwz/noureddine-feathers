@@ -31,7 +31,7 @@
   let src: string = '';
 
   afterUpdate(() => {
-    src = `/src/lib/images/products/${formatName(
+    src = `/products/${formatName(
       product.name,
       product.color,
       product.size,

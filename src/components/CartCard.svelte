@@ -38,7 +38,7 @@
   afterUpdate(() => {
     quantity = cartItem.cart_item_quantity;
 
-    src = `/src/lib/images/products/${formatName(
+    src = `/products/${formatName(
       cartItem.name,
       cartItem.color,
       cartItem.size,

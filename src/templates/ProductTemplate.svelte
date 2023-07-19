@@ -123,7 +123,7 @@
       {#if data.product.category === 'Feather Dusters'}
         <div class="flex justify-center rounded bg-neutral-100 p-2">
           <img
-            src={`/src/lib/images/products/${formatName(
+            src={`/products/${formatName(
               data.product.name,
               data.product.color,
               data.product.size,
@@ -142,7 +142,7 @@
         </div>
         <div class="flex justify-center rounded bg-neutral-100 p-2">
           <img
-            src={`/src/lib/images/products/${formatName(
+            src={`/products/${formatName(
               data.product.name,
               data.product.color,
               data.product.size,
@@ -162,7 +162,7 @@
       {:else}
         <div class="flex justify-center rounded bg-neutral-100 p-2">
           <img
-            src={`/src/lib/images/products/${formatName(
+            src={`/products/${formatName(
               data.product.name,
               data.product.color,
               data.product.size,
