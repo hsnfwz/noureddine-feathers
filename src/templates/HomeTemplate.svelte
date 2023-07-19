@@ -18,7 +18,7 @@
       <ProductCardGrid products={data.featherDusters} />
       <Link
         href="/products/feather-dusters"
-        customClass="text-center px-4 py-2 bg-neutral-100 self-center rounded"
+        customClass="text-center px-8 py-4 bg-neutral-100 self-center rounded-full hover:bg-black hover:text-white transition-all"
         >View All</Link
       >
     </div>
@@ -27,7 +27,7 @@
       <ProductCardGrid products={data.lambswoolDusters} />
       <Link
         href="/products/lambswool-dusters"
-        customClass="text-center px-4 py-2 bg-neutral-100 self-center rounded"
+        customClass="text-center px-8 py-4 bg-neutral-100 self-center rounded-full hover:bg-black hover:text-white transition-all"
         >View All</Link
       >
     </div>
@@ -36,7 +36,7 @@
       <ProductCardGrid products={data.feathers} />
       <Link
         href="/products/feathers"
-        customClass="text-center px-4 py-2 bg-neutral-100 self-center rounded"
+        customClass="text-center px-8 py-4 bg-neutral-100 self-center rounded-full hover:bg-black hover:text-white transition-all"
         >View All</Link
       >
     </div>
@@ -45,7 +45,7 @@
       <ProductCardGrid products={data.eggshells} />
       <Link
         href="/products/eggshells"
-        customClass="text-center px-4 py-2 bg-neutral-100 self-center rounded"
+        customClass="text-center px-8 py-4 bg-neutral-100 self-center rounded-full hover:bg-black hover:text-white transition-all"
         >View All</Link
       >
     </div>

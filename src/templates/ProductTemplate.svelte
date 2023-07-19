@@ -95,8 +95,11 @@
     />
     {#if data.product.category === 'Feather Dusters' && !$page.data.session}
       <p>
-        <Link href="/account/sign-in" customClass="text-sky-500">Sign in</Link> to
-        view prices
+        <Link
+          href="/account/sign-in"
+          customClass="text-sky-500 hover:underline transition-all"
+          >Sign in</Link
+        > to view prices
       </p>
     {:else if productPrice.quantity === 1}
       <p>
@@ -172,7 +175,9 @@
         />
         {#if data.product.category === 'Feather Dusters' && !$page.data.session}
           <p>
-            <Link href="/account/sign-in" customClass="text-sky-500"
+            <Link
+              href="/account/sign-in"
+              customClass="text-sky-500 hover:underline transition-all"
               >Sign in</Link
             > to view prices
           </p>
@@ -230,14 +235,19 @@
       <Divider />
       {#if data.product.category === 'Feather Dusters' && !$page.data.session}
         <p>
-          <Link href="/account/sign-in" customClass="text-sky-500">Sign in</Link
+          <Link
+            href="/account/sign-in"
+            customClass="text-sky-500 hover:underline transition-all"
+            >Sign in</Link
           > to purchase
         </p>
       {:else}
         <div class="flex flex-col gap-8">
           {#if data.product.category === 'Feather Dusters' && !$page.data.session}
             <p>
-              <Link href="/account/sign-in" customClass="text-sky-500"
+              <Link
+                href="/account/sign-in"
+                customClass="text-sky-500 hover:underline transition-all"
                 >Sign in</Link
               > to view prices
             </p>
@@ -259,35 +269,33 @@
           {/if}
           <p>Shipping and taxes calculated at checkout</p>
           <div class="flex flex-col gap-4">
-            {#if showAddToCartMessage}
-              <p class="rounded bg-neutral-100 p-2 text-center">
-                Added to Cart ( {$cart.cartTotalItems} )
-              </p>
-            {:else}
-              <Button
-                customClass="bg-yellow-500 text-white"
-                disabled={showAddToCartMessage || isLoadingCheckout}
-                handleClick={() => {
-                  cart.addCartItem(data.product, productPrice, quantity);
-                  showAddToCartMessage = true;
-                }}
-              >
+            <Button
+              customClass="px-8 py-4 rounded-full bg-yellow-400 text-white hover:bg-yellow-500 transition-all disabled:opacity-100 disabled:bg-neutral-100"
+              disabled={showAddToCartMessage}
+              handleClick={() => {
+                cart.addCartItem(data.product, productPrice, quantity);
+                showAddToCartMessage = true;
+              }}
+            >
+              {#if showAddToCartMessage}
+                <span class="text-black"
+                  >Added to Cart ( {$cart.cartTotalItems} )</span
+                >
+              {:else}
                 Add to Cart
-              </Button>
-            {/if}
-            {#if isLoadingCheckout}
-              <p class="rounded bg-neutral-100 p-2 text-center">
-                Redirecting to Checkout...
-              </p>
-            {:else}
-              <Button
-                customClass="bg-orange-500 text-white"
-                disabled={isLoadingCheckout}
-                handleClick={async () => await checkout()}
-              >
+              {/if}
+            </Button>
+            <Button
+              customClass="px-8 py-4 rounded-full bg-orange-400 text-white hover:bg-orange-500 transition-all disabled:opacity-100 disabled:bg-neutral-100"
+              disabled={isLoadingCheckout}
+              handleClick={async () => await checkout()}
+            >
+              {#if isLoadingCheckout}
+                <span class="text-black">Redirecting to Checkout...</span>
+              {:else}
                 Buy Now
-              </Button>
-            {/if}
+              {/if}
+            </Button>
           </div>
         </div>
       {/if}

@@ -12,7 +12,7 @@
   {type}
   {disabled}
   on:click={handleClick}
-  class={`flex items-center justify-center rounded border-2 p-2 disabled:pointer-events-none disabled:opacity-25 ${
+  class={`montserrat-bold flex items-center justify-center rounded border-2 p-2 disabled:pointer-events-none disabled:opacity-25 ${
     selected ? 'pointer-events-none border-black' : 'border-transparent'
   } ${customClass}`}
 >

@@ -54,10 +54,13 @@
       {#if form?.success === false}
         <p class="text-rose-500">{form?.message}</p>
       {/if}
-      <Button customClass="bg-sky-500 text-white" type="submit">Sign In</Button>
+      <Button
+        customClass="bg-sky-400 text-white px-8 py-4 hover:bg-sky-500 transition-all rounded-full"
+        type="submit">Sign In</Button
+      >
       <p>
         By signing in, you agree to our <Link
-          customClass="text-sky-500"
+          customClass="text-sky-500 hover:underline transition-all"
           href="/info/terms-of-service">Terms of Service.</Link
         >
       </p>

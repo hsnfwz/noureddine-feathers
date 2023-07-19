@@ -71,7 +71,7 @@
 </script>
 
 <div class="flex flex-col gap-8 sm:flex-row">
-  <div>
+  <div class="self-start bg-neutral-100">
     <Link
       href={`/products/${formatText(cartItem.category)}/${
         cartItem.product_id
@@ -84,7 +84,7 @@
         alt={cartItem.name}
         width=""
         height=""
-        class="w-full items-center justify-center rounded bg-neutral-100 object-contain p-2 sm:max-w-[200px]"
+        class="rounded object-contain p-2 transition-all hover:scale-110 sm:max-w-[200px]"
       />
     </Link>
   </div>
@@ -95,7 +95,7 @@
         {cartItem.size ? `- ${cartItem.size} ${cartItem.size_unit}` : ''}
       </p>
       <Button
-        customClass="self-start rounded bg-neutral-100 p-2"
+        customClass="self-start rounded-full bg-neutral-100 p-2 hover:bg-black hover:text-white transition-all"
         handleClick={() => cart.removeCartItem(cartItemIndex)}
       >
         <svg
@@ -119,7 +119,9 @@
         <p class="flex flex-grow">Price</p>
         {#if cartItem.category === 'Feather Dusters' && !$page.data.session}
           <p>
-            <Link href="/account/sign-in" customClass="text-sky-500"
+            <Link
+              href="/account/sign-in"
+              customClass="text-sky-500 hover:underline transition-all"
               >Sign in</Link
             > to view prices
           </p>

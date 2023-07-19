@@ -97,18 +97,17 @@
       </div>
     </div>
     <p>Shipping and taxes calculated at checkout</p>
-    {#if isLoadingCheckout}
-      <p class="rounded bg-neutral-100 p-2 text-center">
-        Redirecting to Checkout...
-      </p>
-    {:else}
-      <Button
-        customClass="bg-emerald-500 text-white"
-        handleClick={async () => await checkout()}
-        disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
-      >
+
+    <Button
+      customClass="px-8 py-4 rounded-full bg-green-400 text-white hover:bg-green-500 transition-all disabled:opacity-100 disabled:bg-neutral-100"
+      handleClick={async () => await checkout()}
+      disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
+    >
+      {#if isLoadingCheckout}
+        <span class="text-black">Redirecting to Checkout...</span>
+      {:else}
         Checkout
-      </Button>
-    {/if}
+      {/if}
+    </Button>
   </div>
 </div>

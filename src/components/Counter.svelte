@@ -21,7 +21,11 @@
 
 <div class="flex">
   <div class="flex items-center justify-center">
-    <Button handleClick={() => decrementQuantity()} disabled={value === 1}>
+    <Button
+      customClass="border-2 rounded-full border-neutral-100 hover:border-black transition-all"
+      handleClick={() => decrementQuantity()}
+      disabled={value === 1}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -40,7 +44,11 @@
     <p class="w-8 select-none text-center">{value}</p>
   </div>
   <div class="flex items-center justify-center">
-    <Button handleClick={() => incrementQuantity()} disabled={value === 100}>
+    <Button
+      customClass="border-2 rounded-full border-neutral-100 hover:border-black transition-all"
+      handleClick={() => incrementQuantity()}
+      disabled={value === 100}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"

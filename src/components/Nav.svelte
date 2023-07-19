@@ -110,10 +110,12 @@
       </div>
     </div>
   {:else}
-    <p class="bg-white p-2 text-center text-sm uppercase">
+    <p class="bg-neutral-100 p-2 text-center text-sm uppercase">
       <span class="montserrat-bold">Free shipping</span> on orders over $600
     </p>
-    <div class="grid w-full grid-cols-2 bg-neutral-100 px-8 lg:grid-cols-4">
+    <div
+      class=" grid w-full grid-cols-2 bg-white px-8 drop-shadow-sm lg:grid-cols-4"
+    >
       <Link href="/" customClass="max-w-min">
         <img
           src={ImageLogo}
@@ -121,8 +123,11 @@
           class="h-[72px] w-[128px] max-w-min"
         />
       </Link>
-      <div class="flex items-center justify-self-end lg:hidden">
-        <Button handleClick={() => (showNavMobile = true)}>
+      <div class="flex items-center self-center justify-self-end lg:hidden">
+        <Button
+          handleClick={() => (showNavMobile = true)}
+          customClass="rounded-full p-2 hover:bg-neutral-100 transition-all "
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -131,7 +136,7 @@
           >
             <path
               fill-rule="evenodd"
-              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
+              d="M2 6.75A.75.75 0 012.75 6h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 6.75zm0 6.5a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
               clip-rule="evenodd"
             />
           </svg>
@@ -141,34 +146,34 @@
         <div class="flex flex-col text-center lg:flex-row">
           <Link
             href="/products/feather-dusters"
-            customClass={`px-4 flex items-center ${
+            customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('feather-dusters')
-                ? 'bg-black text-white'
-                : ''
+                ? 'border-black border-b-2 pointer-events-none'
+                : 'border-transparent'
             }`}>Feather Dusters</Link
           >
           <Link
             href="/products/lambswool-dusters"
-            customClass={`px-4 flex items-center ${
+            customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('lambswool-dusters')
-                ? 'bg-black text-white'
-                : ''
+                ? 'border-black border-b-2 pointer-events-none'
+                : 'border-transparent'
             }`}>Lambswool Dusters</Link
           >
           <Link
             href="/products/feathers"
-            customClass={`px-4 flex items-center ${
+            customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('feathers')
-                ? 'bg-black text-white'
-                : ''
+                ? 'border-black border-b-2 pointer-events-none'
+                : 'border-transparent'
             }`}>Feathers</Link
           >
           <Link
             href="/products/eggshells"
-            customClass={`px-4 flex items-center ${
+            customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('eggshells')
-                ? 'bg-black text-white'
-                : ''
+                ? 'border-black border-b-2 pointer-events-none'
+                : 'border-transparent'
             }`}>Eggshells</Link
           >
         </div>
@@ -177,16 +182,18 @@
         <div class="flex flex-col text-center lg:flex-row">
           <Link
             href={`${$page.data.session ? '/account' : '/account/sign-in'}`}
-            customClass={`px-4 flex items-center ${
+            customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
               $page.url.pathname.includes('account')
-                ? 'bg-black text-white'
-                : ''
+                ? 'border-black border-b-2 pointer-events-none'
+                : 'border-transparent'
             }`}>Account</Link
           >
           <Link
             href="/cart"
-            customClass={`px-4 flex items-center ${
-              $page.url.pathname.includes('cart') ? 'bg-black text-white' : ''
+            customClass={`px-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('cart')
+                ? 'border-black border-b-2 pointer-events-none'
+                : 'border-transparent'
             }`}
           >
             <p>
