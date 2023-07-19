@@ -32,11 +32,11 @@
 
 <nav>
   {#if showNavMobile}
-    <div class="fixed top-0 z-50 h-full w-full overflow-auto bg-neutral-100">
-      <p class="bg-white p-2 text-center text-sm uppercase">
+    <div class="fixed top-0 z-50 h-full w-full">
+      <p class="bg-neutral-100 p-2 text-center text-sm uppercase">
         <span class="montserrat-bold">Free shipping</span> on orders over $600
       </p>
-      <div class="flex flex-col gap-4 px-8">
+      <div class="flex h-full flex-col gap-4 bg-white px-8">
         <div class="flex gap-4">
           <Link
             href="/"
@@ -52,7 +52,10 @@
             />
           </Link>
           <div class="flex flex-1 items-center justify-end lg:hidden">
-            <Button handleClick={() => (showNavMobile = false)}>
+            <Button
+              handleClick={() => (showNavMobile = false)}
+              customClass="rounded-full p-2 hover:bg-neutral-100 transition-all "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -66,45 +69,68 @@
             </Button>
           </div>
         </div>
-        <div class="flex flex-col gap-4">
-          <div class="flex flex-col gap-4">
-            <Link
-              href="/products/feather-dusters"
-              handleClick={() => (showNavMobile = false)}
-            >
-              Feather Dusters
-            </Link>
-            <Link
-              href="/products/lambswool-dusters"
-              handleClick={() => (showNavMobile = false)}
-            >
-              Lambswool Dusters
-            </Link>
-            <Link
-              href="/products/feathers"
-              handleClick={() => (showNavMobile = false)}
-            >
-              Feathers
-            </Link>
-            <Link
-              href="/products/eggshells"
-              handleClick={() => (showNavMobile = false)}
-            >
-              Eggshells
-            </Link>
-          </div>
-          <div class="flex flex-col gap-4">
-            <Link
-              href={`${$page.data.session ? '/account' : '/account/sign-in'}`}
-              handleClick={() => (showNavMobile = false)}>Account</Link
-            >
-            <Link href="/cart" handleClick={() => (showNavMobile = false)}>
+        <div class="flex flex-col">
+          <Link
+            handleClick={() => (showNavMobile = false)}
+            href="/products/feather-dusters"
+            customClass={`py-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('feather-dusters')
+                ? 'border-black border-b-2'
+                : 'border-transparent'
+            }`}>Feather Dusters</Link
+          >
+          <Link
+            handleClick={() => (showNavMobile = false)}
+            href="/products/lambswool-dusters"
+            customClass={`py-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('lambswool-dusters')
+                ? 'border-black border-b-2'
+                : 'border-transparent'
+            }`}>Lambswool Dusters</Link
+          >
+          <Link
+            handleClick={() => (showNavMobile = false)}
+            href="/products/feathers"
+            customClass={`py-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('feathers')
+                ? 'border-black border-b-2'
+                : 'border-transparent'
+            }`}>Feathers</Link
+          >
+          <Link
+            handleClick={() => (showNavMobile = false)}
+            href="/products/eggshells"
+            customClass={`py-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('eggshells')
+                ? 'border-black border-b-2'
+                : 'border-transparent'
+            }`}>Eggshells</Link
+          >
+          <Link
+            handleClick={() => (showNavMobile = false)}
+            href={`${$page.data.session ? '/account' : '/account/sign-in'}`}
+            customClass={`py-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('account')
+                ? 'border-black border-b-2'
+                : 'border-transparent'
+            }`}>Account</Link
+          >
+          <Link
+            handleClick={() => (showNavMobile = false)}
+            href="/cart"
+            customClass={`py-4 flex items-center hover:border-black border-b-2 transition-all ${
+              $page.url.pathname.includes('cart')
+                ? 'border-black border-b-2'
+                : 'border-transparent'
+            }`}
+          >
+            <p>
               <span class="inline-block align-middle">Cart</span> (
               <span class="montserrat-bold inline-block align-middle text-xl"
                 >{$cart.cartTotalItems}</span
               > )
-            </Link>
-          </div>
+            </p>
+          </Link>
         </div>
       </div>
     </div>
@@ -127,7 +153,7 @@
       <div class="flex items-center self-center justify-self-end lg:hidden">
         <Button
           handleClick={() => (showNavMobile = true)}
-          customClass="rounded-full p-2 hover:bg-neutral-100 transition-all "
+          customClass="rounded-full p-2 hover:bg-neutral-100 transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
