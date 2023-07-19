@@ -47,6 +47,8 @@
               src={ImageLogo}
               alt="Noureddine Feathers"
               class="h-[72px] w-[128px] max-w-min"
+              width=""
+              height=""
             />
           </Link>
           <div class="flex flex-1 items-center justify-end lg:hidden">
@@ -118,6 +120,8 @@
           src={ImageLogo}
           alt="Noureddine Feathers"
           class="h-[72px] w-[128px] max-w-min"
+          width=""
+          height=""
         />
       </Link>
       <div class="flex items-center self-center justify-self-end lg:hidden">

@@ -94,6 +94,8 @@
           {src}
           alt={product.name}
           class="object-cover transition-all group-hover:scale-110"
+          width=""
+          height=""
         />
       </div>
 

@@ -9,6 +9,7 @@
 
 <!-- todo: hover and focus state styling -->
 <button
+  name="button"
   {type}
   {disabled}
   on:click={handleClick}
