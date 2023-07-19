@@ -21,7 +21,8 @@
 
     <Link
       href="/products/feathers"
-      customClass="px-4 py-2 bg-white rounded text-black">Shop Now</Link
+      customClass="px-4 py-2 bg-white rounded text-black hover:bg-black hover:text-white hover:transition-all"
+      >Shop Now</Link
     >
   </div>
 </div>
