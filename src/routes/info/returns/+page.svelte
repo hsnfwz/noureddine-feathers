@@ -32,7 +32,7 @@
   </p>
   <Divider />
   <p>
-    *If you have any further questions, please contact us by email at
+    If you have any further questions, please contact us by email at
     info@nprofiles.com.
   </p>
 </div>

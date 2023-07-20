@@ -19,7 +19,7 @@
   <div class="flex flex-col gap-8">
     <div class="flex flex-col gap-4">
       <p>OVERVIEW</p>
-      <p>
+      <p class="break-all">
         This Privacy Policy describes how your personal information is
         collected, used, and shared when you visit or make a purchase from
         https://www.noureddinefeathers.com (the "Site").
@@ -39,7 +39,7 @@
       </p>
       <p>We collect Device Information using the following technologies:</p>
       <div>
-        <p>
+        <p class="break-all">
           - "Cookies" are data files that are placed on your device or computer
           and often include an anonymous unique identifier. For more information
           about cookies, and how to disable cookies, visit

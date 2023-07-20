@@ -134,7 +134,7 @@
     </div>
     <div class="flex flex-col gap-4">
       <p>SECTION 5 - PRODUCTS OR SERVICES</p>
-      <p>
+      <p class="break-all">
         Certain products or Services may be available exclusively online through
         the website. These products or Services may have limited quantities and
         are subject to return or exchange only according to our Return Policy.
@@ -269,7 +269,7 @@
     </div>
     <div class="flex flex-col gap-4">
       <p>SECTION 10 - PERSONAL INFORMATION</p>
-      <p>
+      <p class="break-all">
         Your submission of personal information through the store is governed by
         our Privacy Policy. To view our Privacy Policy, please see
         https://www.noureddinefeathers.com/privacy-policy
