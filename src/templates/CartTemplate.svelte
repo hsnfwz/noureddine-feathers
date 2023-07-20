@@ -99,7 +99,7 @@
     <p>Shipping and taxes calculated at checkout</p>
 
     <Button
-      customClass="px-8 py-4 rounded-full bg-green-400 text-white hover:bg-green-500 transition-all disabled:bg-neutral-100 disabled:text-black"
+      customClass="px-8 py-4 rounded-full bg-green-400 text-white hover:bg-green-500 transition-all disabled:bg-neutral-100 disabled:text-black disabled:opacity-25"
       handleClick={async () => await checkout()}
       disabled={$cart.cartTotalItems === 0 || isLoadingCheckout}
     >
