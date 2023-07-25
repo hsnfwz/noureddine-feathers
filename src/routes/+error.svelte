@@ -13,7 +13,12 @@
   />
 </svelte:head>
 
-<Heading customClass="text-center">
-  <span>404 Not Found</span>
-</Heading>
-<p class="text-center">Woops! We could not find what you were looking for.</p>
+<div class="flex flex-col gap-8 p-8">
+  <Heading>404 Not Found</Heading>
+  <p>Woops! We could not find what you were looking for.</p>
+  <Link
+    href="/"
+    customClass="rounded-full px-8 py-4 hover:bg-black hover:text-white transition-all bg-neutral-100 self-start"
+    >Continue Shopping</Link
+  >
+</div>
