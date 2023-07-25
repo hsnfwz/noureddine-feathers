@@ -16,11 +16,8 @@ export const actions = {
       });
     }
 
-    const { error } = await supabase.auth.signInWithOtp({
+    const { data, error } = await supabase.auth.updateUser({
       email,
-      options: {
-        emailRedirectTo: `${url.origin}/api/auth/callback`,
-      },
     });
 
     if (error) {
@@ -33,7 +30,8 @@ export const actions = {
 
     return {
       email,
-      message: 'Please check your email for a magic link to sign in.',
+      message:
+        'Please check your email for a magic link to confirm your changes.',
       success: true,
     };
   },

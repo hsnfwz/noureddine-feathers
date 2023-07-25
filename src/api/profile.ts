@@ -1,27 +1,30 @@
+/** @format */
+
 // interfaces
-import type I_Profile from "$interfaces/I_Profile";
+import type I_Profile from '$interfaces/I_Profile';
 
 // config
-import supabase from "$config/supabase";
+import supabase from '$config/supabase';
 
 const getProfileById = async (id: string): Promise<I_Profile | undefined> => {
   const { data, error } = await supabase
-    .from("user_profile")
+    .from('user_profile')
     .select(
       `
     id,
-    is_admin
+    is_admin,
+    display_name
   `
     )
     .match({ id });
 
   if (error) {
-    console.log("[getProfileById]:[error]", error);
+    console.log('[getProfileById]:[error]', error);
     return undefined;
   }
 
   if (!data) {
-    console.log("[getProfileById]:[null]", data);
+    console.log('[getProfileById]:[null]', data);
     return undefined;
   }
 

@@ -1,5 +1,7 @@
+/** @format */
+
 // config
-import supabase from "$config/supabase";
+import supabase from '$config/supabase';
 
 const getOrderProducts = async (
   filters: {} = {},
@@ -7,20 +9,20 @@ const getOrderProducts = async (
     key: string;
     value: { ascending: boolean };
   } = {
-    key: "created_at",
+    key: 'created_at',
     value: { ascending: false },
   },
   limit: number = 10
 ) => {
   const { data, error } = await supabase
-    .from("order_product")
+    .from('order_product')
     .select(
       `
     id,
     order_id,
     user_profile_id,
     quantity,
-    stripe_product_id (name, size, size_unit, color),
+    stripe_product_id (id, name, size, size_unit, color, category),
     stripe_price_id (price, quantity),
     order (*)
   `
@@ -30,12 +32,12 @@ const getOrderProducts = async (
   // .limit(limit)
 
   if (error) {
-    console.log("[getOrderProducts]:[error]", error);
+    console.log('[getOrderProducts]:[error]', error);
     return undefined;
   }
 
   if (!data) {
-    console.log("[getOrderProducts]:[null]", data);
+    console.log('[getOrderProducts]:[null]', data);
     return undefined;
   }
 
@@ -44,22 +46,22 @@ const getOrderProducts = async (
 
 const insertOrderProducts = async (items: []) => {
   if (!items) {
-    console.log("[insertOrderProducts]:[params] items is required.");
+    console.log('[insertOrderProducts]:[params] items is required.');
     return undefined;
   }
 
   const { data, error } = await supabase
-    .from("order_product")
+    .from('order_product')
     .insert(items)
     .select();
 
   if (error) {
-    console.log("[insertOrderProducts]:[error]", error);
+    console.log('[insertOrderProducts]:[error]', error);
     return undefined;
   }
 
   if (!data) {
-    console.log("[insertOrderProducts]:[null]", data);
+    console.log('[insertOrderProducts]:[null]', data);
     return undefined;
   }
 
